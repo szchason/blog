@@ -49,7 +49,7 @@ document.getElementById('a');
 
 - 返回一个匹配的ID的DOM元素对象，若没有找到，则返回null
 
-<u>注意：</u>id()里面是字符串，且只要写id名不需要“#”
+<u class="highlight">注意：</u>id()里面是字符串，且只要写id名不需要“#”
 
 #### 1.2、getElementsByClassName获取带有类名的元素(H5新增获取元素方法）
 
@@ -65,7 +65,7 @@ document.getElementsByClassName('b');
 
 - 得到的数组是一个伪数组
 
-<u>注意：</u>ClassName()括号是字符串，且只要写类名不需要写 “.”
+<u class="highlight">注意：</u>ClassName()括号是字符串，且只要写类名不需要写 “.”
 
 #### 1.3、getElementsByTagName使用标签名称来获取标签
 
@@ -79,7 +79,7 @@ document.getElementsByTagName('li');
 - 哪怕真的只有一个这个标签名，那么也是获取一组元素，只不过这一组中只有一个 DOM 元素而已
 - 得到的数组是一个伪数组，
 
-<u>注意：</u>TagName()括号里为字符串
+<u class="highlight">注意：</u>TagName()括号里为字符串
 
 #### 1.4、querySelector（H5新增获取元素方法）
 
@@ -165,7 +165,7 @@ botton.style.disabled = true; //错误  不需要style
 - 添加的都是**行内样式**
 - css带”-“的属性要使用**驼峰命名法**：如下
 
-<u>注意：</u>
+<u class="highlight">注意：</u>
 
 ```js
 div.style.backgroundColor = 'pink';
@@ -587,7 +587,7 @@ e = window.event || e; //兼容写法
 
 2. 不管父元素是否绑定事件，直到window为止
 
-<u>注意：</u>
+<u class="highlight">注意：</u>
 
 - 只会传播同类型事件
 - 只会从点击元素开始按照html的结构逐层向上的元素的事件都会被触发（子元素无论在不在父元素内部，只要html的结构上构成父子关系就会触发冒泡）

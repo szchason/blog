@@ -31,7 +31,7 @@ last_update:
 
 ![image-20230520213919224](https://gitee.com/szchason/pic_bed/raw/blogs/images/picgo/2023-05-21-1684639897-002ca2.png)
 
-<u>注意：</u> gitee目前只能选择私有仓库，创建成功后需要手动设置为公共仓库。同时gitee仓库存储免费个人用户只有5GB
+<u class="highlight">注意：</u> gitee目前只能选择私有仓库，创建成功后需要手动设置为公共仓库。同时gitee仓库存储免费个人用户只有5GB
 
 ### 2.2、创建存储私人令牌
 
@@ -65,7 +65,7 @@ token：对应gitee的私人令牌
 
 paths：对应仓库的文件路径
 
-<u>注意：</u> customPath和customUrl默认不设置
+<u class="highlight">注意：</u> customPath和customUrl默认不设置
 
 ### 3.4、测试上传
 

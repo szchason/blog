@@ -190,7 +190,7 @@ module.exports = {
 npm install --save @babel/polyfill
 ```
 
-<u>注意：</u>使用 --save 参数而不是 --save-dev，因为这是一个需要在你的源码之前运行的 polyfill。
+<u class="highlight">注意：</u>使用 --save 参数而不是 --save-dev，因为这是一个需要在你的源码之前运行的 polyfill。
 
 ### 2、配置`useBuiltIns`
 

@@ -199,7 +199,7 @@ export function h(sel, b, c) {
 }
 ```
 
-<u>注意：</u>这里去除了源码中对SVG元素的支持
+<u class="highlight">注意：</u>这里去除了源码中对SVG元素的支持
 
 测试代码实现：
 

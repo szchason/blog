@@ -187,7 +187,7 @@ docker rmi -f 镜像id 镜像id 镜像id 		# 移除多个镜像id
 docker rmi -f $(docker images -aq)  # 删除全部镜像
 ```
 
-<u>注意：</u>`docker rm`命令是移除容器，在删除镜像之前先用`docker rm`删掉依赖于这个镜像的所有容器
+<u class="highlight">注意：</u>`docker rm`命令是移除容器，在删除镜像之前先用`docker rm`删掉依赖于这个镜像的所有容器
 
 ### 5、Docker镜像的实现原理
 
@@ -247,7 +247,7 @@ docker rm 容器id  	# 删除指定容器，不能删除正在运行的容器，
 docker rm -f $(docker ps -aq)  		# 删除所有容器
 ```
 
-<u>注意：</u> 删除指定容器，不能删除正在运行的容器，如果要强制删除 `docker rm -f`
+<u class="highlight">注意：</u> 删除指定容器，不能删除正在运行的容器，如果要强制删除 `docker rm -f`
 
 ### 4、终止容器
 

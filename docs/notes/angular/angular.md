@@ -437,27 +437,25 @@ html文件相应代码：
 
 ```html
 <div>
-   
   <h4>响应式表单</h4>
-   
+
   <form
     [formGroup]="form"
     (submit)="onSubmit()">
         账号：<input
       formControlName="account"
       nzRequired />
-       
+
     <div formGroupName="password">
               密码：<input formControlName="pwd" />         <br />
-              重复密码：<input formControlName="repwd" />    
+              重复密码：<input formControlName="repwd" />
     </div>
-       
+
     <input
       type="submit"
       value="确定" />
-     
   </form>
-   
+
   <h4>模板式表单</h4>
 </div>
 ```
@@ -687,7 +685,7 @@ onSubmitMyForm(obj: Record<string, any>) {
 
 ![image-20230620225251412](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620225251412.png)
 
-<u>注意：</u> 可以看到虽然我们输入了内容，但是value属性中没有获取到数据，这是因为我们还没有为表单中的模型标签绑定属性。
+<u class="highlight">注意：</u> 可以看到虽然我们输入了内容，但是value属性中没有获取到数据，这是因为我们还没有为表单中的模型标签绑定属性。
 
 #### 3.4、模板式表单绑定ngModel
 
@@ -814,7 +812,7 @@ formbuild = this.fb.group({
 
 ![image-20230624205614123](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230624205614123.png)
 
-<u>注意：</u> 多个校验器时，返回的`errors`对象属性合并
+<u class="highlight">注意：</u> 多个校验器时，返回的`errors`对象属性合并
 
 #### 3.4、在模板中显示校验信息
 

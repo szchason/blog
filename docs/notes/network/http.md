@@ -98,7 +98,7 @@ Expires是HTTP/1.0的字段，但是现在浏览器的默认使用的是HTTP/1.1
 
 由于Cache-Control的优先级比expires，那么直接根据Cache-Control的值进行缓存，意思就是说在600秒内再次发起该请求，则会直接使用缓存结果，强制缓存生效。
 
-<u>注意：</u>在无法确定客户端的时间是否与服务端的时间同步的情况下，Cache-Control相比于expires是更好的选择，所以同时存在时，只有Cache-Control生效。
+<u class="highlight">注意：</u>在无法确定客户端的时间是否与服务端的时间同步的情况下，Cache-Control相比于expires是更好的选择，所以同时存在时，只有Cache-Control生效。
 
 #### 2.2、协商缓存
 

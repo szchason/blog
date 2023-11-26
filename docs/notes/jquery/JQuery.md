@@ -77,7 +77,7 @@ DOM元素转jQuery伪数组结果：
 
 ![1604995288992](https://gitee.com/szchason/pic_bed/raw/notes/images/jquery/2023-05-29-1685365994-78e0e2.png)
 
-<u>注意：</u>原生js中的window，在jQuery中是$(window)，原生js中的document，在jQuery中是$(document)，原生js中的this，在jQuery中是$(this)
+<u class="highlight">注意：</u>原生js中的window，在jQuery中是$(window)，原生js中的document，在jQuery中是$(document)，原生js中的this，在jQuery中是$(this)
 
 ### 4、jQuery选择器及表单选择器
 
@@ -146,7 +146,7 @@ $('input：checked'); // 所有选中的表单元素 -- 重点
 $('option:selected'); // 被选中的下拉框元素 -- 重点
 ```
 
-<u>注意：</u>jQuery获取元素不会获取单个元素，页面中只要满足选择器的，都会获取到，也就是jQuery获取到的永远是集合（伪数组）。
+<u class="highlight">注意：</u>jQuery获取元素不会获取单个元素，页面中只要满足选择器的，都会获取到，也就是jQuery获取到的永远是集合（伪数组）。
 
 ### 5、jQuery筛选器及筛选器方法
 

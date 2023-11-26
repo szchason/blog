@@ -69,7 +69,7 @@ const num: number = 1;
 console.log(num);
 ```
 
-<u>注意：</u>TypeScript里的所有数字都是浮点数和Javascript一样，除了支持十进制和十六进制字面量，TypeScript还支持ECMAScript 2015中引入的二进制和八进制字面量
+<u class="highlight">注意：</u>TypeScript里的所有数字都是浮点数和Javascript一样，除了支持十进制和十六进制字面量，TypeScript还支持ECMAScript 2015中引入的二进制和八进制字面量
 
 ```ts
 let decLiteral: number = 6;
@@ -366,7 +366,7 @@ enum Direction {
 console.log(Direction.Left); // 输出3
 ```
 
-<u>注意：</u>我们定义了一个数字枚举， Up使用初始化为 1。 其余的成员会从 1开始自动增长。 换句话说， Direction.Up的值为 1， Down为 2， Left为 3， Right为 4。
+<u class="highlight">注意：</u>我们定义了一个数字枚举， Up使用初始化为 1。 其余的成员会从 1开始自动增长。 换句话说， Direction.Up的值为 1， Down为 2， Left为 3， Right为 4。
 
 **当不初始化枚举时：**
 
@@ -381,7 +381,7 @@ enum initDirection {
 console.log(initDirection.Up);
 ```
 
-<u>注意：</u> 现在， Up的值为 0， Down的值为 1等等。 当我们不在乎成员的值的时候，这种自增长的行为是很有用处的，但是要注意每个枚举成员的值都是不同的。
+<u class="highlight">注意：</u> 现在， Up的值为 0， Down的值为 1等等。 当我们不在乎成员的值的时候，这种自增长的行为是很有用处的，但是要注意每个枚举成员的值都是不同的。
 
 ### 2、字符串枚举
 
@@ -486,7 +486,7 @@ let tom: IPerson = {
 };
 ```
 
-<u>注意：</u>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集
+<u class="highlight">注意：</u>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集
 
 ```ts
 interface IPerson {
@@ -595,7 +595,7 @@ sam.move();
 tom.move(34);
 ```
 
-<u>注意：</u>必须调用 super()，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，我们 一定要调用 super()。 这个是TypeScript强制执行的一条重要规则。
+<u class="highlight">注意：</u>必须调用 super()，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，我们 一定要调用 super()。 这个是TypeScript强制执行的一条重要规则。
 
 ### 3、公共，私有与受保护的修饰符
 
@@ -695,7 +695,7 @@ c.length; // 不能调用函数
 c.length = 100;
 ```
 
-<u>注意：</u>使用getter不能通过调用函数
+<u class="highlight">注意：</u>使用getter不能通过调用函数
 
 2. getter的返回类型必须setter的参数类型的子类型
 
@@ -744,7 +744,7 @@ t.size = 'hello';
 console.log(t.size);
 ```
 
-<u>注意：</u>
+<u class="highlight">注意：</u>
 
 - 如果存在get，但没有set，则该属性自动是只读的
 - 如果没有指定setter参数的类型，它将从getter的返回类型中推断出来
@@ -797,7 +797,7 @@ d.getName();
 b.printName();
 ```
 
-<u>注意：</u>抽象类不能被实例化，只能被继承。且子类必须构建抽象类的抽象成员
+<u class="highlight">注意：</u>抽象类不能被实例化，只能被继承。且子类必须构建抽象类的抽象成员
 
 ![1663484892006](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368914-b9a56d.png)
 
@@ -1237,7 +1237,7 @@ const bar = foo; // 编辑及不会报错，但是单独执行 ts-node进行打�
 console.log(bar);
 ```
 
-<u>注意：</u> 常见定义类型时的冲突
+<u class="highlight">注意：</u> 常见定义类型时的冲突
 
 1. 接口会自动合并
 
@@ -1409,7 +1409,7 @@ window.onmousedown = function (e) {
 
 ![1663249578740](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368960-8f0808.png)
 
-<u>注意：</u> 类型推断发生在初始化变量和成员，设置默认参数值和决定函数返回值时。
+<u class="highlight">注意：</u> 类型推断发生在初始化变量和成员，设置默认参数值和决定函数返回值时。
 
 ## 十一、高级类型
 
@@ -1542,7 +1542,7 @@ let div = document.createElement('div');
 type B = typeof div;
 ```
 
-<u>注意：</u> 接口可以定义多次，类型别名不可以。与类型别名不同，接口可以定义多次，会被自动合并为单个接口。
+<u class="highlight">注意：</u> 接口可以定义多次，类型别名不可以。与类型别名不同，接口可以定义多次，会被自动合并为单个接口。
 
 ```ts
 /* 接口可以定义多次,类型别名不可以 */

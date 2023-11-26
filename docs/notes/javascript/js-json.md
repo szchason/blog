@@ -57,7 +57,7 @@ JSON以键值的形式：
 }
 ```
 
-<u>注意：</u>json文件中不带有注释
+<u class="highlight">注意：</u>json文件中不带有注释
 
 ### 2、JavaScript对象
 

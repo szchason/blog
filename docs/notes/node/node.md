@@ -262,7 +262,7 @@ console.log(exports === module.exports);
 
    ![1665230033535](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367835-19b627.png)
 
-   <u>注意：</u>process.on监听的回调事件不能执行`异步代码`
+   <u class="highlight">注意：</u>process.on监听的回调事件不能执行`异步代码`
 
    ![1665230191795](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367839-9a340a.png)
 
