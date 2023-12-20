@@ -11,7 +11,7 @@ last_update:
 
 ## 一、AST是什么和如何生成？
 
-### 1、AST理论概念
+### 1.1、AST理论概念
 
 > AST 是一种源代码的抽象语法结构的树形表示。树中的每个节点都表示源代码中出现的一个构造。
 
@@ -19,13 +19,15 @@ last_update:
 
 **"源代码语法结构的一种抽象表示"**，注意这句话，它是我们理解 AST 的关键。这句话大概的意思就是，按照某种约定的规范，以树形的数据结构，把我们的代码描述出来
 
-### 2、AST（@babel/parser）的生成过程
+### 1.2、AST（@babel/parser）的生成过程
+
+> 推荐一个常用的 [AST](https://astexplorer.net/) 在线转换网站
 
 编译图解:
 
 ![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/babel.png)
 
-具体代码实现过程：
+简单实现使用var定义变量改成let，具体代码实现过程：
 
 ```js
 const { parse } = require('@babel/parser');
@@ -56,11 +58,8 @@ console.log(targetCode.code);
 ```
 
 结果：
+
 ![1677487532483](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677487532483.png)
-
-简单实现使用var定义变量改成let
-
-推荐一个常用的 [AST](https://astexplorer.net/) 在线转换网站
 
 ## 二、AST遍历流程
 
@@ -85,6 +84,7 @@ estraverse.traverse(ast, {
 ```
 
 输出结果如下:
+
 ![1677489224740](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677489224740.png)
 
 由此可以得到 AST 遍历的流程是深度优先，遍历过程如下：
@@ -93,7 +93,7 @@ estraverse.traverse(ast, {
 
 ## 三、V8的AST与acorn实现的AST的异同点
 
-### 1、V8形成的抽象语法树
+### 3.1、V8形成的抽象语法树
 
 V8是Google开源的JavaScript引擎，被广泛应用各种JavaScrpit执行环境， 但很多前端开发人员对 V8 的理解还停留在表面，只是单纯地使用 JavaScript 和调用 Web API，并不了解 V8 这个“黑盒”内部是如何工作的。
 
@@ -138,7 +138,7 @@ V8具体生成的AST抽象语法树
 
 ![1677489661801](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677489661801.png)
 
-### 2、acorn生成的抽象语法树
+### 3.2、acorn生成的抽象语法树
 
 js代码：
 
@@ -193,7 +193,7 @@ fs.writeFileSync(
 }
 ```
 
-### 3、两者的异同点(个人总结和个人观点)
+### 3.3、两者的异同点(个人总结和个人观点)
 
 异：@babel/parser、acorn等形成AST语法树对象结构不相同，生成目的和ast生成的时机不同。V8内由C++实现，@babel/parser、acorn则是通过js解析js
 

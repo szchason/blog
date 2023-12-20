@@ -11,13 +11,13 @@ last_update:
 
 ## 一、创建正则表达式的方式
 
-### 1、使用字面量创建正则表达式
+### 1.1、使用字面量创建正则表达式
 
 ```js
 var reg = /abcdefg/; //正则表达式里面不需要加引号，不管是数字型还是字符串型, 控制台输出的是字体颜色为红色
 ```
 
-### 2、使用RegExp构造函数创建正则表达式
+### 1.2、使用RegExp构造函数创建正则表达式
 
 RegExp构造函数有两个参数：
 
@@ -29,14 +29,14 @@ var reg = new RegExp('^abcde$');
 console.log(reg2); //输出的是/^abcde$/ 且为字体颜色为红色
 ```
 
-### 3、也可以省略new关键字来创建
+### 1.3、也可以省略new关键字来创建
 
 ```js
 var reg = RegExp('^abcde$');
 console.log(reg2); //输出的是/^abcde$/ 且为字体颜色为红色
 ```
 
-### 4、变量形式构建正则表达式
+### 1.4、变量形式构建正则表达式
 
 先看一个实例：
 
@@ -80,11 +80,11 @@ console.log(str.match(/w/g)); // 输出: ['w', 'w']
 console.log(str.match(/w/gi)); // 输出: ['w', 'W', 'w', 'W', 'W']
 ```
 
-<u class="highlight">注意：</u>`g，i标识符`都是写在正则的最后面，不做顺序的区分
+👋注意：<u>`g，i标识符`都是写在正则的最后面，不做顺序的区分</u>
 
 ## 三、正则表达式字符
 
-### 1、元字符
+### 3.1、元字符
 
 > 在正则表达式有特殊含义的字符
 
@@ -96,7 +96,7 @@ console.log(str.match(/w/gi)); // 输出: ['w', 'W', 'w', 'W', 'W']
 - (\s)：匹配空白字符
 - (\S)：匹配非空白字符
 
-### 2、限定符
+### 3.2、限定符
 
 > 一般限定符配合元字符使用
 
@@ -133,13 +133,13 @@ console.log(reg5.test(nm3)); //true 出现了2次
 console.log(reg5.test(nm4)); //false  出现了1次
 ```
 
-<u class="highlight">注意：</u>单纯使用限定符配合元字符使用（ /\d+/ ）对于一些验证可能不太准确，可以使用类似（/1\d?1/）加以限定开始和结尾
+👋注意：<u>单纯使用限定符配合元字符使用（ /\d+/ ）对于一些验证可能不太准确，可以使用类似（/1\d?1/）加以限定开始和结尾</u>
 
-### 3、转义字符
+### 3.3、转义字符
 
-#### 3.1、字面量的转义
+#### 3.3.1、字面量的转义
 
-先看一个(错误)案例：匹配一个金额的字符串
+先看一个错误案例：匹配一个金额的字符串
 
 ```js
 let price = '115.55';
@@ -153,7 +153,7 @@ console.log(/\d+.\d+/.test(price)); // 输出：true
 
 原因是正则表达式的 **`.`** 并不是普通点，而是表示`元字符 .`，所以前面需要加`\`来进行转义
 
-(正确)案例：
+正确案例：
 
 ```js
 let price = '115.55';
@@ -164,9 +164,9 @@ let price = '115@55';
 console.log(/\d+\.\d+/.test(price)); // 输出：false
 ```
 
-#### 3.2、构造函数传入字符串时的转义
+#### 3.3.2、构造函数传入字符串时的转义
 
-(错误)案例：
+错误案例：
 
 ```js
 let price = '115.55';
@@ -178,7 +178,7 @@ console.log(reg.test(price)); // 输出：false
 
 可以看到上面的为true，下面的为false，原因是在字符串里面`\d == d`，所以这里的`\`需要在加一个`\`进行转义
 
-(正确)案例：
+正确案例：
 
 ```js
 let price = '115.55';
@@ -189,7 +189,7 @@ let reg = new RegExp('\\d+\\.\\d+');
 console.log(reg.test(price)); // 输出：false
 ```
 
-### 4、边界符
+### 3.4、边界符
 
 > 主要有两个 ^,$
 
@@ -213,25 +213,23 @@ console.log(reg2.test('aabcd')); //false
 console.log(reg2.test('abcabc')); //false
 ```
 
-### 5、字符类
+### 3.5、字符类
 
-1. ([])：匹配单个范围内的字符
-1. ([-])：方括号内部范围符
-1. ([^])：如果中括号里面有 ^ 表示取反的意思，千万和我们边界 ^ 别混淆
+([])：匹配单个范围内的字符
 
-### 6、括号总结
+([-])：方括号内部范围符
 
-1. [] :中括号
+([^])：如果中括号里面有 ^ 表示取反的意思，千万和我们边界 ^ 别混淆
 
-> 字符集合，匹配括号中任意的字符
+### 3.6、括号总结
 
-2. {}:大括号
+[] :中括号，字符集合，匹配括号中任意的字符
 
-> 量词符，里面表示重复的次数
+{}:大括号，量词符，里面表示重复的次数
 
-3. ():小括号
+():小括号，表示优先级
 
-> 表示优先级
+案例：
 
 ```js
 //小括号 表示优先级
@@ -242,9 +240,9 @@ console.log(reg2.test('abcabcabc')); //true
 
 ## 四、正则表达式方法
 
-### 1、正则表达式对象只有两个方法
+### 4.1、正则表达式对象只有两个方法
 
-#### 1.1、test
+#### 4.1.1、test
 
 > 格式:正则.test(字符串)
 >
@@ -260,7 +258,7 @@ let price = '115@55';
 console.log(/\d+\.\d+/.test(price)); // 输出：false
 ```
 
-#### 1.2、exec
+#### 4.1.2、exec
 
 > 格式：正则.exec(字符串)
 >
@@ -273,9 +271,9 @@ let str = 'abgswbdhabw';
 console.log(/a/gi.exec(str1)); // 输出： ['a', index: 0, input: 'abgswbdhabw', groups: undefined]
 ```
 
-### 2、字符串方法里的正则表达式(属于字符串方法)
+### 4.2、字符串方法里的正则表达式(属于字符串方法)
 
-#### 2.1、match
+#### 4.2.1、match
 
 > 格式：字符串.match(正则)
 >
@@ -290,7 +288,7 @@ console.log(str.match(/w/g)); // 输出: ['w', 'w']
 console.log(str.match(/w/gi)); // 输出: ['w', 'W', 'w', 'W', 'W']
 ```
 
-#### 2.2、replace
+#### 4.2.2、replace
 
 > 格式：字符串.replace(oldStr/正则,newStr)
 >
@@ -304,7 +302,7 @@ console.log(str.replace(/a/, '-')); // 输出：-bgswbdhabw
 console.log(str.replace(/a/g, '-')); // 输出：-bgswbdh-bw
 ```
 
-#### 2.3、split
+#### 4.2.3、split
 
 > 格式：字符串.split(分割符/正则);
 >
@@ -317,7 +315,7 @@ let str = 'abgswbdhabw';
 console.log(str.split(/b/)); // 输出：['a', 'gsw', 'dha', 'w']
 ```
 
-#### 2.4、search
+#### 4.2.4、search
 
 > 格式：字符串.search(字符串/正则)
 >
@@ -333,7 +331,7 @@ console.log(str.search(/o/)); // 输出：-1
 
 ## 五、正则高级使用
 
-### 1、$符在正则替换中的使用
+### 5.1、$符在正则替换中的使用
 
 ```js
 // $符
@@ -342,7 +340,7 @@ const newPhone = phone.replace(/(\(\d{3}\))(\d{7,8})/, '$1-$2');
 console.log(newPhone); // 打印结果：(010)-95668845
 ```
 
-### 2、$&使用
+### 5.2、$&使用
 
 ```js
 // $&
@@ -351,7 +349,7 @@ const newChats = chats.replace(/大帅哥/, '<a herf="blog.chason.website">$&</a
 console.log(newChats); // 打印结果：我是一个<a herf="blog.chason.website">大帅哥</a>
 ```
 
-### 3、模式匹配
+### 5.3、模式匹配
 
 ```js
 let str01 = "Oh！,Oh！,Oh！,it's impossible";
@@ -365,9 +363,9 @@ console.log(regStr02.test(str02)); // 输出：true
 console.log(str02.match(regStr02)); // 输出：[ 'wow! wow! ' ]
 ```
 
-### 4、断言匹配
+### 5.4、断言匹配
 
-#### 4.1、?=先行断言
+#### 5.4.1、?=先行断言
 
 ```js
 // ?=先行断言
@@ -378,7 +376,7 @@ console.log('喜欢你'.match(regExp)); // 输出：[ '喜欢', index: 0, input:
 console.log('喜欢我'.match(regExp)); // 输出：null
 ```
 
-#### 4.2、?<=后行断言
+#### 5.4.2、?<=后行断言
 
 ```js
 // ?<=后行断言
@@ -389,7 +387,7 @@ console.log('英雄联盟'.match(regExp01)); // 输出：[ '联盟', index: 2, i
 console.log('狗熊联盟'.match(regExp01)); // 输出：null
 ```
 
-#### 4.3、?!正向否定断言
+#### 5.4.3、?!正向否定断言
 
 ```js
 // ?!正向否定查找
@@ -400,7 +398,7 @@ console.log('喜欢你'.match(regExp03)); // 输出：null
 console.log('喜欢我'.match(regExp03)); // 输出：[ '喜欢', index: 0, input: '喜欢你', groups: undefined ] 这个?!后面的条件不会返回，匹配成功只会返回 喜欢
 ```
 
-#### 4.4、?<!反向否定断言
+#### 5.4.4、?<!反向否定断言
 
 ```js
 // 反向否定查找
@@ -413,7 +411,7 @@ console.log('狗熊联盟'.match(regExp04)); // 输出：[ '联盟', index: 2, i
 
 ## 六、正则表达式练习
 
-### 1、实现一个千分位
+### 6.1、实现一个千分位
 
 ```js
 function parseToMoney(num) {
@@ -427,14 +425,14 @@ function parseToMoney(num) {
 parseToMoney(1556697.8875); // 输出：1,556,697
 ```
 
-### 2、去除字符串html标签
+### 6.2、去除字符串html标签
 
 ```js
 const html = `sa11<div>55555</div>ada, <span>4545</span>dsa1`;
 console.log(html.replace(/<[^>]+>/g, ''));
 ```
 
-### 3、实现一个保留小数点后两位
+### 6.3、实现一个保留小数点后两位
 
 ```js
 // 实现保留两位小数
@@ -451,7 +449,7 @@ console.log(toSlice(1556697.8875)); // 输出: 1556697.88
 console.log(toSlice(15663.2)); // 输出： 15663.20
 ```
 
-### 4、是否包含中文
+### 6.4、是否包含中文
 
 ```js
 function hasCn(str) {

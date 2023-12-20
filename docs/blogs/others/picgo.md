@@ -1,15 +1,13 @@
 ---
 id: picgo
-title: 如何利用markdown提高写文档的效率
-description: 如何利用markdown提高写文档的效率
-sidebar_label: 如何利用markdown提高写文档的效率
+title: Picgo
+description: 利用md文件提高写文档效率
+sidebar_label: 利用md文件提高写文档效率
 hide_title: true
 last_update:
   date: 2023-07-01
   author: Chason
 ---
-
-## 如何利用markdown提高写文档的效率
 
 ## 一、前期准备工作
 
@@ -31,13 +29,13 @@ last_update:
 
 ![image-20230520213919224](https://gitee.com/szchason/pic_bed/raw/blogs/images/picgo/2023-05-21-1684639897-002ca2.png)
 
-<u class="highlight">注意：</u> gitee目前只能选择私有仓库，创建成功后需要手动设置为公共仓库。同时gitee仓库存储免费个人用户只有5GB
+👋注意： <u>gitee目前只能选择私有仓库，创建成功后需要手动设置为公共仓库。同时gitee仓库存储免费个人用户只有5GB</u>
 
 ### 2.2、创建存储私人令牌
 
 ![image-20230520213919224](https://gitee.com/szchason/pic_bed/raw/blogs/images/picgo/2023-05-21-1684639952-3cd7ec.png)
 
-<u>注意:</u> 私人令牌记得保存好
+👋注意: <u>私人令牌记得保存好</u>
 
 ## 三、配置PicGo
 
@@ -57,7 +55,7 @@ last_update:
 
 repo：设置为`owner/仓库地址`形式，`owner对应仓库空间地址`
 
-<img align="left" src="https://gitee.com/szchason/pic_bed/raw/blogs/images/picgo/2023-05-21-1684639982-b7a8b2.png" alt="image-20230520221159866"  />
+![](https://gitee.com/szchason/pic_bed/raw/blogs/images/picgo/2023-05-21-1684639982-b7a8b2.png)
 
 branch：对应仓库的分支
 
@@ -65,7 +63,7 @@ token：对应gitee的私人令牌
 
 paths：对应仓库的文件路径
 
-<u class="highlight">注意：</u> customPath和customUrl默认不设置
+👋注意： <u>customPath和customUrl默认不设置</u>
 
 ### 3.4、测试上传
 

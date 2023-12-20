@@ -11,18 +11,18 @@ last_update:
 
 ## 一、Window.history的API
 
-### 1、定义
+### 1.1、定义
 
 window.history 提供了对浏览器会话历史的访问，它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时（从 HTML5 开始）提供了对 history 栈中内容的操作。
 
-### 2、history属性
+### 1.2、history属性
 
 | 属性   | 说明                                                                                                             |
 | ------ | ---------------------------------------------------------------------------------------------------------------- |
 | length | history 栈中页面的数量。                                                                                         |
 | state  | history 栈中当前页面的状态值。可在 popstate 事件的 callback 中获取（event.state），也可通过 history.state 获取。 |
 
-### 3、history方法
+### 1.3、history方法
 
 | 方法         | 说明                                                                                                                                                                           | 调用                                                                                                          |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -32,7 +32,7 @@ window.history 提供了对浏览器会话历史的访问，它暴露了很多�
 | pushState    | 添加历史记录。通常与 [`window.onpopstate`](https://link.juejin.cn/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FAPI%2FWindow%2Fonpopstate) 配合使用。     |                                                                                                               |
 | replaceState | 修改当前历史记录。通常与 [`window.onpopstate`](https://link.juejin.cn/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FAPI%2FWindow%2Fonpopstate) 配合使用。 |                                                                                                               |
 
-#### 3.1、pushState
+#### 1..3.1、pushState
 
 ```js
 history.pushState(state, title, url); // 往 history 栈栈顶压入一条新的历史记录，并改变当前指针至栈顶。
@@ -44,13 +44,13 @@ title: Firefox 目前忽略这个参数，但未来可能会用到，可以传�
 
 url: 该参数定义了新的历史 URL 记录。注意，调用 `pushState()` 后浏览器并不会立即加载这个 URL，但可能会在稍后某些情况下加载这个 URL，比如在用户重新打开浏览器时。新 URL 不必须为绝对路径。如果新 URL 是相对路径，那么它将被作为相对于当前 URL 处理。新 URL 必须与当前 URL 同源，否则 `pushState()` 会抛出一个异常。该参数是可选的，缺省为当前 URL。
 
-#### 3.2、replaceState
+#### 1.3.2、replaceState
 
 参数与 `pushState` 相同，含义也相同。
 
 区别在于 `replaceState` 是修改了当前的历史记录而不是新建一个。注意这并不会阻止其在全局浏览器历史记录中创建一个新的历史记录项。
 
-#### 3.3、popstate
+#### 1.3.3、popstate
 
 当历史记录发生变化时，将触发 `popstate` 事件。如果被激活的历史记录是通过调用 `history.pushState() or history.replaceState()` 创建的，`popstate` 事件的 state 属性包含历史记录的状态对象的副本。
 
@@ -58,7 +58,7 @@ url: 该参数定义了新的历史 URL 记录。注意，调用 `pushState()` �
 
 不同的浏览器在加载页面时处理 `popstate` 事件的形式存在差异。页面加载时 Chrome 和 Safari 通常会触发`popstate` 事件，但 Firefox 则不会。
 
-### 4、代码实践
+### 1.4、代码实践
 
 ```html
 <!doctype html>

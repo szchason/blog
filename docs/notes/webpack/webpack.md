@@ -8,11 +8,11 @@ last_update:
   author: Chason
 ---
 
-## Webpack基础使用
+## 一、Webpack基础使用
 
 > webpack是一个静态资源打包工具，它会以一个或多个文件作为打包的入口，将我们整个项目所有文件编译组合成一个或多个文件输出出去，输出的文件就是编译好的文件，就可以在浏览器运行了
 
-### 1、项目初始化
+### 1.1、项目初始化
 
 执行命令：
 
@@ -20,7 +20,7 @@ last_update:
 npm init -y
 ```
 
-### 2、下载相关依赖
+### 1.2、下载相关依赖
 
 使用npm下载相关依赖：
 
@@ -32,7 +32,7 @@ npm i webpack webpack-cli -D
 
 ![1663490396858](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368590-bf378a.png)
 
-### 3、启用webpack
+### 1.3、启用webpack
 
 - 开发模式：仅能编译JS中的ES Module 语法
 
@@ -46,9 +46,9 @@ npm i webpack webpack-cli -D
   npx webpack ./src/main.js --mode=production
   ```
 
-## Webpack核心概念
+## 二、Webpack核心概念
 
-### 1、基本配置
+### 2.1、基本配置
 
 1. entry（入口）
 
@@ -74,17 +74,17 @@ npm i webpack webpack-cli -D
 
    (2)、生产模式：production
 
-### 2、webpack配置文件
+### 2.2、webpack配置文件
 
 在项目根目录新建文件：webpack.config.js
 
 ![1663491734075](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368595-5a2114.png)
 
-## Webpack基础
+## 三、Webpack基础
 
-### 一、开发服务器搭建
+### 3.1、开发服务器搭建
 
-#### 1、开发服务器和自动化
+#### 3.1.1、开发服务器和自动化
 
 安装相关依赖：
 
@@ -108,7 +108,7 @@ webpack.config.js配置devServer
 
 ![1663493746999](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368600-94fdc8.png)
 
-#### 1、处理html资源
+#### 3.1.2、处理html资源
 
 > 处理html资源使用插件 `html-webpack-plugin`
 >
@@ -139,7 +139,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // 引入
 
 `html-webpack-plugin`还有很多相关其他配置，可以参考官网地址：https://github.com/jantimon/html-webpack-plugin
 
-#### 2、处理样式资源
+#### 3.1.3、处理样式资源
 
 1. 处理css样式资源
 
@@ -175,7 +175,7 @@ npm i style-loader css-loader -D
 
 ![1663496233944](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368608-d95947.png)
 
-<span className="highlight">注意：</span> use的执行顺序：从右到左（从下到上）
+👋注意： <u>use的执行顺序：从右到左（从下到上）</u>
 
 2. 处理sass资源
 
@@ -198,7 +198,7 @@ webpack.config.js配置，同时注意在入口文件引入scss文件
 }
 ```
 
-#### 3、处理图片资源
+#### 3.1.4、处理图片资源
 
 html中的引入div
 
@@ -235,7 +235,7 @@ webpack.config.js的文件
       }
 ```
 
-#### 3、处理字体图标资源
+#### 3.1.5、处理字体图标资源
 
 在webpack中的module的rule中代码：
 
@@ -255,19 +255,19 @@ webpack.config.js的文件
 
 ![1666528206531](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368617-2d8175.png)
 
-<span className="highlight">注意：</span> 字体图标使用iconfont.css对应字体文件目录
+👋注意： <u>字体图标使用iconfont.css对应字体文件目录</u>
 
 ![1666528342334](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368621-3ff853.png)
 
-#### 4、处理其他资源
+#### 3.1.6、处理其他资源
 
 ![1666527988131](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368626-d6f492.png)
 
-#### 5、处理js资源
+#### 3.1.7、处理js资源
 
 在处理js涉及js的语法兼容性处理和压缩处理，详细的可以参考babel的使用和babel在webpack中的使用，这里不做详细的解析
 
-#### 6、其他
+#### 3.1.8、其他
 
 1. 修改输出文件目录
 
@@ -277,11 +277,11 @@ webpack.config.js的文件
 
    ![1666527522325](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368633-527ca1.png)
 
-### 二、生产模式搭建
+### 3.2、生产模式搭建
 
 > 生产模式要求我们的对html文件、css样式文件、js文件等进行兼容和压缩处理，基于这个需要针对兼容和压缩这两个操作而作一些处理
 
-#### 1、提取css成单独文件
+#### 3.2.1、提取css成单独文件
 
 安装相关依赖：
 
@@ -301,7 +301,7 @@ npm i mini-css-extract-plugin -D
 
 ![1666528950979](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368644-20f4c6.png)
 
-#### 2、样式兼容性处理
+#### 3.2.2、样式兼容性处理
 
 安装相关依赖包：
 
@@ -321,9 +321,9 @@ npm i postcss-loader postcss- postcss-preset-env -D
 
 ![1666529654676](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368656-4d317b.png)
 
-<span className="highlight">注意：</span> 要放在css-loader之后，sass-loader和less-loader之前
+👋注意： <u>要放在css-loader之后，sass-loader和less-loader之前</u>
 
-#### 3、css压缩
+#### 3.2.3、css压缩
 
 安装相关依赖：
 
@@ -339,7 +339,7 @@ const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 
 ![1666530122178](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368660-eb24b9.png)
 
-#### 4、html和js的压缩
+#### 3.2.4、html和js的压缩
 
 webpack开启生产模式时，默认开启js和html的压缩
 
@@ -349,7 +349,7 @@ webpack开启生产模式时，默认开启js和html的压缩
 
 ![1667739507743](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368663-b29c00.png)
 
-#### 5、统一命名
+#### 3.2.5、统一命名
 
 js命名:
 
@@ -362,9 +362,9 @@ js命名:
 css命名:
 ![1667742384554](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368674-19f1e6.png)
 
-## Webpack高级
+## 四、Webpack高级
 
-### 1、SourceMap
+### 4.1、SourceMap
 
 以下是开发环境和生产环境的推荐:
 
@@ -374,7 +374,7 @@ css命名:
 
 详情参考:https://webpack.docschina.org/configuration/devtool/#qualities
 
-### 2、HMR
+### 4.2、HMR
 
 > 热模块替换，修改某个模块代码，就只有这个模块代码需要重新打包编译，其他模块不变，这样打包速度就能很快
 
@@ -382,7 +382,7 @@ css命名:
 
 ![1667719385831](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368678-2692ef.png)
 
-### 3、OneOf
+### 4.3、OneOf
 
 > 作用：让文件只被其中一个配置进行处理
 
@@ -426,7 +426,7 @@ rules: [
 ];
 ```
 
-### 4、Include-Exclude
+### 4.4、Include-Exclude
 
 > include：包含，只处理xxx文件
 >
@@ -438,13 +438,13 @@ rules: [
 
 ![1666534330587](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368683-ccbf1c.png)
 
-### 5、多进程打包
+### 4.5、多进程打包
 
 > 当项目越来越大时，打包速度越来越慢。
 >
 > 多进程打包：开启电脑的多个进程同时干一件事
 >
-> 注意： 请仅在特别耗时的操作中使用，因为每个进程启动就有大约600ms左右的开销
+> 👋注意： <u>请仅在特别耗时的操作中使用，因为每个进程启动就有大约600ms左右的开销</u>
 
 安装依赖包
 
@@ -481,7 +481,7 @@ const threads = os.cpus().length;
 多进程的压缩js代码
 ![1667720391319](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368692-3e2f26.png)
 
-### 6、TreeShaking
+### 4.6、TreeShaking
 
 > 实现目的：减少代码体积
 >
@@ -497,7 +497,7 @@ const threads = os.cpus().length;
 
 ![1666531179104](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368701-917250.png)
 
-<span className="highlight">注意：</span>设置sideEffects
+👋注意：<u>设置sideEffects</u>
 
 > 指的是：webpack在做tree-sharking的时候，发现模块没有被引用就会被删除
 >
@@ -539,7 +539,7 @@ import './css/iconfont.css';
 
 ![1667736834435](https://gitee.com/szchason/pic_bed/raw/notes/images/webpack/webpack_base/2023-05-29-1685368718-7819ef.png)
 
-### 7、CodeSplit
+### 4.7、CodeSplit
 
 > 打包代码时会将所有的js文件打包到一个文件中,体积太大了,我们如果只有渲染首页,就应该只加载首页的js文件, 其他文件不应该加载
 >

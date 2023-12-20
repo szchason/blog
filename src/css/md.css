@@ -1,7 +1,23 @@
-u.highlight {
-  text-decoration: none;
-  color: rgb(255, 121, 198);
+/*
+  处理md引用样式
+*/
+blockquote {
+  border-left: 2px solid var(--ifm-color-primary);
   background-color: #282A36;
   border-radius: 3px;
-  padding: 0 0 0 5px;
+  padding: 5px 0 5px 15px;
+}
+
+/*
+  处理md文档中的图片
+*/
+.markdown img {
+  border: 1px solid #282A36;
+  border-radius: 5px;
+}
+
+u {
+  text-decoration: underline;
+  text-decoration-color: var(--ifm-color-primary);
+  text-decoration-style: wavy
 }

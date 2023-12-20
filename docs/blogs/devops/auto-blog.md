@@ -1,6 +1,6 @@
 ---
 id: autoblog
-title: DevOps部署个人自动化博客
+title: blog
 description: DevOps部署个人自动化博客
 sidebar_label: DevOps部署个人自动化博客
 hide_title: true
@@ -18,11 +18,11 @@ last_update:
 
 ## 二、自动化构建流程
 
-### 1、绘制自动化流程图
+### 2.1、绘制自动化流程图
 
 ![1676296311135](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676296311135.png)
 
-### 2、构建过程讲解
+### 2.2、构建过程讲解
 
 1. 在github仓库创建一个项目，项目拥有main、dev两个分支。项目中创建脚本触发jenkins进行远程构建，脚本填写分支参数控制jenkins需要构建的分支
 2. jenkins构建成功后，Version Number的插件以 `分支__时间__今日构建版本`格式作为版本号，同时docker构建的镜像格式：`任务名称:版本`进行构建
@@ -30,11 +30,13 @@ last_update:
 
 ## 三、安装docker和docker-compose
 
-### 1、首先使用SSH远程连接服务器
+### 3.1、首先使用SSH远程连接服务器
 
 ![1676551671271](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676551671271.png)
 
-### 2、安装docker
+### 3.2、安装docker
+
+> 详细可以参考[Docker官方网址](https://docs.docker.com/engine/install/centos/)
 
 1. 先查看是否安装过docker可以进行先删除
 
@@ -84,11 +86,11 @@ docker --version
 
 ![1676552187204](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676552187204.png)
 
-详细可以参考[Docker官方网址](https://docs.docker.com/engine/install/centos/)
-
-### 3、安装docker-compose
+### 3.3、安装docker-compose
 
 > 以在GitHub.com下载文件手动通过SSH连接工具上传至服务器进行安装
+>
+> [docker-compose下载地址](https://github.com/docker/compose/tags)
 
 1. 进入docker的github的下载地址，自由选择版本，这里以v2.15.0版本安装
 
@@ -119,11 +121,9 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 ![1676553650137](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676553650137.png)
 
-[docker-compose下载地址](https://github.com/docker/compose/tags)
-
 ## 四、docker安装Jenkins
 
-1.选择LTS版本的docker安装
+1. 选择LTS版本的docker安装
 
 ![1676555639562](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676555639562.png)
 
@@ -141,7 +141,7 @@ docker module_img
 
 ![1676555954087](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676555954087.png)
 
-2.在 `/home` 路径下建立docker_jenkins目录,该目录下创建docker-compose.yml文件
+2. 在 `/home` 路径下建立docker_jenkins目录,该目录下创建docker-compose.yml文件
 
 ![1676556047542](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676556047542.png)
 
@@ -167,7 +167,7 @@ services:
 docker-compose up -d
 ```
 
-<u class="highlight">注意：</u>这里会经常遇到的问题是Jenkins容器一直在启动中, 可以使用 `docker ps` 查看容器状态
+👋注意：<u>这里会经常遇到的问题是Jenkins容器一直在启动中, 可以使用 `docker ps` 查看容器状态</u>
 
 ```bash
 docker ps # 查看Jenkins容器状态
@@ -199,13 +199,11 @@ chown -R 1000:1000 jenkins_home
 
 ![1676557717117](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676557717117.png)
 
-以上就是docker安装Jenkins的全部过程
-
-详细可以参考[Jenkins官网](https://www.jenkins.io/zh/download/)
+以上就是docker安装Jenkins的全部过程，详细可以参考[Jenkins官网](https://www.jenkins.io/zh/download/)
 
 ## 五、配置Jenkins基础插件安装
 
-### 1、Jenkins安装过程配置
+### 5.1、Jenkins安装过程配置
 
 1. 查看管理员密码进行登录, 并且重新设置管理员
 
@@ -223,59 +221,59 @@ chown -R 1000:1000 jenkins_home
 
 ![1676558285245](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676558285245.png)
 
-### 2、Jenkins基础插件配置
+### 5.2、Jenkins基础插件配置
 
 1. 配置中文插件翻译不完全问题
 
-   > 系统管理 → 插件管理 → Available plugins → 搜索locale安装
+> 系统管理 → 插件管理 → Available plugins → 搜索locale安装
 
-   安装`Locale`，重启Jenkins即可
+安装`Locale`，重启Jenkins即可
 
 2. 修改Jenkins插件安装地址
 
-   > 由于Jenkins安装插件地址在国外源，下载速度慢，所以切换到国内地址
+> 由于Jenkins安装插件地址在国外源，下载速度慢，所以切换到国内地址
 
-   进入插件管理 → 选择高级设置 → 升级站点
+进入插件管理 → 选择高级设置 → 升级站点
 
-   ![1676638844588](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676638844588.png)
+![1676638844588](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676638844588.png)
 
-   将URL的输入的地址替换`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/dynamic-stable-2.361.4/update-center.json`(清华大学站点)，点击提交
+将URL的输入的地址替换`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/dynamic-stable-2.361.4/update-center.json`(清华大学站点)，点击提交
 
-   ![1676638946226](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676638946226.png)
+![1676638946226](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676638946226.png)
 
-   进入/home/docker_jenkins/jenkins_home/updates目录下，修改default.json
+进入/home/docker_jenkins/jenkins_home/updates目录下，修改default.json
 
-   ![1676639157816](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676639157816.png)
+![1676639157816](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676639157816.png)
 
-   将 www.google.com 修改为 www.baidu.com， 将updates.jenkins.io/download 替换为mirrors.tuna.tsinghua.edu.cn/jenkins，之后进行`重启`
+将 www.google.com 修改为 www.baidu.com， 将updates.jenkins.io/download 替换为mirrors.tuna.tsinghua.edu.cn/jenkins，之后进行`重启`
 
-   ![1676639574453](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676639574453.png)
+![1676639574453](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676639574453.png)
 
-   <span className="highlight">踩坑记录：</span>
+😨踩坑记录：
 
-   切换国内源可能会导致部分插件不能正常使用，因为可能清华网的插件更新比较慢甚至跟不上Jenkins的更新版本。
+<u>切换国内源可能会导致部分插件不能正常使用，因为可能清华网的插件更新比较慢甚至跟不上Jenkins的更新版本。</u>
 
-   当前的Jenkins版本：<u>2.375.3</u>，如果是清华地址源，此版本安装NodeJS不起作用，无法选择node的版本。
+<u>当前的Jenkins版本：2.375.3，如果是清华地址源，此版本安装NodeJS不起作用，无法选择node的版本。</u>
 
-   例如：NodeJS
+例如：NodeJS
 
-   正常情况如下：
+正常情况如下：
 
-   ![1676953164310](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676953164310.png)
+![1676953164310](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676953164310.png)
 
 3. Jenkins启用代理
 
-   Jenkins使用时会经常出现以下错误(很是烦躁)
+Jenkins使用时会经常出现以下错误(很是烦躁)
 
-   ![1676640391506](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676640391506.png)
+![1676640391506](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676640391506.png)
 
-   解决方案：
+解决方案：
 
-   ![1676640538305](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676640538305.png)
+![1676640538305](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676640538305.png)
 
 ## 六、安装Jenkins所需插件和凭证配置
 
-### 1、安装Git
+### 6.1、安装Git
 
 > 由于是Jenkins是docker安装运行的镜像，这里不使用服务器安装git，使用Git plugin默认进行拉取代码
 
@@ -285,7 +283,7 @@ chown -R 1000:1000 jenkins_home
 
 ![1676719152935](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676719152935.png)
 
-### 2、安装Node
+### 6.2、安装Node
 
 ![1676719220264](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676719220264.png)
 
@@ -293,17 +291,17 @@ chown -R 1000:1000 jenkins_home
 
 ![1676953164310](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676953164310.png)
 
-<u class="highlight">注意：</u>第一次打包是比较慢，因为jenkins需要安装Node，版本就是上诉图片选择的版本，这里选择Node版本是16.18.1
+👋注意：<u>第一次打包是比较慢，因为jenkins需要安装Node，版本就是上诉图片选择的版本，这里选择Node版本是16.18.1</u>
 
-### 3、安装Generic Webhook Trigger插件实现远程构建
+### 6.3、安装Generic Webhook Trigger插件实现远程构建
 
 ![1676723527068](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676723527068.png)
 
-### 4、安装Version Number构建自定编号
+### 6.4、安装Version Number构建自定编号
 
 ![1676723709915](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676723709915.png)
 
-### 5、安装Timestamper 控制输出中显示时间
+### 6.5、安装Timestamper 控制输出中显示时间
 
 ![1676724121056](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676724121056.png)
 
@@ -311,11 +309,11 @@ chown -R 1000:1000 jenkins_home
 
 ![1676724593019](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676724593019.png)
 
-### 6、安装SSH Agent代理（后期使用pipeline进行打Tag）
+### 6.6、安装SSH Agent代理（后期使用pipeline进行打Tag）
 
 ![1676723238213](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676723238213.png)
 
-### 7、安装钉钉插件进行通知
+### 6.7、安装钉钉插件进行通知
 
 1. Jenkins安装DingTalk插件
 
@@ -329,7 +327,7 @@ chown -R 1000:1000 jenkins_home
 
 ![1676895117734](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676978010790.png)
 
-### 8、安装pipeline插件
+### 6.8、安装pipeline插件
 
 > 安装成功，新建任务就会多出pipeline的项目类型
 
@@ -339,11 +337,11 @@ chown -R 1000:1000 jenkins_home
 
 > 由于项目代码保存至GitHub上，拉取代码使用https的形式经常拉取代码失败(外网)，所以这里使用ssh形式拉取代码
 
-### 1、生成ssh公钥
+### 7.1、生成ssh公钥
 
 生成ssh不做阐述，可自行参考其他
 
-### 2、GitHub上创建SSH keys
+### 7.2、GitHub上创建SSH keys
 
 ![1676894719536](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676894719536.png)
 
@@ -351,11 +349,11 @@ chown -R 1000:1000 jenkins_home
 
 ![1676894792895](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676894792895.png)
 
-### 3、Jenkins上添加凭证
+### 7.3、Jenkins上添加凭证
 
 ![1676895031978](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676895031978.png)
 
-### 4、验证凭证是否有效
+### 7.4、验证凭证是否有效
 
 1. 创建一个自由风格项目test
 
@@ -373,7 +371,7 @@ chown -R 1000:1000 jenkins_home
 
 ![1676953604251](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676953604251.png)
 
-<u class="highlight">注意：</u>第一次构建可能会出现`Host key verification failed`原因拉取失败，这里推荐现在第一个`Accept first connection`进行第一次构建，构建成功后还原默认设置
+👋注意：<u>第一次构建可能会出现`Host key verification failed`原因拉取失败，这里推荐现在第一个`Accept first connection`进行第一次构建，构建成功后还原默认设置</u>
 
 错误输出：
 
@@ -387,7 +385,7 @@ chown -R 1000:1000 jenkins_home
 
 > 在构建自动化项目之前，因为流程图中体现采用思路是jenkins构建镜像，属于docker来运行该制作的镜像。这里需要jenkins使用宿主机的docker（容器卷映射docker文件至jenkins容器内），不推荐在jenkins容器里面在安装docker
 
-### 1、在映射docker文件之前，需要修改docker文件使用权限
+### 8.1、在映射docker文件之前，需要修改docker文件使用权限
 
 使用`cd /var/run`命令进入到/var/run目录下
 
@@ -401,9 +399,10 @@ chmod o+rw docker.sock
 ```
 
 权限修改成功如下：
+
 ![1676955083990](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676955083990.png)
 
-### 2、将宿主机的docker文件映射到jenkins容器内
+### 8.2、将宿主机的docker文件映射到jenkins容器内
 
 > 修改/home/docker_jenkins/docke-compose.yml文件即可
 
@@ -428,7 +427,7 @@ services:
 
 执行`docker-compose up -d`进行重启jenkins
 
-### 3、再次使用test项目执行shell脚本使用docker命令是否成功
+### 8.3、再次使用test项目执行shell脚本使用docker命令是否成功
 
 ![1676955784561](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676955784561.png)
 
@@ -436,7 +435,7 @@ services:
 
 ![1676956281834](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676956281834.png)
 
-<span className="highlight">或者：</span>进入容器，验证docker是否有效
+或者进入容器，验证docker是否有效
 
 ```bash
 docker exec -it 容器id /bin/bash # 进入容器
@@ -451,11 +450,11 @@ docker --version # 验证docker命令
 
 > pipeline使用项目Jenkinsfile进行构建，可以进行灵活修改。
 
-### 1、新建pipeline任务
+### 9.1、新建pipeline任务
 
 ![1676976220550](https://gitee.com/szchason/pic_bed/raw/blogs/images/devops/1676976220550.png)
 
-### 2、配置blog任务
+### 9.2、配置blog任务
 
 1. 添加机器人
 
@@ -491,7 +490,7 @@ docker --version # 验证docker命令
 
 > 在项目中创建docker文件目录，Linux的sh脚本、dockerfile、Jenkinsfile都放在此目录下
 
-### 1、配置Jenkinsfile
+### 10.1、配置Jenkinsfile
 
 ```bash
 pipeline {
@@ -566,9 +565,9 @@ pipeline {
 
 ```
 
-<u class="highlight">注意：</u>credentialsId需要使用Jenkins生成的凭证id
+👋注意：<u>credentialsId需要使用Jenkins生成的凭证id</u>
 
-### 2、配置docker.sh脚本
+### 10.2、配置docker.sh脚本
 
 ```bash
 #!/bin/bash
@@ -614,7 +613,7 @@ echo "部署成功"
 
 ```
 
-### 3、配置Dockerfile
+### 10.3、配置Dockerfile
 
 ```bash
 FROM nginx
@@ -626,7 +625,7 @@ COPY dist/ /usr/share/nginx/html/
 
 > 在根目录下创建bin目录，bin目录下创建index.mjs
 
-### 1、配置index.mjs
+### 11.1、配置index.mjs
 
 ```js
 import fetch from 'node-fetch';
@@ -664,9 +663,9 @@ fetch(`${jenkins_url.toString().trim()}/generic-webhook-trigger/invoke?token=${j
   });
 ```
 
-<u class="highlight">注意：</u>jobName必须和Jenkinsfile的generic-webhook-trigger插件配置token保持一致
+👋注意：<u>jobName必须和Jenkinsfile的generic-webhook-trigger插件配置token保持一致</u>
 
-### 2、package.json创建scripts脚本
+### 10.2、package.json创建scripts脚本
 
 ```json
   "scripts": {

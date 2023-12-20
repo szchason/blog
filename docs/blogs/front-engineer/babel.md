@@ -20,7 +20,7 @@ Babel 是一个工具链，主要用于将采用 ECMAScript 2015+ 语法编写�
 
 ## 二、命令行的基本使用
 
-### 1、初次转换箭头函数
+### 2.1、初次转换箭头函数
 
 1. 安装 @babel/cli 和 @babel/plugin-transform-arrow-functions
 
@@ -56,7 +56,7 @@ var fn = function fn() {
 
 ![1664725792261](https://gitee.com/szchason/pic_bed/raw/blogs/images/babel/1664725792261.png)
 
-### 2、使用babel配置文件
+### 2.2、使用babel配置文件
 
 1. 创建 .babelrc.js
 
@@ -119,6 +119,7 @@ npm i @babel/plugin-proposal-object-rest-spread -D
 ```
 
 编译后的结果：
+
 ![1664727156204](https://gitee.com/szchason/pic_bed/raw/blogs/images/babel/1664727156204.png)
 
 同时此时还是会存在兼容性问题，IE浏览器不兼容解构赋值，需要安装 @babel/plugin-transform-destructuring
@@ -141,7 +142,7 @@ npm i @babel/plugin-transform-destructuring -D
 
 ## 四、优化babel的配置
 
-### 1、 @babel/preset-env
+### 4.1、 @babel/preset-env
 
 > preset-env是一个智能预设，同时也是插件集合，配置了它就可以让你用es6+去书写你的代码，而且他会按需去加载所需要的插件
 
@@ -157,7 +158,7 @@ module.exports = {
 编译结果：
 ![1664728282764](https://gitee.com/szchason/pic_bed/raw/blogs/images/babel/1664728282764.png)
 
-### 2、@babel/plugin-transform-runtime优化代码量
+### 4.2、@babel/plugin-transform-runtime优化代码量
 
 新建一个文件index2.js，
 
@@ -165,7 +166,7 @@ module.exports = {
 
 结果是 \_objectWithoutProperties 和 \_objectWithoutPropertiesLoose 居然都会重复声明两次。这对于需要转换的特性，我使用很多次，转换后输出的文件不是爆炸了么？此时需要一个插件来控制代码量——@babel/plugin-transform-runtime[14] 。对于这种转换函数，在外部模块化，用到的地方直接引入即可。
 
-### 3、.babelrc.js配置
+### 4.3、.babelrc.js配置
 
 ```js
 module.exports = {
@@ -184,24 +185,24 @@ module.exports = {
 
 这意味着你可以使用诸如 Promise 和 WeakMap 之类的新的内置组件、 Array.from 或 Object.assign 之类的静态方法、 Array.prototype.includes 之类的实例方法以及生成器函数（generator functions）（前提是你使用了 regenerator 插件）。为了添加这些功能，polyfill 将添加到全局范围（global scope）和类似 String 这样的原生原型（native prototypes）中。
 
-### 1、安装 `@babel/polyfill`
+### 5.1、安装 @babel/polyfill
 
 ```bash
 npm install --save @babel/polyfill
 ```
 
-<u class="highlight">注意：</u>使用 --save 参数而不是 --save-dev，因为这是一个需要在你的源码之前运行的 polyfill。
+👋注意：<u>使用 --save 参数而不是 --save-dev，因为这是一个需要在你的源码之前运行的 polyfill。</u>
 
-### 2、配置`useBuiltIns`
+### 5.2、配置useBuiltIns
 
-1. useBuiltIns的配置
+#### 5.2.1、useBuiltIns的配置
 
 - usage： 每个文件引用使用到的特性；
 - entry： 入口处全部引入
 
 - false： 不引入
 
-2. 在入口js进行引入`@babel/polyfill`
+#### 5.2.2、在入口js进行引入`@babel/polyfill`
 
 ```js
 const fn = () => 1;
@@ -233,7 +234,7 @@ import "core-js/stable"; 替换 import '@babel/polyfill';
 
 ![1664733981890](https://gitee.com/szchason/pic_bed/raw/blogs/images/babel/1664733981890.png)
 
-3. 配置`core-js/stable`
+#### 5.2.3、配置`core-js/stable`
 
 index.js
 
@@ -299,10 +300,10 @@ modules当前设置为 false
 
 > 通常在webpack的使用，可以将转化后的模块保持ESM模块，让webpack可以做ESM模块的静态分析
 
-1. webpack的配置：
+### 7.1、webpack的配置
 
 ![1664773797505](https://gitee.com/szchason/pic_bed/raw/blogs/images/babel/1664773797505.png)
 
-2. babel的配置：
+### 7.2、babel的配置
 
 ![1664773835792](https://gitee.com/szchason/pic_bed/raw/blogs/images/babel/1664773835792.png)

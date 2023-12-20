@@ -1,6 +1,6 @@
 ---
 id: json
-title: JSON与对象结构的区别
+title: JSON
 description: JSON与对象结构的区别
 sidebar_label: JSON与对象结构的区别
 hide_title: true
@@ -9,9 +9,7 @@ last_update:
   author: Chason
 ---
 
-## JSON与对象结构的区别
-
-### 1、JSON
+## 一、JSON
 
 JSON 是一种语法，用来序列化对象、数组、数值、字符串、布尔值和 null 。
 
@@ -57,9 +55,9 @@ JSON以键值的形式：
 }
 ```
 
-<u class="highlight">注意：</u>json文件中不带有注释
+👋注意：<u>json文件中不带有注释</u>
 
-### 2、JavaScript对象
+## 二、JavaScript对象
 
 JavaScript对象的格式：
 
@@ -82,7 +80,7 @@ var stu = { id: 1, name: 'mike', age: 25, card: '516512322' };
 }
 ```
 
-### 3、两者对比
+## 三、两者对比
 
 | 对比内容 |                                                            JSON                                                            |              Javascript对象              |
 | :------: | :------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------: |

@@ -10,7 +10,7 @@ last_update:
 
 ## 一、认识Typescript
 
-### 1、Typescript与Javascript的区别
+### 1.1、Typescript与Javascript的区别
 
 |      类型系统特性      | JavaScript | Typescript |
 | :--------------------: | :--------: | :--------: |
@@ -19,13 +19,13 @@ last_update:
 |     何时检查类型？     |   运行时   |   编译时   |
 |      何时报告错误      |   运行时   |   编译时   |
 
-### 2、静态类型检查
+### 1.2、静态类型检查
 
-1. 在typescript中，在编译时就会检查类型，如果和预期的类型不符合直接会在编辑器里报错、爆红
+1.在typescript中，在编译时就会检查类型，如果和预期的类型不符合直接会在编辑器里报错、爆红
 
 ![1661867586539](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368880-58b67e.png)
 
-2. 当对某一个变量进行类型定义之后，该变量可以使用该类型的属性和方法等，可能无法是其他类型定义的方法和属性
+2.当对某一个变量进行类型定义之后，该变量可以使用该类型的属性和方法等，可能无法是其他类型定义的方法和属性
 
 ```ts
 /**
@@ -41,13 +41,13 @@ console.log((555.454).toFixed(2));
 // 理解解释： message属于字符串型，可以调用length属性，没有toFixed的方法
 ```
 
-### 3、非异常故障
+### 1.3、非异常故障
 
 ![1661868116306](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368888-27612a.png)
 
 ## 二、基础类型
 
-### 1、布尔值
+### 2.1、布尔值
 
 ```ts
 /**
@@ -58,7 +58,7 @@ let bool: boolean = true;
 console.log(bool);
 ```
 
-### 2、数字型
+### 2.2、数字型
 
 ```ts
 /**
@@ -69,7 +69,7 @@ const num: number = 1;
 console.log(num);
 ```
 
-<u class="highlight">注意：</u>TypeScript里的所有数字都是浮点数和Javascript一样，除了支持十进制和十六进制字面量，TypeScript还支持ECMAScript 2015中引入的二进制和八进制字面量
+👋注意：<u>TypeScript里的所有数字都是浮点数和Javascript一样，除了支持十进制和十六进制字面量，TypeScript还支持ECMAScript 2015中引入的二进制和八进制字面量</u>
 
 ```ts
 let decLiteral: number = 6;
@@ -87,7 +87,7 @@ bigNum = num; // Error: Type 'number' is not assignable to type 'bigint'
 num = bigNum; // Error: Type 'bigint' is not assignable to type 'number'.
 ```
 
-### 3、字符串型
+### 2.3、字符串型
 
 ```ts
 /**
@@ -98,39 +98,39 @@ let str: string = 'name is jack';
 console.log(str);
 ```
 
-### 4、undefined、null
+### 2.4、undefined、null
 
 > 默认情况下 null和undefined 是所有类型的子类型，如果在tsconfig.json的compilerOptions指定了 "strictNullChecks": true, null和undefined 只能赋值给void 和 它们各自的类型
 
-1. 未在tsconfig.json进行strictNullChecks选项配置
+1.未在tsconfig.json进行strictNullChecks选项配置
 
-   ```ts
-   let u: undefined = undefined;
-   let n: null = null;
-   let v: void = null;
-   console.log(u, n);
-   let num_u: number = undefined;
-   let num_n: number = null;
-   let str_u: string = undefined;
-   let str_n: string = null;
-   ```
+```ts
+let u: undefined = undefined;
+let n: null = null;
+let v: void = null;
+console.log(u, n);
+let num_u: number = undefined;
+let num_n: number = null;
+let str_u: string = undefined;
+let str_n: string = null;
+```
 
-2. tsconfig.json配置了strictNullChecks选项配置
+2.tsconfig.json配置了strictNullChecks选项配置
 
-   ```ts
-   let u: undefined = undefined;
-   let n: null = null;
-   let v: void = null; // Error: Type 'null' is not assignable to type 'void'.
-   console.log(u, n);
-   let num_u: number = undefined; // Error: Type 'undefined' is not assignable to type 'number'.
-   let num_n: number = null;
-   let str_u: string = undefined;
-   let str_n: string = null;
-   ```
+```ts
+let u: undefined = undefined;
+let n: null = null;
+let v: void = null; // Error: Type 'null' is not assignable to type 'void'.
+console.log(u, n);
+let num_u: number = undefined; // Error: Type 'undefined' is not assignable to type 'number'.
+let num_n: number = null;
+let str_u: string = undefined;
+let str_n: string = null;
+```
 
-### 5、void
+### 2.5、void
 
-> 它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是 void
+1.它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是 void
 
 ```ts
 function warnUser(): void {
@@ -139,14 +139,14 @@ function warnUser(): void {
 warnUser();
 ```
 
-> 声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null
+2.声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null
 
 ```ts
 let unusable: void = undefined;
 console.log(unusable);
 ```
 
-### 6、any
+### 2.6、any
 
 > any类型是十分有用的，它允许你在编译时可以选择地包含或移除类型检查。
 
@@ -163,7 +163,7 @@ let prettySure: Object = 4;
 // prettySure.toFixed(); // Error: Property 'toFixed' doesn't exist on type 'Object'.
 ```
 
-### 7、never
+### 2.7、never
 
 > never类型表示的是那些永不存在的值的类型，它既不是void，也不是null和undefined
 
@@ -184,7 +184,7 @@ function infiniteLoop(): never {
 }
 ```
 
-### 8、unknown
+### 2.8、unknown
 
 > unknown类型代表任何值。这与any类型类似，但更安全，因为对未知unknown值做任何事情都是不合法的。
 
@@ -201,7 +201,7 @@ function f2(a: unknown) {
 }
 ```
 
-### 9、类型断言
+### 2.9、类型断言
 
 类型断言有两种形式。
 
@@ -221,23 +221,23 @@ let strLength: number = (someValue as string).length;
 
 两种形式是等价的。 至于使用哪个大多数情况下是凭个人喜好；`然而，当你在TypeScript里使用JSX时，只有 as语法断言是被允许的`。
 
-### 10、数组
+### 2.10、数组
 
 > 有两种定义方式
 
-1. 第一种：可以在元素类型后面接上 []
+第一种：可以在元素类型后面接上 []
 
-   ```typescript
-   let list: number[] = [1, 2, 3];
-   ```
+```typescript
+let list: number[] = [1, 2, 3];
+```
 
-2. 第二种：使用数组泛型
+第二种：使用数组泛型
 
-   ```typescript
-   let listArray: Array<number> = [1, 2, 3];
-   ```
+```typescript
+let listArray: Array<number> = [1, 2, 3];
+```
 
-### 11、元组
+### 2.11、元组
 
 > 元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同
 
@@ -286,7 +286,7 @@ const point: readonly [number, number] = [10, 20];
 point[0] = 1; // Cannot assign to '0' because it is a read-only property.
 ```
 
-### 12、object、Obeject 和 {}
+### 2.12、object、Obeject 和 {}
 
 > object（首字母小写，以下称“小 object”）、Object（首字母大写，以下称“大 Object”）和 {}（以下称“空对象”）
 >
@@ -294,7 +294,7 @@ point[0] = 1; // Cannot assign to '0' because it is a read-only property.
 >
 > JavaScript 中以下类型被视为原始类型：`string`、`boolean`、`number`、`bigint`、`symbol`、`null` 和 `undefined`。
 
-#### 12.1、object
+#### 2.12.1、object
 
 ```ts
 let lowerCaseObject: object;
@@ -310,7 +310,7 @@ lowerCaseObject = {}; // ok
 
 ![1662208700431](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368896-d4c557.png)
 
-#### 12.2、Object
+#### 2.12.2、Object
 
 > 大Object 代表所有拥有 toString、hasOwnProperty 方法的类型，所以所有原始类型、非原始类型都可以赋给 Object。同样，在严格模式下，null 和 undefined 类型也不能赋给 Object。
 
@@ -328,7 +328,7 @@ upperCaseObject = {}; // ok
 
 ![1662208937597](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368900-d80240.png)
 
-#### 12.3、{}
+#### 2.12.3、{}
 
 > {}空对象类型和大 Object 一样，也是表示原始类型和非原始类型的集合，并且在严格模式下，null 和 undefined 也不能赋给 {}
 
@@ -346,11 +346,11 @@ ObjectLiteral = {}; // ok
 
 ![1662209212120](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368905-b31f46.png)
 
-<u>结论：</u> {}、大 Object 是比小 object 更宽泛的类型（least specific），{} 和大 Object 可以互相代替，用来表示原始类型（null、undefined 除外）和非原始类型；而小 object 则表示非原始类型。
+🎨结论： <u>{}、大 Object 是比小 object 更宽泛的类型（least specific），{} 和大 Object 可以互相代替，用来表示原始类型（null、undefined 除外）和非原始类型；而小 object 则表示非原始类型。</u>
 
 ## 三、枚举
 
-### 1、数字枚举
+### 3.1、数字枚举
 
 ```ts
 /**
@@ -366,7 +366,7 @@ enum Direction {
 console.log(Direction.Left); // 输出3
 ```
 
-<u class="highlight">注意：</u>我们定义了一个数字枚举， Up使用初始化为 1。 其余的成员会从 1开始自动增长。 换句话说， Direction.Up的值为 1， Down为 2， Left为 3， Right为 4。
+👋注意：<u>我们定义了一个数字枚举， Up使用初始化为 1。 其余的成员会从 1开始自动增长。 换句话说， Direction.Up的值为 1， Down为 2， Left为 3， Right为 4。</u>
 
 **当不初始化枚举时：**
 
@@ -381,9 +381,9 @@ enum initDirection {
 console.log(initDirection.Up);
 ```
 
-<u class="highlight">注意：</u> 现在， Up的值为 0， Down的值为 1等等。 当我们不在乎成员的值的时候，这种自增长的行为是很有用处的，但是要注意每个枚举成员的值都是不同的。
+👋注意： <u>现在， Up的值为 0， Down的值为 1等等。 当我们不在乎成员的值的时候，这种自增长的行为是很有用处的，但是要注意每个枚举成员的值都是不同的。</u>
 
-### 2、字符串枚举
+### 3.2、字符串枚举
 
 ```ts
 /**
@@ -398,11 +398,11 @@ enum DirectionStr {
 }
 ```
 
-<u>注意： </u>在一个字符串枚举里，每个成员都必须用字符串字面量，或另外一个字符串枚举成员进行初始化。
+👋注意：<u>在一个字符串枚举里，每个成员都必须用字符串字面量，或另外一个字符串枚举成员进行初始化。</u>
 
 ## 四、接口
 
-### 1、接口案例
+### 4.1、接口案例
 
 > 在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。
 >
@@ -453,7 +453,7 @@ let tom: Person = {
 
 可见，赋值的时候，变量的形状必须和接口的形状保持一致。
 
-### 2、可选 | 只读属性
+### 4.2、可选 | 只读属性
 
 ```ts
 interface IPerson {
@@ -467,7 +467,7 @@ let person: IPerson = {
 person.name = 'Jack';
 ```
 
-### 3、任意属性(索引签名)
+### 4.3、任意属性(索引签名)
 
 > 有时候我们希望一个接口中除了包含必选和可选属性之外，还允许有其他的任意属性，这时我们可以使用 **索引签名** 的形式来满足上述要求。
 
@@ -486,7 +486,7 @@ let tom: IPerson = {
 };
 ```
 
-<u class="highlight">注意：</u>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集
+👋注意：<u>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集</u>
 
 ```ts
 interface IPerson {
@@ -508,7 +508,7 @@ interface IPerson {
 } // Error: Property 'age' of type 'number | undefined' is not assignable to 'string' index type 'string'.
 ```
 
-### 4、接口定义函数
+### 4.4、接口定义函数
 
 ```ts
 interface SearchFunc {
@@ -537,7 +537,7 @@ const Jack: logName = {
 
 ## 五、类
 
-### 1、ES6的类
+### 5.1、ES6的类
 
 ```ts
 /* ES6的类 */
@@ -555,7 +555,7 @@ let greeter = new Greeter('Javascript');
 console.log(greeter.greet());
 ```
 
-### 2、继承
+### 5.2、继承
 
 ```ts
 class Animal {
@@ -595,72 +595,72 @@ sam.move();
 tom.move(34);
 ```
 
-<u class="highlight">注意：</u>必须调用 super()，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，我们 一定要调用 super()。 这个是TypeScript强制执行的一条重要规则。
+👋注意：<u>必须调用 super()，它会执行基类的构造函数。 而且，在构造函数里访问 this的属性之前，我们 一定要调用 super()。 这个是TypeScript强制执行的一条重要规则。</u>
 
-### 3、公共，私有与受保护的修饰符
+### 5.3、公共，私有与受保护的修饰符
 
-- public
+#### 5.3.1、public
 
-  在TypeScript里，成员都默认为 public。
+在TypeScript里，成员都默认为 public。
 
-  ```ts
-  class Animal {
-    public name: string;
-    public constructor(theName: string) {
-      this.name = theName;
-    }
-    public move(distanceInMeters: number) {
-      console.log(`${this.name} moved ${distanceInMeters}m.`);
-    }
+```ts
+class Animal {
+  public name: string;
+  public constructor(theName: string) {
+    this.name = theName;
   }
-  ```
-
-- private
-
-  当成员被标记成 private时，它就不能在声明它的类的外部访问。
-
-  ```ts
-  class Animal {
-    private name: string;
-    constructor(theName: string) {
-      this.name = theName;
-    }
+  public move(distanceInMeters: number) {
+    console.log(`${this.name} moved ${distanceInMeters}m.`);
   }
+}
+```
 
-  new Animal('Cat').name; // 错误: 'name' 是私有的. Property 'name' is private and only accessible within class 'Animal'.
-  ```
+#### 5.3.2、private
 
-- protected
+当成员被标记成 private时，它就不能在声明它的类的外部访问。
 
-  protected修饰符与 private修饰符的行为很相似，但有一点不同， protected成员在派生类中仍然可以访问。
-
-  ```ts
-  class Person {
-    protected name: string;
-    constructor(name: string) {
-      this.name = name;
-    }
+```ts
+class Animal {
+  private name: string;
+  constructor(theName: string) {
+    this.name = theName;
   }
+}
 
-  class Employee extends Person {
-    private department: string;
+new Animal('Cat').name; // 错误: 'name' 是私有的. Property 'name' is private and only accessible within class 'Animal'.
+```
 
-    constructor(name: string, department: string) {
-      super(name);
-      this.department = department;
-    }
+#### 5.3.3、protected
 
-    public getElevatorPitch() {
-      return `Hello, my name is ${this.name} and I work in ${this.department}.`;
-    }
+protected修饰符与 private修饰符的行为很相似，但有一点不同， protected成员在派生类中仍然可以访问。
+
+```ts
+class Person {
+  protected name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class Employee extends Person {
+  private department: string;
+
+  constructor(name: string, department: string) {
+    super(name);
+    this.department = department;
   }
 
-  let howard = new Employee('Howard', 'Sales');
-  console.log(howard.getElevatorPitch());
-  console.log(howard.name); // 错误
-  ```
+  public getElevatorPitch() {
+    return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+  }
+}
 
-### 4、readonly修饰符
+let howard = new Employee('Howard', 'Sales');
+console.log(howard.getElevatorPitch());
+console.log(howard.name); // 错误
+```
+
+### 5.4、readonly修饰符
 
 ```ts
 class Octopus {
@@ -674,9 +674,9 @@ let dad = new Octopus('Man with the 8 strong legs');
 dad.name = 'Man with the 3-piece suit'; // 错误! name 是只读的.
 ```
 
-### 5、存取器
+### 5.5、存取器
 
-1. 基础使用
+#### 5.5.1、基础使用
 
 ```ts
 class C {
@@ -695,9 +695,9 @@ c.length; // 不能调用函数
 c.length = 100;
 ```
 
-<u class="highlight">注意：</u>使用getter不能通过调用函数
+👋注意：<u>使用getter不能通过调用函数</u>
 
-2. getter的返回类型必须setter的参数类型的子类型
+#### 5.5.2、getter的返回类型必须setter的参数类型的子类型
 
 例如:
 
@@ -744,13 +744,13 @@ t.size = 'hello';
 console.log(t.size);
 ```
 
-<u class="highlight">注意：</u>
+👋注意：
 
 - 如果存在get，但没有set，则该属性自动是只读的
 - 如果没有指定setter参数的类型，它将从getter的返回类型中推断出来
 - 访问器和设置器必须有相同的成员可见性
 
-### 6、静态属性
+### 5.6、静态属性
 
 > 我们只讨论了类的实例成员，那些仅当类被实例化的时候才会被初始化的属性。 我们也可以创建类的静态成员，这些属性存在于类本身上面而不是类的实例上。用static进行定义，例如：
 
@@ -772,7 +772,7 @@ console.log(grid1.calculateDistanceFromOrigin({ x: 10, y: 10 }));
 console.log(grid2.calculateDistanceFromOrigin({ x: 10, y: 10 }));
 ```
 
-### 7、抽象类
+### 5.7、抽象类
 
 > 使用 abstract 进行定义，可以定义抽象类和抽象成员和抽象方法
 
@@ -797,11 +797,11 @@ d.getName();
 b.printName();
 ```
 
-<u class="highlight">注意：</u>抽象类不能被实例化，只能被继承。且子类必须构建抽象类的抽象成员
+👋注意：<u>抽象类不能被实例化，只能被继承。且子类必须构建抽象类的抽象成员</u>
 
 ![1663484892006](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368914-b9a56d.png)
 
-### 8、类的索引签名
+### 5.8、类的索引签名
 
 ```ts
 class MyClass {
@@ -824,13 +824,13 @@ class MyClass {
 }
 ```
 
-### 9、类继承接口-implements
+### 5.9、类继承接口-implements
 
 > implements用来实现一个接口
 >
 > 一个类通过关键字implements声明自己使用一个或者多个接口，多个接口用逗号分隔
 
-#### 9.1、基本使用
+#### 5.9.1、基本使用
 
 ```ts
 interface Pingable {
@@ -848,7 +848,7 @@ class Sonar implements Pingable {
 }
 ```
 
-#### 9.2、继承多个接口
+#### 5.9.2、继承多个接口
 
 ```ts
 interface A {
@@ -865,7 +865,7 @@ class C implements A, B {
 }
 ```
 
-#### 9.3、类接口定义的函数参数问题
+#### 5.9.3、类接口定义的函数参数问题
 
 ```ts
 /* 接口定义的函数参数问题 */
@@ -896,7 +896,7 @@ class NameChecker implements Checkable {
 }
 ```
 
-#### 9.4、类接口定义可选参数:
+#### 5.9.4、类接口定义可选参数:
 
 ```ts
 /* 类接口定义可选参数 */
@@ -932,9 +932,9 @@ console.log(c.x);
 console.log(c.y);
 ```
 
-### 10、类与接口的实现和继承
+### 5.10、类与接口的实现和继承
 
-#### 10.1、接口继承接口
+#### 5.10.1、接口继承接口
 
 ```ts
 /* 接口继承接口 */
@@ -954,7 +954,7 @@ const p: IPeople = {
 console.log(p);
 ```
 
-#### 10.2、接口继承类
+#### 5.10.2、接口继承类
 
 ```ts
 /* 接口继承类 */
@@ -972,7 +972,7 @@ const p: IPeople = {
 console.log(p);
 ```
 
-#### 10.3、接口不能使用实现(implements)
+#### 5.10.3、接口不能使用实现(implements)
 
 ```ts
 class User {
@@ -984,7 +984,7 @@ interface IPeople implements User { // Error: Interface declaration cannot have 
 }
 ```
 
-#### 10.4、类不能继承接口
+#### 5.10.4、类不能继承接口
 
 ```ts
 /* 类不能继承接口，只能继承类 */
@@ -998,14 +998,14 @@ class User extends IUser {
 }
 ```
 
-<u>注意点：</u>
+👋注意点：
 
 1. 接口不能实现接口或者类，所以实现（implements）只能用于类身上,即类可以实现接口或类
 2. 接口可以继承接口或类
 3. 类不可以继承接口只能实现(implements)接口，类只能继承类
 4. 可多继承或者多实现
 
-### 11、泛型类
+### 5.11、泛型类
 
 基本使用
 
@@ -1023,7 +1023,7 @@ console.log(b.content);
 
 ## 六、函数
 
-### 1、函数声明
+### 6.1、函数声明
 
 ```ts
 function sum(x: number, y: number): number {
@@ -1032,7 +1032,7 @@ function sum(x: number, y: number): number {
 sum(50, 90);
 ```
 
-### 2、函数表达式
+### 6.2、函数表达式
 
 ```ts
 let mySum: (x: number, y: number) => number = function (x, y): number {
@@ -1042,7 +1042,7 @@ let mySum: (x: number, y: number) => number = function (x, y): number {
 mySum(81, 96);
 ```
 
-### 4、可选参数
+### 6.3、可选参数
 
 ```ts
 function buildName(firstName: string, lastName?: string) {
@@ -1058,7 +1058,7 @@ let tom = buildName('Tom');
 console.log(tomcat, tom);
 ```
 
-<u>注意点：</u>可选参数必须要在必需参数后面， 可选参数后面不允许再出现必需参数
+👋注意：<u>可选参数必须要在必需参数后面， 可选参数后面不允许再出现必需参数</u>
 
 ```ts
 function buildName(firstName: string, lastName?: string, symbol: string) {
@@ -1079,7 +1079,7 @@ console.log(tomcat, tom);
 
 ![1662187029573](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368923-d0bf24.png)
 
-### 5、参数默认值
+### 6.4、参数默认值
 
 ```ts
 function buildName(firstName: string, lastName: string = 'Cat') {
@@ -1090,7 +1090,7 @@ let tom = buildName('Tom');
 console.log(tom, tomcat);
 ```
 
-### 6、剩余参数
+### 6.5、剩余参数
 
 ```ts
 function push(array: any[], ...items: any[]) {
@@ -1102,7 +1102,7 @@ let a = [];
 push(a, 1, 2, 3);
 ```
 
-### 7、函数重载
+### 6.6、函数重载
 
 由于 JavaScript 是一个动态语言，我们通常会使用不同类型的参数来调用同一个函数，该函数会根据不同的参数而返回不同的类型的调用结果：
 
@@ -1159,7 +1159,7 @@ result.split(' ');
 
 ## 七、泛型
 
-### 1、泛型
+### 7.1、泛型
 
 ```ts
 /**
@@ -1193,7 +1193,7 @@ function identity<T, U>(value: T, message: U): T {
 console.log(identity<Number, string>(68, 'Semlinker'));
 ```
 
-### 2、泛型约束
+### 7.2、泛型约束
 
 案例：
 
@@ -1222,7 +1222,7 @@ function trace<T extends Sizeable>(arg: T): T {
 
 ## 八、模块
 
-### 1、全局模块
+### 8.1、全局模块
 
 默认情况下，当你在一个新的TypeScript文件中写下代码时，它处于全局命名空间中。
 
@@ -1237,9 +1237,9 @@ const bar = foo; // 编辑及不会报错，但是单独执行 ts-node进行打�
 console.log(bar);
 ```
 
-<u class="highlight">注意：</u> 常见定义类型时的冲突
+👋注意： <u>常见定义类型时的冲突</u>
 
-1. 接口会自动合并
+#### 8.1.1、接口会自动合并
 
 ```ts
 //module01.ts
@@ -1280,13 +1280,13 @@ type TestType = {
 
 ![1663507351758](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368941-43e108.png)
 
-2. 类型别名会报错
+#### 8.1.2、类型别名会报错
 
 ![1663507340555](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368946-914316.png)
 
 毋庸置疑，使用全局变量空间是危险的，因为它会与文件内的代码命名冲突。我们强烈推荐使用文件模块。
 
-### 2、文件模块
+### 8.2、文件模块
 
 它也被称为外部模块。如果在你的TypeScript文件的根级别位置含有import或者export，它会在这个文件中创建一个本地的作用域。因此，我们需要把`全局模块中`改成如下方式
 
@@ -1324,7 +1324,7 @@ export type TestType = {
 - 通过export导出
 - 通过namespace定义
 
-### 1、namespace定义命名空间
+### 9.1、namespace定义命名空间
 
 ```ts
 namespace A {
@@ -1333,7 +1333,7 @@ namespace A {
 console.log(A.a);
 ```
 
-### 2、嵌套命名空间
+### 9.2、嵌套命名空间
 
 ```ts
 /* 嵌套的命名空间 */
@@ -1356,7 +1356,7 @@ import c = B.C.c;
 console.log(c);
 ```
 
-### 3、三斜杠语法
+### 9.3、三斜杠语法
 
 > 语法使用：`/// <reference path="" />`
 
@@ -1409,11 +1409,11 @@ window.onmousedown = function (e) {
 
 ![1663249578740](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368960-8f0808.png)
 
-<u class="highlight">注意：</u> 类型推断发生在初始化变量和成员，设置默认参数值和决定函数返回值时。
+👋注意： <u>类型推断发生在初始化变量和成员，设置默认参数值和决定函数返回值时。</u>
 
 ## 十一、高级类型
 
-### 1、联合类型
+### 11.1、联合类型
 
 ```ts
 /* 联合类型 */
@@ -1431,7 +1431,7 @@ const num: 1 | 2 = 1;
 type EventNames = 'click' | 'scroll' | 'mousemove';
 ```
 
-### 2、类型别名
+### 11.2、类型别名
 
 > 使用 type 定义
 
@@ -1445,7 +1445,7 @@ let greet = (message: Message) => {
 greet(['1', '2']);
 ```
 
-### 3、交叉类型
+### 11.3、交叉类型
 
 ```ts
 interface Colorful {
@@ -1465,7 +1465,7 @@ const cc: ColorfulCircle = {
 console.log(cc);
 ```
 
-<span className="highlight">重要：</span>如何处理冲突
+⭐重点：<u>如何处理冲突</u>
 
 ```ts
 /* 如何解决冲突 */
@@ -1494,7 +1494,7 @@ type Sister = {
 };
 ```
 
-### 4、接口与类型别名的区别
+### 11.4、接口与类型别名的区别
 
 实际上，在大多数的情况下使用接口类型和类型别名的效果等价，但是在某些特定的场景下这两者还是存在很大区别。
 
@@ -1502,7 +1502,7 @@ type Sister = {
 >
 > type(类型别名)会给一个类型起个新名字。type 有时和 interface 很像，但是可以作用于原始值（基本类型），联合类型，元组以及其它任何你需要手写的类型。起别名不会新建一个类型 - 它创建了一个新 名字来引用那个类型。给基本类型起别名通常没什么用，尽管可以做为文档的一种形式使用。
 
-#### 4.1、Objects / Functions
+#### 11.4.1、Objects / Functions
 
 两者都可以用来描述对象或函数的类型，但是语法不同
 
@@ -1520,7 +1520,7 @@ type alias
 type SetPoint = (x: number, y: number) => void;
 ```
 
-#### 4.2、Other Types
+#### 11.4.2、Other Types
 
 与接口不同，类型别名还可以用于其他类型，如基本类型（原始值）、联合类型、元组。
 
@@ -1542,7 +1542,7 @@ let div = document.createElement('div');
 type B = typeof div;
 ```
 
-<u class="highlight">注意：</u> 接口可以定义多次，类型别名不可以。与类型别名不同，接口可以定义多次，会被自动合并为单个接口。
+👋注意： <u>接口可以定义多次，类型别名不可以。与类型别名不同，接口可以定义多次，会被自动合并为单个接口。</u>
 
 ```ts
 /* 接口可以定义多次,类型别名不可以 */
@@ -1567,7 +1567,7 @@ type Direction = {
 
 ![1662903370043](https://gitee.com/szchason/pic_bed/raw/notes/images/typescript/typescript_base/2023-05-29-1685368966-ab6988.png)
 
-#### 4.3、扩展
+#### 11.4.3、扩展
 
 > 两者的扩展方式不同，但并不互斥。接口可以扩展类型别名，同理，类型别名也可以扩展接口。
 >
@@ -1622,11 +1622,11 @@ type Point = {
 } & PointX;
 ```
 
-### 5、泛型工具类型
+### 11.5、泛型工具类型
 
 > 为了方便开发者 TypeScript 内置了一些常用的工具类型，比如 Partial、Required、Readonly、Record 和 ReturnType 等。不过在具体介绍之前，我们得先介绍一些相关的基础知识，方便读者可以更好的学习其它的工具类型。
 
-#### 5.1、typeof
+#### 11.5.1、typeof
 
 > typeof 的主要用途是在类型上下文中获取变量或者属性的类型
 
@@ -1678,7 +1678,7 @@ function toArray(x: number): Array<number> {
 type Func = typeof toArray; // -> (x: number) => number[]
 ```
 
-#### 5.2、keyof
+#### 11.5.2、keyof
 
 > `keyof` 操作符是在 TypeScript 2.1 版本引入的，该操作符可以用于获取某种类型的所有键，其返回类型是联合类型。
 
@@ -1699,7 +1699,7 @@ type K3 = keyof { [x: string]: KPerson }; // string | number
 
 在 TypeScript 中支持两种索引签名，数字索引和字符串索引：
 
-#### 5.3、in
+#### 11.5.3、in
 
 > 只用来遍历枚举类型
 
@@ -1744,7 +1744,7 @@ type Obj = {
 }; // Error: Type 'Props' is not assignable to type 'string | number | symbol'.
 ```
 
-#### 5.4、条件类型
+#### 11.5.4、条件类型
 
 ```ts
 /**
@@ -1770,11 +1770,11 @@ const data: Example1 = '1';
 
 条件类型与泛型结合
 
-#### 5.5、infer
+#### 11.5.5、infer
 
-#### 5.6、extends
+#### 11.5.6、extends
 
-#### 5.7、映射类型
+#### 11.5.7、映射类型
 
 > 根据旧的类型创建出新的类型, 我们称之为映射类型
 
@@ -1791,7 +1791,7 @@ type OptionalTestInterface<T> = {
 type newTestInterface = OptionalTestInterface<TestInterface>; // {name: string, age: number}
 ```
 
-#### 5.8、Partial
+#### 11.5.8、Partial
 
 > `Partial<T> 将类型的属性变成可选`
 
@@ -1848,7 +1848,7 @@ const xiaoming: NewUserInfo = {
 };
 ```
 
-#### 5.9、Required
+#### 11.5.9、Required
 
 > Required将类型的属性变成必选
 
@@ -1876,7 +1876,7 @@ const props: NewProps = {
 console.log(props);
 ```
 
-#### 5.10、Readonly
+#### 11.5.10、Readonly
 
 > `Readonly` 的作用是将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值。
 
@@ -1902,7 +1902,7 @@ const todo: Readonly<Todo> = {
 todo.title = 'Hello'; // Cannot assign to 'title' because it is a read-only property.
 ```
 
-#### 5.11、Pick
+#### 11.5.11、Pick
 
 > Pick 从某个类型中挑出一些属性出来
 
@@ -1931,7 +1931,7 @@ const todo: TodoPreview = {
 };
 ```
 
-#### 5.12、Record
+#### 11.5.12、Record
 
 > Record<K extends keyof any, T> 的作用是将 K 中所有的属性的值转化为 T 类型。
 
@@ -1962,7 +1962,7 @@ const x: Record<Page, PageInfo> = {
 };
 ```
 
-#### 5.13、ReturnType
+#### 11.5.13、ReturnType
 
 > 这个工具主要适用于函数，能够提取函数所返回的类型。
 
@@ -1979,7 +1979,7 @@ type FnReturnString = ReturnType<() => string>; // string
 type FnReturnString = ReturnType<() => [number, string]>; // [number, string]
 ```
 
-#### 5.14、Exclude
+#### 11.5.14、Exclude
 
 > `Exclude` 的作用是将某个类型中属于另一个的类型移除掉。
 
@@ -1997,7 +1997,7 @@ type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'b'>; // "c"
 type T2 = Exclude<string | number | (() => void), Function>; // string | number
 ```
 
-#### 5.15、Extract
+#### 11.5.15、Extract
 
 > `Extract` 的作用是从 `T` 中提取出 `U`。
 
@@ -2014,7 +2014,7 @@ type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'>; // "a"
 type T1 = Extract<string | number | (() => void), Function>; // () =>void
 ```
 
-#### 5.16、Omit
+#### 11.5.16、Omit
 
 > `Omit` 的作用是使用 `T` 类型中除了 `K` 类型的所有属性，来构造一个新的类型。
 
@@ -2041,7 +2041,7 @@ const todo: TodoPreview = {
 console.log(todo);
 ```
 
-#### 5.17、NonNullable
+#### 11.5.17、NonNullable
 
 > `NonNullable` 的作用是用来过滤类型中的 `null` 及 `undefined` 类型。
 
@@ -2062,7 +2062,7 @@ type T0 = NonNullable<string | number | undefined>; // string | number
 type T1 = NonNullable<string[] | null | undefined>; // string[]
 ```
 
-#### 5.18、Parameters
+#### 11.5.18、Parameters
 
 > 这个工具主要适用于函数，能够提取函数所返回的类型
 
@@ -2081,7 +2081,7 @@ type T1 = Parameters<(name: string, age: number) => string>; // T1返回 [string
 
 ## 十二、tsconfig.json
 
-### 1、概述
+### 12.1、概述
 
 如果一个目录下存在一个<u>tsconfig.json</u>文件，那么它意味着这个目录是TypeScript项目的根目录。 `tsconfig.json`文件中指定了用来编译这个项目的根文件和编译选项。 一个项目可以通过以下方式之一来编译：
 
@@ -2091,11 +2091,11 @@ type T1 = Parameters<(name: string, age: number) => string>; // T1返回 [string
 
   当命令行上指定了输入文件时，`tsconfig.json`文件会被忽略。
 
-### 2、files
+### 12.2、files
 
 > `"files"`指定一个包含相对或绝对文件路径的列表。<span className="highlight">注意：</span>只能文件，不能是文件夹
 
-### 3、include
+### 12.3、include
 
 include 字段用于指明需要被 tsc 编译的文件或文件夹列表，例如：
 
@@ -2105,7 +2105,7 @@ include 字段用于指明需要被 tsc 编译的文件或文件夹列表，例�
 }
 ```
 
-### 4、exclude
+### 12.4、exclude
 
 exclude 字段用于排除不需要 tsc 编译的文件或文件夹列表，例如：
 
@@ -2115,7 +2115,7 @@ exclude 字段用于排除不需要 tsc 编译的文件或文件夹列表，例�
 }
 ```
 
-### 5、include和exclude的细节
+### 12.5、include和exclude的细节
 
 1.  `"include"`和`"exclude"`属性指定一个文件glob匹配模式列表。 支持的glob通配符有：
 2.  如果一个glob模式里的某部分只包含*或.*，那么仅有支持的文件扩展名类型被包含在内（比如默认.ts，.tsx，和.d.ts， 如果 allowJs设置能true还包含.js和.jsx）。
@@ -2124,13 +2124,13 @@ exclude 字段用于排除不需要 tsc 编译的文件或文件夹列表，例�
 5.  任何被`"files"`或`"include"`指定的文件所引用的文件也会被包含进来。 `A.ts`引用了`B.ts`，因此`B.ts`不能被排除，除非引用它的`A.ts`在`"exclude"`列表中。
 6.  `tsconfig.json`文件可以是个空文件，那么所有默认的文件（如上面所述）都会以默认配置选项编译。
 
-### 6、extends
+### 12.6、extends
 
 tsconfig.json文件可以利用extends属性从另一个配置文件里继承配置。
 
 extends是tsconfig.json文件里的顶级属性（与compilerOptions，files，include，和exclude一样）。 extends的值是一个字符串，包含指向另一个要继承文件的路径。
 
-### 7、compileOnSave
+### 12.7、compileOnSave
 
 compileOnSave 是声明是否需要在保存时候自动触发 tsc 编译的字段，一般来说，我们的代码编译过程会通过 Rollup、Webpack 等打包构建工具，并且使用热更新，因此无需配置该项，保持缺省即可。
 
@@ -2140,7 +2140,7 @@ compileOnSave 是声明是否需要在保存时候自动触发 tsc 编译的字�
 }
 ```
 
-### 8、compilerOptions
+### 12.8、compilerOptions
 
 > 编译选项配置非常繁杂，有很多配置，这里只列出常用的配置。
 

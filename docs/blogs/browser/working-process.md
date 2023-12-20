@@ -43,6 +43,7 @@ JS的执行机制就可以看做是一个主线程加上一个任务队列(task 
 ![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/event_loop.png)
 
 浏览器解析html文档过程分析图解：
+
 ![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/html_render.png)
 
 - 浏览器在拿到html文件时，浏览器在内存条中开辟一块栈内存，用来给html的代码提供环境；同时分配一个主线程去一行行的解析和执行代码
@@ -51,7 +52,7 @@ JS的执行机制就可以看做是一个主线程加上一个任务队列(task 
 
 ## 二、拓展
 
-### 1、`<script>`标签对DOM解析和渲染的影响
+### 2.1、`<script>`标签对DOM解析和渲染的影响
 
 知道`<script>`标签的加载、解析和运行都会阻塞DOM的解析和渲染。这是因为js可以操作DOM，浏览器为了防止渲染过程出现不可预期的结果，让GUI渲染线程和js引擎线程互斥，即解析器在遇到`<script>`标记时会立即解析并执行(或请求）脚本。文档的解析将停止，直到脚本执行完毕后才会继续。
 
@@ -95,10 +96,10 @@ console.log(Date.now());
 
 ![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/js_jam.gif)
 
-### 2、`<link>` 标签对DOM解析和渲染的影响
+### 2.2、`<link>` 标签对DOM解析和渲染的影响
 
 `<link>`标签不会阻塞DOM解析但会阻塞DOM渲染 , DOM的解析和CSSOM的解析是一个并行的过程。两者互不影响。两者解析完成之后，会合并生成render tree(渲染树)，之后就是layout和paint阶段，渲染到页面中。
 
-### 3、`<link>`标签会阻塞js的执行
+### 2.3、`<link>`标签会阻塞js的执行
 
 js运行时，有可能会请求样式信息，如果此时还没有加载和解析样式，js就有可能会得到错误的回复，产生很多问题。因此浏览器在`<link>`标签的加载和解析过程中，会禁止脚本运行。

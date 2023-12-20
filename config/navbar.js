@@ -10,21 +10,21 @@ module.exports = {
       type: 'dropdown',
       position: 'right',
       items: [
-        {
-          label: 'HTML(5)',
-          type: 'docSidebar',
-          sidebarId: 'html',
-        },
-        {
-          label: 'CSS(3)',
-          type: 'docSidebar',
-          sidebarId: 'css',
-        },
-        {
-          label: 'SCSS',
-          type: 'docSidebar',
-          sidebarId: 'scss',
-        },
+        // {
+        //   label: 'HTML(5)',
+        //   type: 'docSidebar',
+        //   sidebarId: 'html',
+        // },
+        // {
+        //   label: 'CSS(3)',
+        //   type: 'docSidebar',
+        //   sidebarId: 'css',
+        // },
+        // {
+        //   label: 'SCSS',
+        //   type: 'docSidebar',
+        //   sidebarId: 'scss',
+        // },
         {
           label: 'JavaScript',
           type: 'docSidebar',
@@ -60,16 +60,16 @@ module.exports = {
           type: 'docSidebar',
           sidebarId: 'angular',
         },
-        {
-          label: 'Next',
-          type: 'docSidebar',
-          sidebarId: 'next',
-        },
-        {
-          label: 'Flutter',
-          type: 'docSidebar',
-          sidebarId: 'flutter',
-        },
+        // {
+        //   label: 'Next',
+        //   type: 'docSidebar',
+        //   sidebarId: 'next',
+        // },
+        // {
+        //   label: 'Flutter',
+        //   type: 'docSidebar',
+        //   sidebarId: 'flutter',
+        // },
         {
           label: '网络工程',
           type: 'docSidebar',

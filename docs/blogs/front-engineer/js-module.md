@@ -1,15 +1,13 @@
 ---
 id: module
-title: ESModule和Commonjs模块化区别
-description: ESModule和Commonjs模块化区别
-sidebar_label: ESModule和Commonjs模块化区别
+title: ESM和Cjs模块化区别
+description: ESM和Cjs模块化区别
+sidebar_label: ESM和Cjs模块化区别
 hide_title: true
 last_update:
   date: 2023-04-03
   author: Chason
 ---
-
-## ESModule和Commonjs模块化区别
 
 ## 一、模块化概念
 
@@ -17,7 +15,7 @@ last_update:
 
 ## 二、模块化的由来
 
-### 1、如果没有模块化
+### 2.1、如果没有模块化
 
 早期 JavaScript 开发很容易存在**全局污染**和**依赖管理**混乱问题。这些问题在多人开发前端应用的情况下变得更加棘手。我这里例举一个很常见的场景：
 
@@ -50,7 +48,7 @@ console.log(num); // 打印一个函数，而不是200
 
 - 依赖管理
 
-### 2、namespace模式(简单对象封装)
+### 2.2、namespace模式(简单对象封装)
 
 作用： 减少了全局变量，解决命名冲突
 
@@ -70,7 +68,7 @@ myModule.data = 'other data'; // 能直接修改模块内部的数据
 myModule.foo(); // foo() other data
 ```
 
-### 3、 IIFE 模式：匿名函数自调用 (闭包)
+### 3.3、 IIFE 模式：匿名函数自调用 (闭包)
 
 匿名函数自调用 (闭包)
 
@@ -111,7 +109,7 @@ myModule.foo(); // foo() other data
 
 ![1678958986961](https://gitee.com/szchason/pic_bed/raw/blogs/images/module/1678958986961.png)
 
-### 4、模块化的优点
+### 3.4、模块化的优点
 
 - 避免命名冲突
 - 更好的分离，按需加载
@@ -120,9 +118,9 @@ myModule.foo(); // foo() other data
 
 ## 三、Node的Commonjs模块
 
-### 1、Commonjs的导入导出
+### 3.1、Commonjs的导入导出
 
-#### 2.1、加载模块
+#### 3.2.1、加载模块
 
 ```js
 const path = require('path');
@@ -130,7 +128,7 @@ const serve = require('./serve');
 const utils = require('./utils');
 ```
 
-#### 2.2、暴露模块
+#### 3.2.2、暴露模块
 
 ```js
 // serve.js
@@ -144,11 +142,11 @@ module.exports = function (x, y) {
 };
 ```
 
-### 2、Commonjs模块加载原理
+### 3.2、Commonjs模块加载原理
 
-详细可以参考本文章在
+详细可以参考本文章在[Node.js的模块require加载机制](/blogs/front-engineer/require)
 
-### 3、Commonjs的模块循环加载和缓存
+### 3.3、Commonjs的模块循环加载和缓存
 
 由于`缓存机制的存在，同时Commonjs是属于同步加载`，CommonJS的模块之间可以进行循环加载，而不用担心引起死循环：
 
@@ -188,7 +186,7 @@ console.log(b, 'main b');
 1. 回到了a模块，执行完毕，导出{a：2}
 1. 回到main.js，又加载了b模块，读取缓存
 
-### 4、Commonjs加载机制
+### 3.4、Commonjs加载机制
 
 CommonJS的加载机制是，模块输出的是一个值的复制拷贝；对于基本数据类型的输出，属于复制，对于复杂数据类型，属于浅拷贝，我们来看一个例子：
 
@@ -247,13 +245,14 @@ require('./b');
 ```
 
 打印结果：
+
 ![1678881401602](https://gitee.com/szchason/pic_bed/raw/blogs/images/module/1678881401602.png)
 
 分析： 上面代码中我们通过a.js、b.js两个脚本同时引用一个模块进行修改和读取；需要注意的是由于缓存，因此b.js加载时其实已经是从缓存中读取的模块。
 
-### 5、exports与module.exports用法区别
+### 3.5、exports与module.exports用法区别
 
-##### 5.1、exports导出
+##### 3.5.1、exports导出
 
 ```js
 // a.js
@@ -272,7 +271,7 @@ console.log(a);
 
 ![1678796114299](https://gitee.com/szchason/pic_bed/raw/blogs/images/module/1678796114299.png)
 
-##### 5.2、为什么`exports={}`不可以
+##### 3.5.2、为什么`exports={}`不可以
 
 ```js
 // a.js
@@ -324,7 +323,7 @@ console.log(a);
 
 ![1678797955906](https://gitee.com/szchason/pic_bed/raw/blogs/images/module/1678797955906.png)
 
-##### 5.3、module.exports
+##### 3.5.3、module.exports
 
 exports 和 module.exports 持有相同引用，因为最后导出的是 module.exports 。那么这就说明在一个文件中，我们最好选择 exports 和 module.exports 两者之一，如果两者同时存在，很可能会造成覆盖的情况发生。比如如下情况：
 
@@ -349,9 +348,9 @@ console.log(a);
 
 ## 四、ESModule模块化
 
-### 1、ESModule导入导出
+### 4.1、ESModule导入导出
 
-#### 1.1、导出
+#### 4.1.1、导出
 
 ES6通过export进行导出变量、函数或者类：
 
@@ -395,7 +394,7 @@ var m = 1;
 export m;
 ```
 
-#### 1.2、导入
+#### 4.1.2、导入
 
 其他模块文件可以通过`import`命令加载这个接口：
 
@@ -439,7 +438,7 @@ if (num > 2) {
 }
 ```
 
-1.3、export default导出
+#### 4.1.3、export default导出
 
 ```js
 //add.js
@@ -532,7 +531,7 @@ console.log(mod);
 
 ![1678885103310](https://gitee.com/szchason/pic_bed/raw/blogs/images/module/1678885103310.png)
 
-### 2、ESModule加载机制
+### 4.2、ESModule加载机制
 
 在CommonJS模块的输出是值的复制拷贝；而ES6输出的则是对外接口，我们将上面CommonJS中的代码进行改写来理解两者的区别：
 
@@ -571,7 +570,7 @@ num = 3;
 list = [3, 4];
 ```
 
-### 3、ESModule的循环加载
+### 4.3、ESModule的循环加载
 
 > ESModule加载是在编译时进行加载，Commonjs加载时在运行时进行加载模块
 

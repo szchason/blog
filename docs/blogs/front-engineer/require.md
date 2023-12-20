@@ -11,14 +11,14 @@ last_update:
 
 ## 一、模块类型和加载顺序
 
-### 1、模块类型
+### 1.1、模块类型
 
 Node.js的模块有好几种类型，前面我们使用的其实都是 文件模块，总结下来，主要有这两种：
 
 1. 内置模块：就是Node.js原生提供的功能，比如 fs， http等等，这些模块在Node.js进程起来时就加载了。
 1. 文件模块：我们前面写的几个模块，还有第三方模块，即 node_modules下面的模块都是文件模块。
 
-### 2、加载顺序
+### 1.2、加载顺序
 
 加载顺序是指当我们 require(X)时，应该按照什么顺序去哪里找 X，在官方文档上有详细伪代码，总结下来大概是这么个顺序：
 
@@ -29,14 +29,14 @@ Node.js的模块有好几种类型，前面我们使用的其实都是 文件模
 1. 对应的文件和文件夹都找不到就去 node_modules下面找。
 1. 还找不到就Error了。
 
-### 3、加载文件夹
+### 1.3、加载文件夹
 
 前面提到找不到文件就找文件夹，但是不可能将整个文件夹都加载进来，加载文件夹的时候也是有一个加载顺序的：
 
 1. 在这个文件夹下面有没有 package.json，如果有就找里面的 main字段， main字段有值就加载对应的文件。所以如果大家在看一些第三方库源码时找不到入口就看看他 package.json里面的 main字段吧，比如 jquery的 main字段就是这样： "main":"dist/jquery.js"。
 1. 如果没有 package.json或者 package.json里面没有 main就找 index文件。
 
-### 4、支持的文件类型
+### 1.4、支持的文件类型
 
 1. .js：.js文件是我们最常用的文件类型，加载的时候会先运行整个JS文件，然后将前面说的 module.exports作为 require的返回值。
 1. .json：.json文件是一个普通的文本文件，直接用 JSON.parse将其转化为对象返回就行。
@@ -44,7 +44,7 @@ Node.js的模块有好几种类型，前面我们使用的其实都是 文件模
 
 ## 二、require的实现原理
 
-### 1、\_Module类
+### 2.1、\_Module类
 
 Node.js模块加载的功能全部在 Module类里面，整个代码使用面向对象的思想，如果你对JS的面向对象还不是很熟悉可以先看看这篇文章。 Module类的构造函数也不复杂，主要是一些值的初始化，为了跟官方 Module名字区分开，我们自己的类命名为 \_Module：
 
@@ -59,7 +59,7 @@ function _Module(id = '') {
 }
 ```
 
-### 2、require方法
+### 2.2、require方法
 
 ```js
 // require其实是Module类的一个实例方法
@@ -69,7 +69,7 @@ _Module.prototype.require = function (id) {
 };
 ```
 
-### 3、\_ Module.\_load
+### 2.3、\_ Module.\_load
 
 \_ Module.\_load是一个静态方法，这才是 require方法的真正主体，作用：
 
@@ -112,7 +112,7 @@ _Module.prototype.load = function (filename) {
 };
 ```
 
-### 4、\_ Module.\_extensions
+### 2.4、\_ Module.\_extensions
 
 不同文件类型的处理方法都挂载在 \_ Module.\_extensions
 
@@ -130,7 +130,7 @@ _Module._extensions = {
 };
 ```
 
-### 5、\_ Module.prototype.\_compile
+### 2.5、\_ Module.prototype.\_compile
 
 \_ Module.prototype.\_compile是加载JS文件的核心所在，也是我们最常使用的方法，这个方法需要将目标文件拿出来执行一遍，执行之前需要将它整个代码包裹一层，以便注入 exports,require,module,** dirname,**filename，这也是我们能在JS文件里面直接使用这几个变量的原因。
 
@@ -165,7 +165,7 @@ _Module.prototype._compile = function (content, filename) {
 };
 ```
 
-### 6、全部代码
+### 2.6、全部代码
 
 ```js
 const path = require('path');
@@ -285,7 +285,7 @@ _Module.prototype._compile = function (content, filename) {
 module.exports = _Module;
 ```
 
-### 7、测试加载
+### 2.7、测试加载
 
 ```js
 // test.js

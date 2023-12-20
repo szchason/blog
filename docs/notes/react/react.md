@@ -220,7 +220,7 @@ function App() {
 
 ![1677314316219](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369124-38de9a.png)
 
-<u class="highlight">注意：</u> 解构进行了浅拷贝，引用数据地址发生了变化
+<u >注意：</u> 解构进行了浅拷贝，引用数据地址发生了变化
 
 当不进行score+1时，解构改变了引用数据类型的地址变化，依旧会触发useEffect
 
@@ -479,7 +479,7 @@ const clickHandler = useCallback(function () {
 
 ![1678011058182](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369153-f92011.png)
 
-<u class="highlight">注意：</u>如果使用useCallBack进行缓存时，无法获取state最新值，需要对获取state进行依赖。
+<u >注意：</u>如果使用useCallBack进行缓存时，无法获取state最新值，需要对获取state进行依赖。
 
 ## 二、React17的渲染
 

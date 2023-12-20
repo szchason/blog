@@ -10,7 +10,7 @@ last_update:
 
 ## 一、jQuery基础部分
 
-### 1、jQuery的介绍
+### 1.1、jQuery的介绍
 
 jQuery是js的库，库就是说将很多js的方法封装在了一个文件中；jQuery是前端编程中使用最多的库，曾经风靡前端。
 
@@ -19,10 +19,9 @@ jQuery的好处：
 1. 强大的选择器机制
 2. 优质的隐式迭代
 3. 无所不能的链式编程
+4. jquery完全不需要考虑兼容性，因为jquery库将js的兼容都封装好了
 
-<font color="red">**jquery完全不需要考虑兼容性，因为jquery库将js的兼容都封装好了**</font>
-
-### 2、jQuery的简单使用
+### 1.2、jQuery的简单使用
 
 1. 先下载一个jQuery，然后再引入
 2. 检测是否检验成功，就是输出$或者就jQuery。这是jQuery暴露在全局的唯一的两个函数。
@@ -36,7 +35,7 @@ jQuery最终的返回和暴露
 
 ![1604992075237](https://gitee.com/szchason/pic_bed/raw/notes/images/jquery/2023-05-29-1685365980-f9ca39.png)
 
-### 3、jQuery伪数组与DOM元素
+### 1.3、jQuery伪数组与DOM元素
 
 ```js
 $div = $('div');
@@ -77,39 +76,39 @@ DOM元素转jQuery伪数组结果：
 
 ![1604995288992](https://gitee.com/szchason/pic_bed/raw/notes/images/jquery/2023-05-29-1685365994-78e0e2.png)
 
-<u class="highlight">注意：</u>原生js中的window，在jQuery中是$(window)，原生js中的document，在jQuery中是$(document)，原生js中的this，在jQuery中是$(this)
+👏注意：<u>原生js中的window，在jQuery中是$(window)，原生js中的document，在jQuery中是$(document)，原生js中的this，在jQuery中是$(this)</u>
 
-### 4、jQuery选择器及表单选择器
+### 1.4、jQuery选择器及表单选择器
 
 jQuery选择元素可以使用css的选择器
 
-#### 4.1、jQuery选择器
+#### 1.4.1、jQuery选择器
 
-- id选择器
+id选择器
 
 ```js
 $('#id名');
 ```
 
-- 类名选择器
+类名选择器
 
 ```js
 $('.类名');
 ```
 
-- 标签选择器
+标签选择器
 
 ```js
 $('标签名');
 ```
 
-- 属性选择器
+属性选择器
 
 ```js
 $("[name='username']");
 ```
 
-- 伪类选择器
+伪类选择器
 
 ```js
 $('li:first-child');
@@ -118,13 +117,13 @@ $('li:nth-child(数字)'); // 第一个元素对应数字是1
 $('li:empty'); // 空标签
 ```
 
-- 类似css的组合选择
+类似css的组合选择
 
 ```js
 $('#div .a'); //表示获取id为div下类名为a的元素
 ```
 
-#### 4.2、表单选择器
+#### 1.4.2、表单选择器
 
 ```js
 //表单选择器---基本
@@ -146,11 +145,11 @@ $('input：checked'); // 所有选中的表单元素 -- 重点
 $('option:selected'); // 被选中的下拉框元素 -- 重点
 ```
 
-<u class="highlight">注意：</u>jQuery获取元素不会获取单个元素，页面中只要满足选择器的，都会获取到，也就是jQuery获取到的永远是集合（伪数组）。
+👏注意：<u>jQuery获取元素不会获取单个元素，页面中只要满足选择器的，都会获取到，也就是jQuery获取到的永远是集合（伪数组）。</u>
 
-### 5、jQuery筛选器及筛选器方法
+### 1.5、jQuery筛选器及筛选器方法
 
-#### 5.1、jQuery筛选器
+#### 1.5.1、jQuery筛选器
 
 ```js
 $('li:first');
@@ -162,7 +161,7 @@ $('li:lt(数字)'); // 下标小于指定数字的元素
 $('li:gt(数字)'); // 下标大于指定数字的元素
 ```
 
-#### 5.2、筛选器方法
+#### 1.5.2、筛选器方法
 
 ```js
 $('li').first(); // 元素集合中的第一个
@@ -179,7 +178,7 @@ $('div').siblings(); // div的所有兄弟元素
 $('div').children(); // div下的所有子元素
 ```
 
-### 6、jQuery属性操作
+### 1.6、jQuery属性操作
 
 设置属性：
 
@@ -212,7 +211,7 @@ $('div').removeProp(属性名);
 $('div').removeAttr(属性名); // 删除自定义属性
 ```
 
-### 7、jQuery样式操作
+### 1.7、jQuery样式操作
 
 设置样式：
 
@@ -231,7 +230,7 @@ $('div').css({
 $('div').css(css属性名);
 ```
 
-### 8、jQuery类名操作
+### 1.8、jQuery类名操作
 
 ```js
 $('div').addClass(类名); // 添加类名
@@ -240,7 +239,7 @@ $('div').toggleClass(类名); // 在添加和删除之间切换
 $('div').hasClass(类名); // 判断元素是否有这个类名，有是true，没有是false
 ```
 
-### 9、jQuery元素内容操作
+### 1.9、jQuery元素内容操作
 
 ```js
 $('div').text(); // 获取元素内容 === 相当于 div.innerText
@@ -251,14 +250,14 @@ $('input').val(); // 获取表单元素的值 === 相当于 input.value
 $('input').val('请输入用户名'); // 设置表单元素的内容 === 相当于 input.value = "请输入用户名"
 ```
 
-<font className="highlight">补充知识点：</font>
+补充知识点：
 
 ```js
 $(this).index(); // index方法是获取元素的下标
 $('li').index(3); // 将li标签的index下标设置为3  很方便
 ```
 
-### 10、jQuery事件
+### 1.10、jQuery事件
 
 jquery中的事件是将事件名作为方法名，传入回调函数即可。
 
@@ -341,9 +340,9 @@ $("元素").hover(鼠标放上去的处理函数,鼠标离开的处理函数)
 
 ## 二、jQuery的操作DOM部分
 
-### 1、元素节点操作
+### 2.1、元素节点操作
 
-#### 1.1、创建元素
+#### 2.1.1、创建元素
 
 ```js
 $('标签和内容'); // 创建一个标签并给里面放内容
@@ -356,7 +355,7 @@ console.log(box);
 
 ![](https://gitee.com/szchason/pic_bed/raw/notes/images/jquery/2023-05-29-1685366006-231a30.png)
 
-#### 1.2、添加元素
+#### 2.1.2、添加元素
 
 在父元素下添加子元素
 
@@ -481,7 +480,7 @@ span.before(b);
 要添加的元素.insertAfter(元素);
 ```
 
-#### 1.3、替换元素
+#### 2.1.3、替换元素
 
 使用新元素替换某个元素
 
@@ -515,7 +514,7 @@ span.replaceWith(b);
 新元素.replaceAll(某个元素);
 ```
 
-#### 1.4、删除元素
+#### 2.1.4、删除元素
 
 删除元素内部所有标签和内容，让自己变成一个空标签
 
@@ -566,7 +565,7 @@ box.remove();
 
 ![1567971478903](https://gitee.com/szchason/pic_bed/raw/notes/images/jquery/2023-05-29-1685366040-98c2e9.png)
 
-#### 1.5、复制元素
+#### 2.1.5、复制元素
 
 ```js
 元素.clone([是否复制自身的事件][,是否复制子元素的事件])
@@ -578,7 +577,7 @@ box.remove();
 2. 这个方法接收两个参数，参数1代表是否把元素的事件也克隆出来，默认为false；参数2代表是否把元素的子元素的事件克隆出来，默认跟随第一个参数的值。
 3. 如果不复制父元素的事件，子元素的事件也不能复制
 
-### 2、元素尺寸
+### 2.2、元素尺寸
 
 元素内容区域尺寸操作：
 
@@ -605,7 +604,7 @@ box.remove();
 元素.outWidth(true); // 获取元素占据的宽度，包含padding和border，包含margin
 ```
 
-### 3、元素位置
+### 2.3、元素位置
 
 元素相对页面的位置操作：
 
@@ -629,9 +628,9 @@ $(window).scrollTop(值); // 设置元素滚动过的高度
 $(window).scrollLeft(值); // 设置元素滚动过的宽度
 ```
 
-### 4、动画
+### 2.4、动画
 
-##### 4.1、基本动画
+##### 2.4.1、基本动画
 
 显示：
 
@@ -680,7 +679,7 @@ $(window).scrollLeft(值); // 设置元素滚动过的宽度
 元素.fadeTo(毫秒数, 透明度, 速度方式, 结束的回调函数); // 让元素在指定的时间内切换到指定的透明度
 ```
 
-##### 4.2、自定义动画
+##### 2.4.2、自定义动画
 
 开启动画：
 
@@ -748,9 +747,9 @@ stop有两个参数，值都是布尔值：
 
 ## 三、jQuery的ajax请求和插件部分
 
-### 1、jQuery的ajax封装
+### 3.1、jQuery的ajax封装
 
-#### 1.1、get请求
+#### 3.1.1、get请求
 
 语法：
 
@@ -775,7 +774,7 @@ $.get(
 );
 ```
 
-#### 1.2、post请求
+#### 3.1.2、post请求
 
 语法：
 
@@ -800,7 +799,7 @@ $.post(
 );
 ```
 
-#### 1.3、ajax请求
+#### 3.1.3、ajax请求
 
 语法：
 
@@ -832,7 +831,7 @@ $.ajax({
 });
 ```
 
-#### 1.4、jsonp请求
+#### 3.1.4、jsonp请求
 
 语法：
 
@@ -849,7 +848,7 @@ $.ajax({
 });
 ```
 
-### 2、jQuery的标识符
+### 3.2、jQuery的标识符
 
 jquery的开头都是$获取时jQuery。如果在页面引入别人的插件，别人的插件写的也是要用$或jQuery开头的，那么会和引入的jquery产生冲突。jquery早已预料到了这种情况，所以jquery可以将$或jQuery的使用权交出，或换成其他的操作符。
 
@@ -859,7 +858,7 @@ jQuery.noConflict(true)； // 交出了$和jQuery的使用权，$符号和jQuery
 var 变量 = jQuery.noConflict(true); // 使用自定义的变量代替$和jQuery
 ```
 
-### 3、jQuery扩展
+### 3.3、jQuery扩展
 
 jquery总共提供了两类方法，一类是元素集合调用，一类是自己调用：
 
@@ -901,29 +900,27 @@ jQuery.extend({
 $.fn();
 ```
 
-### 4、jQuery的插件
+### 3.4、jQuery的插件
 
-网址：
+推荐的插件网址：
 
 jquery之家：http://www.htmleaf.com/jQuery
 
-jq22:www.jq22.com
+jq22: www.jq22.com
 
-#### 4.1、表单验证插件
-
-jquery-validation
+#### 3.4.1、表单验证插件
 
 下载地址：http://static.runoob.com/download/jquery-validation-1.14.0.zip
 
-使用：
+jquery-validation使用：
 
-1.引入jquery
+1. 引入jquery
 
-2.引入jquery.validate.js
+2. 引入jquery.validate.js
 
-3.引入语言包
+3. 引入语言包
 
-4.form标签调用validate方法
+4. form标签调用validate方法
 
 ```js
 $("form").validate({
@@ -959,9 +956,9 @@ $("form").validate({
 });
 ```
 
-5.自定义错误信息样式，使用类名error
+5. 自定义错误信息样式，使用类名error
 
-6.自定义验证方法：
+6. 自定义验证方法：
 
 ```js
 jQuery.validator.addMethod(
@@ -979,19 +976,17 @@ jQuery.validator.addMethod(
 // 验证规则是checkTel，提示信息是固定的
 ```
 
-#### 4.2、颜色动画插件
+#### 3.4.2、颜色动画插件
 
 下载网址：https://github.com/jquery/jquery-color
 
-jquery.color.js
+jquery.color.js，引入插件即可，写颜色动画就好了
 
-引入插件即可，写颜色动画就好了
-
-#### 4.3、图片懒加载
+#### 3.4.3、图片懒加载
 
 下载网址：https://github.com/pedromenezes/jQuery-lazyload
 
-jquery.lazyload
+jquery.lazyload使用：
 
 1. 引入jquery
 2. 引入插件名
@@ -1007,7 +1002,7 @@ $("img.lazy").lazyload(function(){
 });
 ```
 
-#### 4.4、laydate时间插件
+#### 3.4.4、laydate时间插件
 
 官网：<http://www.layui.com/laydate/>
 
@@ -1040,7 +1035,7 @@ $("img.lazy").lazyload(function(){
 
 ![](https://gitee.com/szchason/pic_bed/raw/notes/images/jquery/2023-05-29-1685366056-618703.png)
 
-#### 4.5、layer弹出层插件
+#### 3.4.5、layer弹出层插件
 
 弹出层网址：<http://layer.layui.com/>
 

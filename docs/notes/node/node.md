@@ -10,7 +10,7 @@ last_update:
 
 ## 一、认识Node
 
-### 1、Node架构
+### 1.1、Node架构
 
 Node的架构最主要分三层Natives modules、Node C/C++ Bindings、CPU/RAM/DISK OS
 
@@ -36,11 +36,11 @@ Node的架构最主要分三层Natives modules、Node C/C++ Bindings、CPU/RAM/D
 
 ![1666882607536](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367733-188bcf.png)
 
-### 2、Nodejs异步IO
+### 1.2、Nodejs异步IO
 
 ![1666882696843](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367737-c41b6c.png)
 
-### 3、事件驱动架构
+### 1.3、事件驱动架构
 
 代码演练：
 
@@ -63,7 +63,7 @@ myEvent.emit('事件1');
 
 ![1666883054038](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367743-701ee2.png)
 
-### 4、Nodejs应用场景
+### 1.4、Nodejs应用场景
 
 1. IO密集型高并发请求
 
@@ -73,7 +73,7 @@ myEvent.emit('事件1');
 
 3. 实时聊天应用程序
 
-### 5、Nodejs实现API服务
+### 1.5、Nodejs实现API服务
 
 实现代码：
 
@@ -114,7 +114,7 @@ app.listen(8080, () => {
 
 ![1663164187891](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367757-0a08e8.png)
 
-### 1、在交互模式下
+### 2.1、在交互模式下
 
 > 交互模式：在window下打开cmd，输入node即可进入交互模式。
 >
@@ -122,7 +122,7 @@ app.listen(8080, () => {
 
 ![1663164041403](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367764-86cc8e.png)
 
-### 2、在脚本模式下
+### 2.2、在脚本模式下
 
 > 声明的变量和创建的函数都不是global下的
 
@@ -178,127 +178,127 @@ console.log(exports === module.exports);
 > - 获取进程信息
 > - 执行进程操作
 
-### 1、获取进程信息
+### 3.1、获取进程信息
 
-1. 获取 内存、cpu资源2、执行进程操作
+#### 3.1.1、获取 内存、cpu资源2、执行进程操作
 
-   ```js
-   // 获取内存信息
-   console.log(process.memoryUsage())
+```js
+// 获取内存信息
+console.log(process.memoryUsage())
 
-   // 打印后
-   {
-     rss: 24961024,
-     heapTotal: 4866048,
-     heapUsed: 3995376,
-     external: 234802,
-     arrayBuffers: 11146
-   }
+// 打印后
+{
+  rss: 24961024,
+  heapTotal: 4866048,
+  heapUsed: 3995376,
+  external: 234802,
+  arrayBuffers: 11146
+}
 
-   // 获取cpu信息
-   console.log(process.cpuUsage())
-   // 打印后
-   { user: 31000, system: 15000 }
-   ```
+// 获取cpu信息
+console.log(process.cpuUsage())
+// 打印后
+{ user: 31000, system: 15000 }
+```
 
-2. ### 获取运行环境信息
+#### 3.1.2、获取运行环境信息
 
-   ```js
-   console.log(process.cwd()); // 当前运行目录
-   console.log(process.version); // node版本
-   console.log(process.versions); // 获取node版本、v8版本、zlib等版本信息
-   console.log(process.arch); // cpu架构
-   console.log(process.env.NODE_ENV); // 用户环境
-   // console.log(process.env.PATH) // 系统环境变量
-   console.log(process.env.USERPROFILE); // 获取管理员目录，注意: MacOS系统取的HOME，window取得是USERPROFILE
-   console.log(process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME); // 获取系统平台
-   ```
+```js
+console.log(process.cwd()); // 当前运行目录
+console.log(process.version); // node版本
+console.log(process.versions); // 获取node版本、v8版本、zlib等版本信息
+console.log(process.arch); // cpu架构
+console.log(process.env.NODE_ENV); // 用户环境
+// console.log(process.env.PATH) // 系统环境变量
+console.log(process.env.USERPROFILE); // 获取管理员目录，注意: MacOS系统取的HOME，window取得是USERPROFILE
+console.log(process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME); // 获取系统平台
+```
 
-   执行结果：
+执行结果：
 
-   ![1665229123729](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367827-f737be.png)
+![1665229123729](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367827-f737be.png)
 
-3. 获取运行状态信息
+获取运行状态信息
 
-   ```js
-   // 3.运行状态信息
-   console.log(process.argv); // 启动参数，输出一个数组
-   console.log(process.argv0); // 默认输入 process.argv 数组中的第一个
-   // console.log(process.argv1) // 不存在argv1
+```js
+// 3.运行状态信息
+console.log(process.argv); // 启动参数，输出一个数组
+console.log(process.argv0); // 默认输入 process.argv 数组中的第一个
+// console.log(process.argv1) // 不存在argv1
 
-   console.log(process.pid); // ppid，执行完成之后会被回收
-   console.log(process.uptime()); // 从执行开始到结束后的时间
-   setTimeout(() => {
-     console.log(process.uptime()); // 输出的时间大于3秒
-   }, 3000);
-   ```
+console.log(process.pid); // ppid，执行完成之后会被回收
+console.log(process.uptime()); // 从执行开始到结束后的时间
+setTimeout(() => {
+  console.log(process.uptime()); // 输出的时间大于3秒
+}, 3000);
+```
 
-   执行结果：
+执行结果：
 
-   ![1665229488066](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367831-733164.png)
+![1665229488066](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367831-733164.png)
 
-### 2、获取执行进程操作信息
+### 3.2、获取执行进程操作信息
 
-1. 获取事件信息
+#### 3.2.1、获取事件信息
 
-   ```js
-   // 1.获取事件信息
-   process.on('exit', (code) => {
-     // 在脚本执行完成后进行，同样是异步操作
-     console.log('exit:' + code);
-     setTimeout(() => {
-       console.log(123);
-     }, 1000);
-   });
+```js
+// 1.获取事件信息
+process.on('exit', (code) => {
+  // 在脚本执行完成后进行，同样是异步操作
+  console.log('exit:' + code);
+  setTimeout(() => {
+    console.log(123);
+  }, 1000);
+});
 
-   process.on('beforeExit', (code) => {
-     // 在脚本执行完成前进行，同样是异步操作
-     console.log('before exit' + code);
-   });
-   console.log('代码执行完了');
-   ```
+process.on('beforeExit', (code) => {
+  // 在脚本执行完成前进行，同样是异步操作
+  console.log('before exit' + code);
+});
+console.log('代码执行完了');
+```
 
-   代码执行结果：
+代码执行结果：
 
-   ![1665230033535](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367835-19b627.png)
+![1665230033535](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367835-19b627.png)
 
-   <u class="highlight">注意：</u>process.on监听的回调事件不能执行`异步代码`
+👋注意：<u>process.on监听的回调事件不能执行`异步代码`</u>
 
-   ![1665230191795](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367839-9a340a.png)
+![1665230191795](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367839-9a340a.png)
 
-2. 标准的输入、输出、
+#### 3.2.2、标准的输入、输出、
 
-   ```js
-   // 5 标准的输出 输入 错误
-   console.log = function (data) {
-     process.stdout.write('---' + data + '\n'); // 可写流
-   };
-   console.log(888);
+```js
+// 5 标准的输出 输入 错误
+console.log = function (data) {
+  process.stdout.write('---' + data + '\n'); // 可写流
+};
+console.log(888);
 
-   const testFile = path.join(__dirname, 'test.txt');
+const testFile = path.join(__dirname, 'test.txt');
 
-   // 创建一个可读流通过pipe给到process.stdout输出到终端面板上
-   fs.createReadStream(testFile).pipe(process.stdout);
+// 创建一个可读流通过pipe给到process.stdout输出到终端面板上
+fs.createReadStream(testFile).pipe(process.stdout);
 
-   // 创建一个输入同时对应输出
-   process.stdin.pipe(process.stdout);
+// 创建一个输入同时对应输出
+process.stdin.pipe(process.stdout);
 
-   process.stdin.setEncoding('utf-8'); // 设置编码
-   process.stdin.on('readable', () => {
-     let chunk = process.stdin.read();
-     if (chunk !== 'null') {
-       process.stdout.write('data:' + chunk);
-     }
-   });
-   ```
+process.stdin.setEncoding('utf-8'); // 设置编码
+process.stdin.on('readable', () => {
+  let chunk = process.stdin.read();
+  if (chunk !== 'null') {
+    process.stdout.write('data:' + chunk);
+  }
+});
+```
 
-   代码执行结果：
+代码执行结果：
 
-   ![1665231370113](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367846-54a635.png)
+![1665231370113](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367846-54a635.png)
 
 ## 四、全局变量Buffer
 
-### 1、什么是Buffer
+### 4.1、什么是Buffer
 
 首先Buffer是nodejs全局上的一个內置模块，可以直接在不用require引入就可以直接调用的模块。
 
@@ -312,15 +312,15 @@ Buffer的作用就是让JavaScript可以直接操作二进制数据，关于Buff
 
 反之，向磁盘存储数据也一样，将上面描述的数据读取操作反过来就是文件写操作。文件的读写操作就被称为IO。（在nodejs中负责处理文件操作的FS模块，就是nodejs读写操作“IO”的具体表达）
 
-### 2、Bufffer结构
+### 4.2、Bufffer结构
 
-1. **Buffer模块结构**
+#### 4.2.1、Buffer模块结构
 
 前面说过Buffer是全局作用域上的一个模块，可以理解为它是全局上的一个属性，这个属性引用着Bufeer模块对象，从这个角度来说它是一个JavaScript模块。但是JavaScript自身不具备直接操作二进制文件的能力，所以实质上Buffer在nodejs底层上还有一个C++模块。这是因为IO操作是非常消耗性能的，所以nodejs在Buffer模块构建设计上，将性能部分用C++实现，将非性能部分用JavaScript实现。如图所示：
 
 ![buffer](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367850-71ba5f.png)
 
-2. **Buffer对象结构**
+#### 4.2.2、Buffer对象结构
 
 Buffer在nodejs的javaScript中是一个对象，与数组非常类似，它的元素为16进制的两位数，即0到255的数值。
 
@@ -333,51 +333,51 @@ console.log(buf);
 
 不同编码的字符占用的元素各不相同，utf-8编码汉字占用3个元素，字母和半角标点符号占用1个元素，所以上面的str转成Buffer由21个元素组成。根数组一样，Buffer可以使用length属性获取长度，也可以通过下标访问元素，构造Buffer对象时也可以和数组一样直接设置长度。
 
-### 3、Buffer对象的API解析
+### 4.3、Buffer对象的API解析
 
-#### 3.1、创建buffer对象
+#### 4.3.1、创建buffer对象
 
-- Buffer.from()
+Buffer.from()
 
-  > 支持String、Array、ArrayBuffer、Object、buffer五种类型，也就是可以将这五种JavaScript类型的数据转换成十六进制数据，
-  > 但部分类型并不能完全支持。然后就是可选参数包括：编码(encoding)、偏移量、长度，但不是五种类型数据所可选的参数不是一样的
+> 支持String、Array、ArrayBuffer、Object、buffer五种类型，也就是可以将这五种JavaScript类型的数据转换成十六进制数据，
+> 但部分类型并不能完全支持。然后就是可选参数包括：编码(encoding)、偏移量、长度，但不是五种类型数据所可选的参数不是一样的
 
-  ```js
-  let bufStr = Buffer.from('落霞与孤鹜齐飞，秋水共长天一色'); //默认编码utf-8。web标准编码也是utf-8，所以不需要设置编码模式，如果js不是标准编码需要注意设置编码
-  let bufStrBase64 = Buffer.from('6Iez6Iul5pil5ZKM5pmv5piO77yM5rOi5r6c5LiN5oOK', 'base64'); //'至若春和景明，波澜不惊'的base64编码
-  let buff = Buffer.from('5oiR5Y+r6JSh5YWJ6L6J', 'base64');
-  console.log(buff.toString());
-  console.log('5oiR5Y+r6JSh5YWJ6L6J'.toString());
-  console.log(bufStrBase64);
-  console.log(bufStr.toString()); //同样toString将Buffer对象转换成字符串时，也是默认utf-8编码
-  console.log(bufStrBase64.toString('base64')); //如果使用时依然需要base64编码，还是要使用base编码转换字符串
-  console.log(bufStrBase64.toString()); //如果使用时使用utf8编码模式，就可以直接使用默认编码
-  ```
+```js
+let bufStr = Buffer.from('落霞与孤鹜齐飞，秋水共长天一色'); //默认编码utf-8。web标准编码也是utf-8，所以不需要设置编码模式，如果js不是标准编码需要注意设置编码
+let bufStrBase64 = Buffer.from('6Iez6Iul5pil5ZKM5pmv5piO77yM5rOi5r6c5LiN5oOK', 'base64'); //'至若春和景明，波澜不惊'的base64编码
+let buff = Buffer.from('5oiR5Y+r6JSh5YWJ6L6J', 'base64');
+console.log(buff.toString());
+console.log('5oiR5Y+r6JSh5YWJ6L6J'.toString());
+console.log(bufStrBase64);
+console.log(bufStr.toString()); //同样toString将Buffer对象转换成字符串时，也是默认utf-8编码
+console.log(bufStrBase64.toString('base64')); //如果使用时依然需要base64编码，还是要使用base编码转换字符串
+console.log(bufStrBase64.toString()); //如果使用时使用utf8编码模式，就可以直接使用默认编码
+```
 
-- Buffer.alloc(size[, fill[, encoding]])
+Buffer.alloc(size[, fill[, encoding]])
 
-  > 这是一个创建Buffer对象并对内存中的数据做初始化处理，并且可以通过fill可选参数指定初识化信息，和通过encoding指定初识化数据的编码类型。
+> 这是一个创建Buffer对象并对内存中的数据做初始化处理，并且可以通过fill可选参数指定初识化信息，和通过encoding指定初识化数据的编码类型。
 
-  ```js
-  let buf64 = Buffer.alloc(44, 5, 'base64');
-  let bufUtf8 = Buffer.alloc(33, 2, 'utf8');
-  console.log(buf64);
-  console.log(bufUtf8);
-  buf64.write('6Iez6Iul5pil5ZKM5pmv5piO77yM5rOi5r6c5LiN5oOK', 'base64'); //需要注意的是这里写入还需要设置写入数据的编码，前面alloc的编码是指定初识化数据的
-  bufUtf8.write('落霞与孤鹜齐飞，秋水共长天一色'); //这里是默认的utf-8所以在写入时就不需要再指定了
-  console.log(buf64);
-  console.log(bufUtf8);
-  console.log(buf64.toString());
-  console.log(bufUtf8.toString());
-  ```
+```js
+let buf64 = Buffer.alloc(44, 5, 'base64');
+let bufUtf8 = Buffer.alloc(33, 2, 'utf8');
+console.log(buf64);
+console.log(bufUtf8);
+buf64.write('6Iez6Iul5pil5ZKM5pmv5piO77yM5rOi5r6c5LiN5oOK', 'base64'); //需要注意的是这里写入还需要设置写入数据的编码，前面alloc的编码是指定初识化数据的
+bufUtf8.write('落霞与孤鹜齐飞，秋水共长天一色'); //这里是默认的utf-8所以在写入时就不需要再指定了
+console.log(buf64);
+console.log(bufUtf8);
+console.log(buf64.toString());
+console.log(bufUtf8.toString());
+```
 
-- Buffer.allocUnsafe(size)与Buffer.allocUnsafeSlow(size)
+Buffer.allocUnsafe(size)与Buffer.allocUnsafeSlow(size)
 
-  这两个方法与alloc的差别在读写上没有什么差别，它们与alloc的差别就是内存的使用和初识化内存数据这两个问题上，由于不做初识化处理它们只需要接收一个参数size设置使用内存的空间大小就可以了。
+这两个方法与alloc的差别在读写上没有什么差别，它们与alloc的差别就是内存的使用和初识化内存数据这两个问题上，由于不做初识化处理它们只需要接收一个参数size设置使用内存的空间大小就可以了。
 
-#### 3.2、Buffer对象的属性和方法，以及一些应用：
+#### 4.3.2、Buffer对象的属性和方法，以及一些应用
 
-- Buffer.concat(list[, totalLength])
+Buffer.concat(list[, totalLength])
 
 > 这是一个拼接Buffer的静态方法，参数list是所有拼接的Buffer对象的列表，totalLength是指定拼接成新的Buffer对象的长度，如果长度不够则会忽略后面数据。
 
@@ -389,7 +389,7 @@ console.log(buf);
 console.log(buf.toString()); // 落霞与孤鹜齐飞秋水共长天一色
 ```
 
-- Buffer.isBuffer(obj)
+Buffer.isBuffer(obj)
 
 > 这是一个Buffer静态方法，用来判断对选是否是一个Buffer对象。
 
@@ -400,7 +400,7 @@ console.log(Buffer.isBuffer(buf21));
 console.log(Buffer.isBuffer(obj21));
 ```
 
-- Buffer.keys()
+Buffer.keys()
 
 ```js
 let buf31 = Buffer.from('落霞与孤鹜齐飞,秋水共长天一色');
@@ -410,7 +410,7 @@ for (const key of buf.keys()) {
 }
 ```
 
-### 4、解决Buffer拼接时导致的乱码问题
+### 4.4、解决Buffer拼接时导致的乱码问题
 
 使用Buffer除了性能编码等需要非常属性以外，还需要注意读取Buffer后拼接导致的乱码问题，比如下面的示例：
 
@@ -454,7 +454,7 @@ console.log(str); // 至若春和景明，波澜不惊，上下天光，一碧�
 
 > Node内置模块，用于处理文件/目录的路径
 
-### 1、常见api说明
+### 5.1、常见api说明
 
 - basename() 获取路径中基础名称
 - dirname() 获取路径中目录名称
@@ -466,9 +466,9 @@ console.log(str); // 至若春和景明，波澜不惊，上下天光，一碧�
 - format() 序列化路径
 - normalize() 规范化路径
 
-### 2、代码实操
+### 5.2、代码实操
 
-#### 2.1、获取路径中的基础名称
+#### 5.2.1、获取路径中的基础名称
 
 ```js
 /* 1.获取路径中的基础名称 */
@@ -490,7 +490,7 @@ console.log(path.basename('/a/b/c/')); // 输出：c
 
 ![1665232397358](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367860-e36e9c.png)
 
-#### 2.2、获取目录名
+#### 5.2.2、获取目录名
 
 ```js
 /* 2.获取目录名 */
@@ -506,7 +506,7 @@ console.log(path.dirname('/a/b/c/')); // 输出：/a/b
 
 ![1665232574541](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367865-f77215.png)
 
-#### 2.3、获取路径的扩展名
+#### 5.2.3、获取路径的扩展名
 
 ```js
 /* 3. 获取路径的扩展名 */
@@ -524,7 +524,7 @@ console.log(path.extname('/a/b/index.html.')); // 输出："."
 
 ![1665232756309](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367870-c0d3fa.png)
 
-#### 2.4、解析路径
+#### 5.2.4、解析路径
 
 ```js
 /* 4.解析路径 */
@@ -543,7 +543,7 @@ console.log(obj, currentPath.name, '<___obj');
 
 ![1665235855199](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367873-f4e5c3.png)
 
-2.5、序列化–重新生成路径
+#### 5.2.5、序列化–重新生成路径
 
 ```js
 const obj = path.parse('./a/b/c/index.html');
@@ -554,7 +554,7 @@ console.log(path.format(obj));
 
 ![1665236100272](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367878-0b8da2.png)
 
-#### 2.5、判断当前路径是否为绝对
+#### 5.2.6、判断当前路径是否为绝对
 
 ```js
 /* 6.判断当前路径是否为绝对 */
@@ -570,7 +570,7 @@ console.log(path.isAbsolute('../foo')); // 输出：false
 
 ![1665236375610](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367885-73754f.png)
 
-#### 2.6、拼接路径
+#### 5.2.7、拼接路径
 
 ```js
 /* 7. 拼接路径 */
@@ -585,7 +585,7 @@ console.log(path.join('/a/b', 'c', '', 'index.html')); // 输出：\a\b\c\index.
 
 ![1665236575012](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367891-648283.png)
 
-2.7、规范化路径
+#### 5.2.8、规范化路径
 
 ```js
 /* 8.规范化路径 */
@@ -600,7 +600,7 @@ console.log(path.normalize('a//\b/c../d')); // 输出：a\c..\d
 
 ![1665236989356](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367896-bbdbd0.png)
 
-#### 2.7、绝对路径
+#### 5.2.9、绝对路径
 
 ```js
 /* 9.绝对路径 */
@@ -621,7 +621,7 @@ console.log(path.resolve('/a', 'b')); //  输出：D:\a\b
 
 ## 六、核心模块fs
 
-### 1、权限位、标识符、文件描述符
+### 6.1、权限位、标识符、文件描述符
 
 1. 权限位：用户对于文件所具备的操作的权限
 
@@ -638,9 +638,9 @@ console.log(path.resolve('/a', 'b')); //  输出：D:\a\b
 
 3. fd就是操作系统分配给被打开文化的标识
 
-### 2、文件操作
+### 6.2、文件操作
 
-#### 2.1、文件读写与拷贝操作
+#### 6.2.1、文件读写与拷贝操作
 
 > readFile： 从指定文件中读取数据
 >
@@ -714,7 +714,7 @@ fs01.watchFile(path.resolve(__dirname, 'data.txt'), { interval: 1000 }, (curr, p
 });
 ```
 
-#### 2.2、文件打开与关闭
+#### 6.2.2、文件打开与关闭
 
 ```js
 /*
@@ -735,7 +735,7 @@ fs.open(path.resolve(__dirname, 'data.txt'), 'r', (err, fd) => {
 });
 ```
 
-#### 2.3、大文件读写操作
+#### 6.2.3、大文件读写操作
 
 > readFile进行读取文件适合小文件操作，大文件需要依靠流进行优化读写
 
@@ -784,7 +784,7 @@ fs.open('b.txt', 'w', (err, wfd) => {
 });
 ```
 
-#### 2.4、文件拷贝自定义操作
+#### 6.2.4、文件拷贝自定义操作
 
 ```j
 const fs = require('fs')
@@ -841,7 +841,7 @@ fs.open(path.resolve(__dirname,'a.txt'),'r',(err,rfd)=>{
 })
 ```
 
-#### 2.5、目录操作api
+#### 6.2.5、目录操作api
 
 > access：判断文件或目录是否具有操作权限
 >
@@ -950,7 +950,7 @@ Stream流是使您可以连续地从源读取数据或将数据写入目标的�
 1. error - 接收或写入数据时发生任何错误。
 1. finish - 当所有数据都已刷新到系统时，将触发此事件
 
-### 1、读取流
+### 7.1、读取流
 
 ```js
 const fs = require('fs');
@@ -975,7 +975,7 @@ readStream.on('error', function (err) {
 console.log('Program Ended');
 ```
 
-### 2、写入流
+### 7.2、写入流
 
 ```js
 const fs = require('fs');
@@ -1002,7 +1002,7 @@ writerStream.on('error', function (err) {
 console.log('Program Ended');
 ```
 
-### 3、管道流
+### 7.3、管道流
 
 ```js
 /* 管道流 */
@@ -1023,9 +1023,9 @@ console.log('Program Ended');
 
 ## 八、Events模块
 
-### 1、events模块
+### 8.1、events模块
 
-#### 1.1、on/emit
+#### 8.1.1、on/emit
 
 on可以订阅多个事件
 
@@ -1048,7 +1048,7 @@ ev.emit('click');
 
 ![1678018115722](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685368256-7d27ef.png)
 
-#### 1.2、once
+#### 8.1.2、once
 
 once只能触发一次
 
@@ -1070,7 +1070,7 @@ ev.emit('click');
 
 ![1678018287168](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685368262-9d086c.png)
 
-#### 1.3、off
+#### 8.1.3、off
 
 ```js
 let cbFn = () => {
@@ -1082,7 +1082,7 @@ ev.off('scroll', cbFn); // 解绑事件
 ev.emit('scroll'); // 不执行
 ```
 
-#### 1.4、传参
+#### 8.1.4、传参
 
 ```js
 let cbFun = (...args) => {
@@ -1092,7 +1092,7 @@ ev.on('touch', cbFun);
 ev.emit('touch', 1, 25, 5);
 ```
 
-### 2、模拟发布订阅
+### 8.2、模拟发布订阅
 
 ```js
 /**
@@ -1136,9 +1136,9 @@ ps.publish('事件1');
 ps.publish('事件2');
 ```
 
-### 3、浏览器和node的事件循环差异
+### 8.3、浏览器和node的事件循环差异
 
-#### 3.1、浏览器事件循环
+#### 8.3.1、浏览器事件循环
 
 ```js
 /**
@@ -1200,7 +1200,7 @@ Promise.resolve().then(() => {
  */
 ```
 
-#### 3.2、node的事件循环
+#### 8.3.2、node的事件循环
 
 ```js
 /**
@@ -1255,30 +1255,30 @@ console.log('end');
 
 > Node.js Zlib模块用于提供压缩和解压缩（zip和unzip）功能。它是使用Gzip和deflate / inflate实现的。
 
-1. 压缩
+### 9.1、压缩
 
-   ```js
-   const zlib = require('zlib');
-   const fs = require('fs');
-   const path = require('path');
+```js
+const zlib = require('zlib');
+const fs = require('fs');
+const path = require('path');
 
-   /* 压缩 */
-   const gzip = zlib.createGzip();
-   const inp = fs.createReadStream(path.resolve(__dirname, 'input.txt'));
-   console.log(inp);
-   const out = fs.createWriteStream(path.resolve(__dirname, 'input.gz'));
-   inp.pipe(gzip).pipe(out);
-   ```
+/* 压缩 */
+const gzip = zlib.createGzip();
+const inp = fs.createReadStream(path.resolve(__dirname, 'input.txt'));
+console.log(inp);
+const out = fs.createWriteStream(path.resolve(__dirname, 'input.gz'));
+inp.pipe(gzip).pipe(out);
+```
 
-1. 解压
+### 9.2、解压
 
-   ```js
-   const unzip = zlib.createUnzip();
-   const inp = fs.createReadStream('input.gz');
-   const out = fs.createWriteStream('input2.txt');
+```js
+const unzip = zlib.createUnzip();
+const inp = fs.createReadStream('input.gz');
+const out = fs.createWriteStream('input2.txt');
 
-   inp.pipe(unzip).pipe(out);
-   ```
+inp.pipe(unzip).pipe(out);
+```
 
 ## 十、url模块
 
@@ -1360,7 +1360,7 @@ console.log(os.networkInterfaces()); // 获得网络接口列表。
 
 ## 十三、http和https模块
 
-### 1、http搭建服务器
+### 13.1、http搭建服务器
 
 ```js
 const http = require('http');
@@ -1382,78 +1382,78 @@ server.listen(9527, function () {
 });
 ```
 
-### 2、代理客户端
+### 13.2、代理客户端
 
-1. 搭建服务器–agent-server.js
+#### 13.2.1、搭建服务器–agent-server.js
 
-   ```js
-   const http = require('http');
-   const url = require('url');
+```js
+const http = require('http');
+const url = require('url');
 
-   const server = http.createServer((req, res) => {
-     console.log('请求进来了');
-     let { pathname, query } = url.parse(req.url);
-     console.log(pathname, '----', query);
+const server = http.createServer((req, res) => {
+  console.log('请求进来了');
+  let { pathname, query } = url.parse(req.url);
+  console.log(pathname, '----', query);
 
-     // post
-     let arr = [];
-     req.on('data', (data) => {
-       arr.push(data);
-     });
-     req.on('end', () => {
-       console.log(Buffer.concat(arr).toString());
-       console.log(req.headers['content-type']);
-       let obj = Buffer.concat(arr).toString();
-       if (req.headers['content-type'] === 'application/json') {
-         let a = JSON.parse(obj);
-         a.add = '计算机';
-         res.end(JSON.stringify(a));
-       }
-     });
-   });
+  // post
+  let arr = [];
+  req.on('data', (data) => {
+    arr.push(data);
+  });
+  req.on('end', () => {
+    console.log(Buffer.concat(arr).toString());
+    console.log(req.headers['content-type']);
+    let obj = Buffer.concat(arr).toString();
+    if (req.headers['content-type'] === 'application/json') {
+      let a = JSON.parse(obj);
+      a.add = '计算机';
+      res.end(JSON.stringify(a));
+    }
+  });
+});
 
-   server.listen(9528, () => {
-     console.log('server is running');
-   });
-   ```
+server.listen(9528, () => {
+  console.log('server is running');
+});
+```
 
-1. 模拟客户端向agent-server.js构建的服务器进行请求
+#### 13.2.2、模拟客户端向agent-server.js构建的服务器进行请求
 
-   ```js
-   const http = require('http');
+```js
+const http = require('http');
 
-   let options = {
-     host: 'localhost',
-     port: 9528,
-     path: '/?a=1',
-     method: 'POST',
-     headers: {
-       'Content-type': 'application/json',
-     },
-   };
+let options = {
+  host: 'localhost',
+  port: 9528,
+  path: '/?a=1',
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+  },
+};
 
-   const req = http.request(options, (res) => {
-     let arr = [];
-     res.on('data', (data) => {
-       arr.push(data);
-     });
-     res.on('end', () => {
-       console.log(Buffer.concat(arr).toString());
-     });
-   });
-   // req.end('hello, jack!')
-   req.end('{"name":"cgh"}');
-   ```
+const req = http.request(options, (res) => {
+  let arr = [];
+  res.on('data', (data) => {
+    arr.push(data);
+  });
+  res.on('end', () => {
+    console.log(Buffer.concat(arr).toString());
+  });
+});
+// req.end('hello, jack!')
+req.end('{"name":"cgh"}');
+```
 
-   运行js文件：
+运行js文件：
 
-   ![1667748931201](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367932-03763d.png)
+![1667748931201](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367932-03763d.png)
 
-   agent-server.js打印信息
+agent-server.js打印信息
 
-   ![1667748946645](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367935-af96c8.png)
+![1667748946645](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367935-af96c8.png)
 
-### 3、https请求接口（代理客户端跨域）
+### 13.3、https请求接口（代理客户端跨域）
 
 > 通过客户端请求node服务，通过node去请求目标服务器，返回结果统一返回给客户端
 >
@@ -1513,9 +1513,9 @@ function httpPost(cb) {
 
 ## 十四、Node的模块化支持
 
-​ 早期Javascript这门语言是没有模块化的概念的，直到nodejs诞生，才把模块系统引入js。nodejs使用的是CJS（Commonjs）规范，也就是我们平时所见的`require`、`module.exports`。而js语言标准的模块规范是`ESM（Ecmascript Module）`，也就是我们在前端工程大量使用的`import`、`export`语法。nodejs已经在逐步支持ESM，目前很多主流浏览器也已经原生支持ESM。
+早期Javascript这门语言是没有模块化的概念的，直到nodejs诞生，才把模块系统引入js。nodejs使用的是CJS（Commonjs）规范，也就是我们平时所见的`require`、`module.exports`。而js语言标准的模块规范是`ESM（Ecmascript Module）`，也就是我们在前端工程大量使用的`import`、`export`语法。nodejs已经在逐步支持ESM，目前很多主流浏览器也已经原生支持ESM。
 
-### 1、Node对模块的区分
+### 14.1、Node对模块的区分
 
 在 Ndoe.js 12.17.0 版本之后 ， nodejs按以下流程判断模块系统是用ESM还是CJS：
 
@@ -1523,14 +1523,14 @@ function httpPost(cb) {
 
 <span className="highlight">使用：</span>
 
-- common.js
+common.js
 
 ```js
 const path = require('path');
 console.log(path.resolve(__filename)); // D:\Users\Victor\Desktop\my-gitee\node\src\15-module\common.js
 ```
 
-- es6.js –需要设置package.json的 type = module标识
+es6.js –需要设置package.json的 type = module标识
 
 ```js
 import path from 'node:path';
@@ -1538,7 +1538,7 @@ import path from 'node:path';
 console.log(path.resolve()); // D:\Users\Victor\Desktop\my-gitee\node\src\15-module
 ```
 
-- esm.mjs
+esm.mjs
 
 ```js
 import path, { basename } from 'node:path';
@@ -1546,18 +1546,18 @@ import path, { basename } from 'node:path';
 console.log(path.resolve()); // D:\Users\Victor\Desktop\my-gitee\node\src\15-module
 ```
 
-- m.cjs
+m.cjs
 
 ```js
 const path = require('path');
 console.log(path.resolve(__filename)); // D:\Users\Victor\Desktop\my-gitee\node\src\15-module\m.cjs
 ```
 
-### 2、模块入口
+### 14.2、模块入口
 
-​ 我们知道有很多第三方库同时支持在nodejs和浏览器环境执行，这种库通常会打包出CJS和ESM两种产物，CJS产物给nodejs用，ESM产物给webpack之类的bundler使用。所以，当我们使用require和import导入模块moduleA时，入口文件路径往往是不一样的。那么问题来了，如何让nodejs或者bundler找到对应的入口文件呢？
+我们知道有很多第三方库同时支持在nodejs和浏览器环境执行，这种库通常会打包出CJS和ESM两种产物，CJS产物给nodejs用，ESM产物给webpack之类的bundler使用。所以，当我们使用require和import导入模块moduleA时，入口文件路径往往是不一样的。那么问题来了，如何让nodejs或者bundler找到对应的入口文件呢？
 
-​ 一般我们通过package.json的main字段定义CJS的入口文件，module字段定义ESM的入口文件。
+一般我们通过package.json的main字段定义CJS的入口文件，module字段定义ESM的入口文件。
 
 ```json
 {
@@ -1569,7 +1569,7 @@ console.log(path.resolve(__filename)); // D:\Users\Victor\Desktop\my-gitee\node\
 
 这样，nodejs和bundler就知道分别从./dist/cjs/index.js和./dist/esm/index.js导入模块了。
 
-​ Node.js v12.16.0给package.json增加了exports字段，允许我们在不同条件下匹配不同的路径。exports有很多用处，包括区分nodejs还是browser环境、区分development还是production环境、限制访问私有路径等。这里重点讲它对CJS和ESM模块导入的影响。
+Node.js v12.16.0给package.json增加了exports字段，允许我们在不同条件下匹配不同的路径。exports有很多用处，包括区分nodejs还是browser环境、区分development还是production环境、限制访问私有路径等。这里重点讲它对CJS和ESM模块导入的影响。
 
 我们可以这么定义：
 
@@ -1585,15 +1585,15 @@ console.log(path.resolve(__filename)); // D:\Users\Victor\Desktop\my-gitee\node\
 }
 ```
 
-​ 当使用require('moduleA')时，实际导入的是node_modules/moduleA/dist/cjs/index.js，而使用import moduleA from 'moduleA'时，导入的是node_modules/moduleA/dist/esm/index.js。
+当使用require('moduleA')时，实际导入的是node_modules/moduleA/dist/cjs/index.js，而使用import moduleA from 'moduleA'时，导入的是node_modules/moduleA/dist/esm/index.js。
 
-​ exports的优先级比main和module高，也就是说，匹配上exports的路径就不会使用main和module的路径。
+exports的优先级比main和module高，也就是说，匹配上exports的路径就不会使用main和module的路径。
 
-​ 咋一看好像exports并没有给CJS和ESM带来多少新东西。的确，普通的场景来说，main和module字段已经满足需求，但是如果要针对不同路径或者环境引入不同的CJS或者ESM模块，exports就显然更灵活。而且，exports是新规范，我们也有必要了解甚至在工程里尝试使用。
+咋一看好像exports并没有给CJS和ESM带来多少新东西。的确，普通的场景来说，main和module字段已经满足需求，但是如果要针对不同路径或者环境引入不同的CJS或者ESM模块，exports就显然更灵活。而且，exports是新规范，我们也有必要了解甚至在工程里尝试使用。
 
-​ 当然，这里还是建议大家保留main和module字段，用来兼容不支持exports字段的nodejs版本或bundler。
+当然，这里还是建议大家保留main和module字段，用来兼容不支持exports字段的nodejs版本或bundler。
 
-### 3、区别
+### 14.3、区别
 
 1. 特性被移除
 
@@ -1639,9 +1639,9 @@ console.log('filename: ', filename); // filename: D:\Users\Victor\Desktop\my-git
 
 4. 动态VS静态
 
-   ​ 我们都知道javascript是一门JIT语言，v8引擎拿到js代码后会边编译边执行，在编译的时候v8就给import导入的模块建立静态的引用，并且不能在运行时不能更改。所以import都放在文件开头，不能放在条件语句里。
+   我们都知道javascript是一门JIT语言，v8引擎拿到js代码后会边编译边执行，在编译的时候v8就给import导入的模块建立静态的引用，并且不能在运行时不能更改。所以import都放在文件开头，不能放在条件语句里。
 
-   ​ 而require导入模块是在运行时才对值进行拷贝，所以require的路径可以使用变量，并且require可以放在代码的任何位置。
+   而require导入模块是在运行时才对值进行拷贝，所以require的路径可以使用变量，并且require可以放在代码的任何位置。
 
 5. 异步VS同步
 

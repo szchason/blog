@@ -10,7 +10,7 @@ last_update:
 
 ## 一、创建Angular项目
 
-### 1、使用官方脚手架创建项目
+### 1.1、使用官方脚手架创建项目
 
 安装官方脚手架
 
@@ -31,17 +31,17 @@ cd my-app
 ng serve --open
 ```
 
-### 2、项目架构分析
+### 1.2、项目架构分析
 
-#### 2.1、主要项目文件架构分析
+#### 1.2.1、主要项目文件架构分析
 
 ![image-20230612203358179](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230612203358179.png)
 
-#### 2.2、angular.json文件的主要配置分析
+#### 1.2.2、angular.json文件的主要配置分析
 
 ![image-20230612204141442](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230612204141442.png)
 
-#### 2.3、浏览器端项目挂载流程
+#### 1.2.3、浏览器端项目挂载流程
 
 ![image-20230625194614317](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625194614317.png)
 
@@ -68,7 +68,7 @@ export class AppModule {}
 
 ## 二、Angular模板语法
 
-### 1、模板语句
+### 2.1、模板语句
 
 > 模板表达式会产生一个值，它出现在双花括号 `{{ }}` 中。 Angular 解析该表达式并将其赋值给绑定目标的某个属性。目标可以是 HTML 元素、组件或指令。
 
@@ -117,13 +117,13 @@ export class AppComponent implements OnInit {
 
 ![image-20230613202901065](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230613202901065.png)
 
-### 2、绑定
+### 2.2、绑定
 
-#### 2.1、属性绑定
+#### 2.2.1、属性绑定
 
 > 要绑定到元素的属性，请将其括在方括号 `[]` 内，该括号会将属性标为目标属性。目标属性就是你要对其进行赋值的 DOM 属性
 
-1. 普通属性绑定
+①、普通属性绑定
 
 使用`【属性名称】`绑定DOM对象属性
 
@@ -141,7 +141,7 @@ export class AppComponent implements OnInit {
 <td [attr.colspan]="'1'">td</td>
 ```
 
-2. class属性绑定
+②、class属性绑定
 
 使用`【class.类名】`进行绑定
 
@@ -159,7 +159,7 @@ export class AppComponent implements OnInit {
 <div [ngClass]="{'active': active, 'error': true}">ngClass进行的绑定</div>
 ```
 
-3. style属性绑定
+③、style属性绑定
 
 使用`【style.样式属性】`进行绑定
 
@@ -173,7 +173,7 @@ export class AppComponent implements OnInit {
 <div [ngStyle]="{'backgroundColor': 'blue'}">使用ngStyle进行绑定</div>
 ```
 
-#### 2.2、事件绑定
+#### 2.2.2、事件绑定
 
 > 要绑定到事件，请使用 Angular 的事件绑定语法。此语法由等号左侧括号内的目标事件名和右侧引号内的模板语句组成。
 
@@ -189,9 +189,9 @@ export class AppComponent implements OnInit {
 <div>事件绑定：<button (click)="clickHandler($event)">点击</button></div>
 ```
 
-#### 2.3、双向绑定
+#### 2.2.3、双向绑定
 
-1. 模拟类似一个vue的v-model原理
+> 模拟类似一个vue的v-model原理
 
 在html的代码中：
 
@@ -218,9 +218,9 @@ export class AppComponent implements OnInit {
   }
 ```
 
-### 3、基础指令
+### 2.3、基础指令
 
-#### 3.1、判断指令和循环指令
+#### 2.3.1、判断指令和循环指令
 
 ```html
 <h4>3、基础指令</h4>
@@ -233,7 +233,7 @@ export class AppComponent implements OnInit {
 </div>
 ```
 
-#### 3.2、ngStyle和ngClass指令
+#### 2.3.2、ngStyle和ngClass指令
 
 ```typescript
  <div>
@@ -252,30 +252,30 @@ styles = {
 courseArr = ['html', 'css', 'javascript'];
 ```
 
-### 4、管道
+### 2.4、管道
 
 > 要应用管道，请如下所示在模板表达式中使用管道操作符（`|`），紧接着是该管道的名字
 
-#### 4.1、内置管道
+#### 2.4.1、内置管道
 
 ```html
 <div>内置管道：{{ 'Angular' | uppercase }}</div>
 // 直接调用即可
 ```
 
-#### 4.2、管道参数
+#### 2.4.2、管道参数
 
 ```html
 <div>管道参数：{{ 'Angular' | slice:0:5 }}</div>
 ```
 
-#### 4.3、管道链
+#### 2.4.3、管道链
 
 ```html
 <div>管道链：{{ 'Angular' | slice:0:5 | uppercase }}</div>
 ```
 
-#### 4.4、自定义管道
+#### 2.4.4、自定义管道
 
 使用Angular创建自定义管道：
 
@@ -308,11 +308,11 @@ export class AppComponent {
 }
 ```
 
-### 5、模板引用变量
+### 2.5、模板引用变量
 
 > 在模板中，要使用井号 `#` 来声明一个模板变量。下列模板变量 `#phone` 语法在 `<input>` 元素上声明了一个名为 `phone `的变量
 
-1. 定义一个模板引用变量在模板中获取
+①、定义一个模板引用变量在模板中获取
 
 模板中定义：
 
@@ -338,7 +338,7 @@ getInpVal(text: any) {
 
 ![image-20230628220536961](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230628220536961.png)
 
-2. 定义模板变量在组件类使用
+②、定义模板变量在组件类使用
 
 模板的中定义一个变量：
 
@@ -365,19 +365,19 @@ export class AppComponent implements AfterViewInit {
 
 ## 三、Angular表单
 
-​ Angular中有两种表单API，分别是模板式表单和响应式表单。模板式表单是通过Angular提供的指令在模板中对表单进行操作的，由于受限于HTML的语法功能，模板式表单只适合一些简单的表单使用场景。而响应式表单是通过组件中自定义数据模型实现对表单的操控。所以更适合复杂表单功能。
+Angular中有两种表单API，分别是模板式表单和响应式表单。模板式表单是通过Angular提供的指令在模板中对表单进行操作的，由于受限于HTML的语法功能，模板式表单只适合一些简单的表单使用场景。而响应式表单是通过组件中自定义数据模型实现对表单的操控。所以更适合复杂表单功能。
 
-​ 模板式表单存在于`FormModule`模块中，响应式表单存在于`ReactiveFormModule`模块中，在使用的时候一定要将对应的模块import到`app.module.ts`根模块中。
+模板式表单存在于`FormModule`模块中，响应式表单存在于`ReactiveFormModule`模块中，在使用的时候一定要将对应的模块import到`app.module.ts`根模块中。
 
 ![image-20230620202910897](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620202910897.png)
 
-### 1、响应式表单
+### 3.1、响应式表单
 
-#### 1.1、FormControl、FormGroup、FormArray
+#### 3.1.1、FormControl、FormGroup、FormArray
 
 定义表单的数据模型需要用到Angular提供的三个类型`FormControl`、`FormGroup`、`FormArray`。
 
-1. FormControl
+①、FormControl
 
 `FormControl`是表单模型的最小单位，也就相当于数据模型对象中的一个属性，`FormControl`的构造函数可以传入一个参数，表示默认值，例如绑定在`input`元素上时，就是该元素的默认输入。
 
@@ -385,7 +385,7 @@ export class AppComponent implements AfterViewInit {
 account: new FormControl('账户'),
 ```
 
-2. FormGroup
+②、FormGroup
 
 `FormGroup`从语义上看就是代表整个表单，但是也可以保存表单的一部分，它里面可以包含多个`FormControl`，可以包含多个`FormGroup`。
 
@@ -399,7 +399,7 @@ form: FormGroup = new FormGroup({
 });
 ```
 
-3. FormArray
+③、FormArray
 
 `FormArray`本质上和`FormGroup`是一样的，只不过`FormGroup`中的`FormControl`数量是固定的，初始化多少个就是多少个；`FormArray`中的`FormControl`的数量是可变的，可以动态增减。
 
@@ -411,7 +411,7 @@ form: FormGroup = new FormGroup({
 ]),
 ```
 
-4. 响应式表单用到的指令
+④、响应式表单用到的指令
 
 | 类          | 指令        | 指令            |
 | ----------- | ----------- | --------------- |
@@ -419,7 +419,7 @@ form: FormGroup = new FormGroup({
 | FormControl | formControl | formControlName |
 | FormArray   |             | formArrayName   |
 
-#### 1.2、基于FormGroup创建表单
+#### 3.1.2、基于FormGroup创建表单
 
 ts文件代码：
 
@@ -464,7 +464,7 @@ html文件相应代码：
 
 ![image-20230620205529953](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620205529953.png)
 
-#### 1.3、基于FormArray创建动态表单
+#### 3.1.3、基于FormArray创建动态表单
 
 ts文件相关代码：
 
@@ -537,7 +537,7 @@ export class AppComponent {
 
 ![image-20230620211331005](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620211331005.png)
 
-#### 1.4、FormBuilder创建表单
+#### 3.1.4、FormBuilder创建表单
 
 > `FormBuilder`对象来简化数据模型的创建
 
@@ -629,9 +629,9 @@ export class FbReactiveFormComponent {
 
 ![image-20230620214526545](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620214526545.png)
 
-### 2、模板式表单
+### 3.2、模板式表单
 
-#### 2.1、模板式表单概述
+#### 3.2.1、模板式表单概述
 
 模板式表单不需要在组件定义数据模型，Angular会隐式的帮助我们创建底层数据模型，其实对应的就是`FormControl`和`FormGroup`
 
@@ -641,7 +641,7 @@ export class FbReactiveFormComponent {
 | NgModel      | FormControl  |
 | NgModelGroup | FormGroup    |
 
-#### 3.2、模板式表单对元素的处理
+#### 3.2.2、模板式表单对元素的处理
 
 如果一个Angular模板中出现了`<form>`标签，那么就会自动被Angular管理，其所有的原生属性和事件都会失去作用，完全交由Angular掌管。
 
@@ -657,7 +657,7 @@ export class FbReactiveFormComponent {
 <form ngNoForm>...</form>
 ```
 
-#### 3.3、模板式表单案例
+#### 3.2.3、模板式表单案例
 
 对应的Html相关代码：
 
@@ -685,9 +685,9 @@ onSubmitMyForm(obj: Record<string, any>) {
 
 ![image-20230620225251412](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620225251412.png)
 
-<u class="highlight">注意：</u> 可以看到虽然我们输入了内容，但是value属性中没有获取到数据，这是因为我们还没有为表单中的模型标签绑定属性。
+👋注意： <u>可以看到虽然我们输入了内容，但是value属性中没有获取到数据，这是因为我们还没有为表单中的模型标签绑定属性。</u>
 
-#### 3.4、模板式表单绑定ngModel
+#### 3.2.4、模板式表单绑定ngModel
 
 对应Html的相关代码：
 
@@ -718,9 +718,9 @@ onSubmitMyForm(obj: Record<string, any>) {
 
 ![image-20230624135729447](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230624135729447.png)
 
-### 3、响应式表单校验器
+### 3.3、响应式表单校验器
 
-#### 3.1、校验器的使用
+#### 3.3.1、校验器的使用
 
 ```typescript
 formbuild = this.fb.group({
@@ -734,7 +734,7 @@ formbuild = this.fb.group({
 });
 ```
 
-#### 3.2、校验器信息获取
+#### 3.3.2、校验器信息获取
 
 ```typescript
 const isVaild = this.formbuild.get('name')?.valid;
@@ -742,7 +742,7 @@ const err: any = this.formbuild.get('name')?.errors;
 console.log(isVaild, err);
 ```
 
-#### 3.3、定义自定义的校验器
+#### 3.3.3、定义自定义的校验器
 
 定义自定义校验器：
 
@@ -812,9 +812,9 @@ formbuild = this.fb.group({
 
 ![image-20230624205614123](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230624205614123.png)
 
-<u class="highlight">注意：</u> 多个校验器时，返回的`errors`对象属性合并
+👋注意： <u>多个校验器时，返回的`errors`对象属性合并</u>
 
-#### 3.4、在模板中显示校验信息
+#### 3.3.4、在模板中显示校验信息
 
 > 模板中显示校验信息通过`hasError`函数获取，该函数有两个参数：
 >
@@ -865,7 +865,7 @@ html的相关代码：
 </div>
 ```
 
-#### 3.5、将校验失败的信息编写在校验器中
+#### 3.3.5、将校验失败的信息编写在校验器中
 
 将校验器进行修改：
 
@@ -929,7 +929,7 @@ export function mobileValidator(control: FormControl): any {
 
 ## 四、Angular组件
 
-### 1、创建组件
+### 4.1、创建组件
 
 > 推荐使用官方脚手架命令进行创建组件
 
@@ -946,9 +946,9 @@ ng g c <component-name> //缩写
 - 一个 CSS 文件，`<component-name>.component.css`
 - 测试文件 `<component-name>.component.spec.ts`
 
-### 2、组件通信
+### 4.2、组件通信
 
-#### 2.1、父传子
+#### 4.2.1、父传子
 
 > 子组件接受父组件的参数时，通过`@Input`来获取参数
 
@@ -984,7 +984,7 @@ export class SecondComponent {
 </div>
 ```
 
-#### 2.2、子传父
+#### 4.2.2、子传父
 
 > 子组件给父组件传递数据时调用Output装饰器
 
@@ -1105,7 +1105,7 @@ export class AppComponent {
 }
 ```
 
-#### 2.3、不相关组件之间的信息传递方式
+#### 4.2.3、不相关组件之间的信息传递方式
 
 - 通过service进行传递
 
@@ -1115,7 +1115,7 @@ export class AppComponent {
 
 - 服务端通信方式
 
-### 3、angular的双向绑定原理
+### 4.3、angular的双向绑定原理
 
 > Angular 的双向绑定语法是方括号和圆括号的组合 `[()]`。`[]` 进行属性绑定，`()` 进行事件绑定
 
@@ -1202,9 +1202,9 @@ export class AppComponent {
 }
 ```
 
-### 4、组件的生命周期
+### 4.4、组件的生命周期
 
-#### 4.1、组件钩子函数简单介绍
+#### 4.4.1、组件钩子函数简单介绍
 
 | 钩子函数              |                                                                                                                                                                   |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1218,7 +1218,7 @@ export class AppComponent {
 | ngAfterViewChecked    | 每当 Angular 做完组件视图和子视图或包含该指令的视图的变更检测之后调用。                                                                                           |
 | ngOnDestory           | 组件销毁时调用，一般用来清理缓存                                                                                                                                  |
 
-#### 4.2、单个组件生命周期执行顺序
+#### 4.4.2、单个组件生命周期执行顺序
 
 组件文件ts相关代码：
 
@@ -1328,7 +1328,7 @@ export class AppComponent
 
 问题3：ngDoCheck函数无论组件内的值类型还是引用类型，发生改变时就会触发ngDoCheck函数，无论引用类型地址是否改变
 
-#### 4.3、ngOnChanges 和 ngOnDestroy钩子函数的执行时期
+#### 4.4.3、ngOnChanges 和 ngOnDestroy钩子函数的执行时期
 
 1. ngOnDestroy触发时期
 
@@ -1451,7 +1451,7 @@ this.arr.push(`${new Date()}`);
 
 数组通过push、unshift等不产生一个新数组时，数组地址不会发生变化以及对象通过`obj['属性']`改变时也不会改变。
 
-### 5、父子组件生命周期执行顺序
+### 4.5、父子组件生命周期执行顺序
 
 ![image-20230709170444798](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230709170444798.png)
 
@@ -1460,11 +1460,11 @@ angular父子组件生命周期钩子过程分析：
 1. 子组件渲染在父组件`ngAfterContentChecked`钩子函数执行完毕之后，在调用子组件的生命周期，一直等子组件的`ngAfterViewChecked`钩子函数执行完成之后，再回到父组件调用`ngAfterViewInit`等后续钩子函数。
 2. 当发生变更检测时，父组件先触发ngDoCheck() => ngAfterContentChecked()，然后子组件触发 ngOnChanges() => ngDoCheck() => ngAfterContentChecked() => ngAfterViewChecked(),最后父组件调用ngAfterViewChecked()。
 
-### 6、独立组件
+### 4.6、独立组件
 
-> 独立组件是Angular14的特性，在Angular 14中， 开发者可以尝试使用独立组件开发各种组件，但是值得注意的是Angular独立组件的API仍然没有稳定下，将来可能存在一些破坏性更新，所以不推荐在生产环境中使用。
+> 独立组件是Angular14的特性，在Angular 14中， 开发者可以尝试使用独立组件开发各种组件，但是值得注意的是：A<u>ngular独立组件的API仍然没有稳定下，将来可能存在一些破坏性更新，所以不推荐在生产环境中使用。</u>
 
-#### 6.1、创建独立组件
+#### 4.6.1、创建独立组件
 
 对于已有的组件，我们可以在`@Component()`中添加*standalone: true*的，然后我们可以在没有`@NgModule()`的情况下直接使用`imports`导入其他模块了。 如果是新建组件，可以使用`ng generate component <name> --standalone`的命令，直接创建一个独立组件, 例如：
 
@@ -1488,7 +1488,7 @@ import { CommonModule } from '@angular/common';
 export class OwnComponent {}
 ```
 
-#### 6.2、独立组件导入已有的模块
+#### 4.6.2、独立组件导入已有的模块
 
 ```typescript
 @Component({
@@ -1500,7 +1500,7 @@ export class OwnComponent {}
 })
 ```
 
-#### 6.3、独立组件作为挂载
+#### 4.6.3、独立组件作为挂载
 
 ```typescript
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -1510,7 +1510,7 @@ import { OwnComponent } from './module/component/components/own/own.component'; 
 bootstrapApplication(OwnComponent).catch((err) => console.error(err)); // 独立组件挂载
 ```
 
-#### 6.4、独立组件配置依赖注入和路由
+#### 4.6.4、独立组件配置依赖注入和路由
 
 ```typescript
 bootstrapApplication(OwnComponent, {
@@ -1526,11 +1526,11 @@ bootstrapApplication(OwnComponent, {
 
 ## 五、Angular指令
 
-### 1、内置指令
+### 5.1、内置指令
 
 Angular自带的内置指令有`ngIf`、`ngFor`、`ngClass`、`ngStyle`等，`具体使用参考上述的模板语法`
 
-#### 1.2、属性型指令
+#### 5.1.1、属性型指令
 
 在Angular中像`ngClass`、`ngStyle`等属于属性型指令
 
@@ -1544,7 +1544,7 @@ Angular自带的内置指令有`ngIf`、`ngFor`、`ngClass`、`ngStyle`等，`�
 </div>
 ```
 
-#### 1.3、结构型指令
+#### 5.1.2、结构型指令
 
 在Angular中像`ngIf`、`ngFor`、`ngSwitch`等属于结构型指令
 
@@ -1554,9 +1554,9 @@ Angular自带的内置指令有`ngIf`、`ngFor`、`ngClass`、`ngStyle`等，`�
 </ul>
 ```
 
-### 2、自定义指令
+### 5.2、自定义指令
 
-#### 2.1、快速创建自定义指令模板
+#### 5.2.1、快速创建自定义指令模板
 
 ```bash
 ng g directive <directive-name> --skip-import
@@ -1570,7 +1570,7 @@ ng g directive <directive-name> --skip-import
 
 ![image-20230619215611160](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230619215611160.png)
 
-#### 2.2、自定义属性型指令
+#### 5.2.2、自定义属性型指令
 
 ```typescript
 import { Directive, ElementRef, Input, HostListener } from '@angular/core';
@@ -1667,7 +1667,7 @@ export class HighlightDirective {
 
 ![image-20230619221640699](https://gitee.com/szchason/pic_bed/raw/notes/https://gitee.com/szchason/pic_bed/raw/notes/images/angular/angular/image-20230619221640699.png)
 
-#### 2.3、自定义结构指令
+#### 5.2.3、自定义结构指令
 
 > 结构指令，影响当前元素以及后代元素，大多以\*开头
 
@@ -1720,7 +1720,7 @@ export class CustomNgIfDirective {
 
 组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
 
-<u>最值得注意的是：</u> 服务之间可以进行多级注入，指的是一个服务注入依赖另一个服务
+👋最值得注意的是： <u>服务之间可以进行多级注入，指的是一个服务注入依赖另一个服务</u>
 
 #### 6.2、自定义Service创建
 
@@ -1794,7 +1794,7 @@ export class AppComponent {
 
 > NgModule 模块是Angular种一个重要的点，因为Angular的基本构造块就是NgModule。NgModule 会把相关的代码（组件，指令，服务）收集到一些功能集中，形成功能单元。可以说：模块为组件，指令，服务提供了编译的上下文环境。
 
-### 1、创建模块
+### 7.1、创建模块
 
 推荐使用官方脚手架命令进行创建模块
 
@@ -1807,7 +1807,7 @@ ng g m order // 创建订单模块
 ng g m order --routing // 创建带路由订单模块
 ```
 
-### 2、模块构成
+### 7.2、模块构成
 
 angular模块就是一个带有@ngModule() 装饰器的类，装饰器@ngModule接受一个元数据对象。该对象的属性用来描述该模块。
 
@@ -1831,7 +1831,7 @@ export declare interface NgModule {
 }
 ```
 
-### 3、常见模块
+### 7.3、常见模块
 
 | **NgModule**        | **导入**                  | 使用                                                                |
 | ------------------- | ------------------------- | ------------------------------------------------------------------- |
@@ -1841,7 +1841,7 @@ export declare interface NgModule {
 | RouterModule        | @angular/router           | 要使用路由功能，并且你要用到 RouterLink，forRoot() 和 forChild() 时 |
 | HttpClientModule    | @angular/common/http      | 当你要和服务器对话时，创建接口                                      |
 
-### 4、根模块
+### 7.4、根模块
 
 模块是在组件之上的一层抽象，组件以及指令、管道、服务、路由等都能通过模块去组织。
 
@@ -1869,7 +1869,7 @@ export class AppModule {} // 导出根模块
 
 AppComponent组件即为根组件。 再创建一个main.ts，利用platformBrowserDynamic().bootstrapModule()方法来启动根模块，并将AppComponent组件的内容展示到页面上。
 
-### 5、模块与模块之间的调用
+### 7.5、模块与模块之间的调用
 
 在`shared`目录下创建`shared.module.ts`，具体如下：
 
@@ -1902,7 +1902,7 @@ export class TemplateModule {}
 
 ## 八、Angular路由
 
-### 1、路由的基础创建
+### 8.1、路由的基础创建
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -1965,7 +1965,7 @@ export class RouteRoutingModule {}
 </div>
 ```
 
-### 2、如何设置路由的hash模式和history模式
+### 8.2、如何设置路由的hash模式和history模式
 
 > Angular的默认路由模式为history模式
 
@@ -1988,7 +1988,7 @@ export class RouteRoutingModule {}
 })
 ```
 
-### 3、嵌套路由
+### 8.3、嵌套路由
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -2053,9 +2053,9 @@ const routes: Routes = [
 export class RouteRoutingModule {}
 ```
 
-### 4、路由懒加载
+### 8.4、路由懒加载
 
-> 路由的懒加载主要是通过`loadComponent`，`loadChildren`来进行懒加载，`loadComponent`通过加载组件，`loadChildren`是加载模块。值得注意的是，`loadComponent`加载懒加载组件时只能加载独立组件，而且在`路由模块的declarations`中无需引用
+> 路由的懒加载主要是通过`loadComponent`，`loadChildren`来进行懒加载，`loadComponent`通过加载组件，`loadChildren`是加载模块。值得注意的是，<u>`loadComponent`加载懒加载组件时只能加载独立组件，而且在`路由模块的declarations`中无需引用</u>
 
 相关代码如下：
 
@@ -2230,15 +2230,15 @@ const routes: Routes = [
 export class RouteRoutingModule {}
 ```
 
-### 5、路由守卫
+### 8.5、路由守卫
 
-#### 5.1、使用官方脚手架创建守卫
+#### 8.5.1、使用官方脚手架创建守卫
 
 ```bash
 ng g guard <guard-name>
 ```
 
-#### 5.2、常用的路由守卫类型
+#### 8.5.2、常用的路由守卫类型
 
 1. canActivate
 
@@ -2376,9 +2376,9 @@ export const PermissionGuard: CanActivateFn = (route, state) => {
 
 ![image-20230625190330590](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625190330590.png)
 
-### 6、路由传参
+### 8.6、路由传参
 
-#### 6.1、query形式传递参数
+#### 8.6.1、query形式传递参数
 
 在html进行传递参数：
 
@@ -2428,7 +2428,7 @@ export class DynamicParamsComponent implements OnInit {
   }
 ```
 
-#### 6.2、动态传参
+#### 8.6.2、动态传参
 
 在Html中传递传参：
 
@@ -2477,7 +2477,7 @@ export class DynamicParamsComponent implements OnInit {
   }
 ```
 
-### 7、resolve动态传参数
+### 8.7、resolve动态传参数
 
 创建resolve:
 
@@ -2554,7 +2554,7 @@ export class ResolveParamsComponent implements OnInit {
 
 ## 九、Angular的请求与拦截
 
-### 1、配置请求
+### 9.1、配置请求
 
 Angular对应请求自带`HttpClient`服务，创建`http.service.ts`服务进行简单封装集中
 
@@ -2578,7 +2578,7 @@ export class HttpService {
 }
 ```
 
-### 2、配置请求和响应拦截器
+### 9.2、配置请求和响应拦截器
 
 先创建`intercept.service.ts`创建拦截器，然后在根模块进行配置.
 
@@ -2666,7 +2666,7 @@ angular即在 production 模式下把 `environment.ts` 替换成 `environment.pr
 
 ![image-20230709162308260](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230709162308260.png)
 
-### 3、配置代理
+### 9.3、配置代理
 
 在src目录下配置`proxy.conf.json`文件
 
@@ -2701,7 +2701,7 @@ angular.json的相关配置
 
 官方文档代理说明，详细参考文档：https://angular.io/guide/build#proxying-to-a-backend-server
 
-### 4、本地创建api接口服务
+### 9.4、本地创建api接口服务
 
 在项目创建`express-serve`目录，同时使用express框架创建简单api服务, 并且通过`node index.js` 运行服务
 
@@ -2790,7 +2790,7 @@ export class AppComponent implements OnInit {
 
 > 官方网站已经提供了相关服务端渲染的配置
 
-### 1、使用官方提供命令创建脚手架
+### 10.1、使用官方提供命令创建脚手架
 
 运行以下命令：
 
@@ -2802,9 +2802,9 @@ ng add @nguniversal/express-engine
 
 ![image-20230625210044296](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625210044296.png)
 
-### 2、服务文件创建的文件作用讲解
+### 10.2、服务文件创建的文件作用讲解
 
-1. app文件下的app.server.module.ts
+#### 10.2.1、app文件下的app.server.module.ts
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -2823,13 +2823,13 @@ import { AppComponent } from './app.component';
 export class AppServerModule {}
 ```
 
-2. src下的main.server.ts
+#### 10.2.2、src下的main.server.ts
 
 ```typescript
 export { AppServerModule } from './app/app.server.module'; // main.server.ts 服务端渲染入口
 ```
 
-3. 根目录下的server.ts
+#### 10.2.3、根目录下的server.ts
 
 server.ts主要用于服务端渲染执行的js，主要渲染根模块，同时在package.json通过scripts脚本进行运行
 
@@ -2912,6 +2912,6 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
 export * from './src/main.server';
 ```
 
-4. tsconfig.server.json
+#### 10.2.4、tsconfig.server.json
 
 主要为服务端渲染的typescript配置

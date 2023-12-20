@@ -2,11 +2,13 @@ const navbar = require('./config/navbar.js');
 
 const config = {
   title: 'Chason‘s Blogs and Notes',
-  tagline: "Keep looking, and don't settle.",
   favicon: 'img/favicon.ico',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   headTags: [
+    /**
+     * 处理图片加载失败
+     */
     {
       tagName: 'meta',
       attributes: {
@@ -19,8 +21,10 @@ const config = {
   projectName: 'blog',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  /**
+   * 静态资源文件
+   */
   staticDirectories: ['assets'],
-
   presets: [
     [
       'classic',

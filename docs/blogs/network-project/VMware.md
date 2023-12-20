@@ -1,6 +1,6 @@
 ---
-id: vmware
-title: VMware安装Linux系统
+id: VMware
+title: VMware
 description: VMware安装Linux系统
 sidebar_label: VMware安装Linux系统
 hide_title: true
@@ -8,8 +8,6 @@ last_update:
   date: 2023-01-02
   author: Chason
 ---
-
-## VMware安装Linux系统
 
 ## 一、环境准备阶段
 
@@ -20,31 +18,31 @@ last_update:
 
 ## 二、安装步骤
 
-1. 运行VMware Workstation，选择创建虚拟机
+1、运行VMware Workstation，选择创建虚拟机
 
 ![1672660287884](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660287884.png)
 
-2. 弹出虚拟机导向提示，选择`典型`
+2、弹出虚拟机导向提示，选择`典型`
 
 ![1672660355776](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660355776.png)
 
-3. 弹出安装操作系统提示，选择 `稍后安装操作系统`
+3、弹出安装操作系统提示，选择 `稍后安装操作系统`
 
 ![1672660495915](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660495915.png)
 
-4. 选择系统版本，选择如下图
+4、选择系统版本，选择如下图
 
 ![1672660540923](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660540923.png)
 
-5. 命名虚拟机，选择安装虚拟机位置
+5、命名虚拟机，选择安装虚拟机位置
 
 ![1672660660610](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660660610.png)
 
-6. 指定磁盘容量
+6、指定磁盘容量
 
 ![1672660740427](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660740427.png)
 
-7. 配置自定义硬件
+7、配置自定义硬件
 
 ![1672660801284](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672660801284.png)
 
@@ -59,57 +57,57 @@ last_update:
 
 ## 三、开启虚拟机
 
-1. 等待安装系统之后，出现以下提示
+1、等待安装系统之后，出现以下提示
 
 ![1672661210133](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672661210133.png)
 
-2. 选择安装配置，开始进行安装
+2、选择安装配置，开始进行安装
 
 ![1672661501513](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672661501513.png)
 
-3. 设置初始用户，点击进入设置
+3、设置初始用户，点击进入设置
 
 ![1672661553958](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672661553958.png)
 
-4. 设置初始化root密码，自行设置(记住密码，后续需要使用)
+4、设置初始化root密码，自行设置(记住密码，后续需要使用)
 
 ![1672661581644](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672661581644.png)
 
-5. 设置完成之后会一直进行安装，安装完成之后如下，点击Reboot重启
+5、设置完成之后会一直进行安装，安装完成之后如下，点击Reboot重启
 
 ![1672661811433](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672661811433.png)
 
-6. 登录虚拟机
+6、登录虚拟机
 
 ![1672662029676](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672662029676.png)
 
-<span className="highlight">注意：</span>选择最小安装，系统中不带有ifconfig等命令。同时也是没有连接网络的情况下，ping命令无法使用
+👋注意：<u>选择最小安装，系统中不带有ifconfig等命令。同时也是没有连接网络的情况下，ping命令无法使用</u>
 
 ![1672662342481](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672662342481.png)
 
 ## 四、配置虚拟机网络
 
-1. 点击VMware Workstation编辑，选择`虚拟网络编辑器`
+1、点击VMware Workstation编辑，选择`虚拟网络编辑器`
 
 ![1672666092274](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672666092274.png)
 
-2. 设置网卡
+2、设置网卡
 
 ![1672666182065](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672666182065.png)
 
-3. 点击编辑虚拟机设置，修改虚拟机的网络设置
+3、点击编辑虚拟机设置，修改虚拟机的网络设置
 
 ![1672666298266](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672666298266.png)
 
-4. 选择网络适配器，选择桥接模式
+4、选择网络适配器，选择桥接模式
 
 ![1672666399398](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672666399398.png)
 
-5. 获取宿主机的DNS、网关等信息
+5、获取宿主机的DNS、网关等信息
 
 ![1672666685628](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672666685628.png)
 
-6. 虚拟机设置静态IP，同时虚拟机和宿主机在同一个网段下
+6、虚拟机设置静态IP，同时虚拟机和宿主机在同一个网段下
 
 登录liunx, 修改文件
 
@@ -127,7 +125,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-ens33
 service network restart
 ```
 
-6. 测试网络
+7、测试网络
 
 虚拟机访问外网
 
@@ -137,7 +135,7 @@ service network restart
 
 ![1672667416522](https://gitee.com/szchason/pic_bed/raw/blogs/images/VMware/1672667416522.png)
 
-8. liunx安装net-tools
+8、liunx安装net-tools
 
 ```bash
 yum install net-tools -y

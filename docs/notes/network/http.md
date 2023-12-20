@@ -27,7 +27,7 @@ last_update:
 
 > http缓存是针对静态资源
 
-### 1、缓存过程分析
+### 2.1、缓存过程分析
 
 浏览器与服务器通信的方式为应答模式，即是：**浏览器发起HTTP请求 – 服务器响应该请求**。那么浏览器第一次向服务器发起该请求后拿到请求结果，会根据响应报文中HTTP头的缓存标识，决定是否缓存结果，是则将请求结果和缓存标识存入浏览器缓存中，简单的过程如下图：
 
@@ -40,9 +40,9 @@ last_update:
 
 以上两点结论就是浏览器缓存机制的关键，他确保了每个请求的缓存存入与读取，只要我们再理解浏览器缓存的使用规则，那么所有的问题就迎刃而解了，本文也将围绕着这点进行详细分析。
 
-### 2、强制缓存和协商缓存
+### 2.2、强制缓存和协商缓存
 
-#### 2.1、强制缓存
+#### 2.2.1、强制缓存
 
 **强制缓存就是向浏览器缓存查找该请求结果，并根据该结果的缓存规则来决定是否使用该缓存结果的过程**，强制缓存的情况主要有三种(暂不分析协商缓存过程)
 
@@ -98,16 +98,18 @@ Expires是HTTP/1.0的字段，但是现在浏览器的默认使用的是HTTP/1.1
 
 由于Cache-Control的优先级比expires，那么直接根据Cache-Control的值进行缓存，意思就是说在600秒内再次发起该请求，则会直接使用缓存结果，强制缓存生效。
 
-<u class="highlight">注意：</u>在无法确定客户端的时间是否与服务端的时间同步的情况下，Cache-Control相比于expires是更好的选择，所以同时存在时，只有Cache-Control生效。
+👋注意：<u>在无法确定客户端的时间是否与服务端的时间同步的情况下，Cache-Control相比于expires是更好的选择，所以同时存在时，只有Cache-Control生效。</u>
 
-#### 2.2、协商缓存
+#### 2.2.2、协商缓存
 
 **协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程**，主要有以下两种情况：
 
 (1)、协商缓存生效，返回304，如下：
+
 ![](https://gitee.com/szchason/pic_bed/raw/notes/images/NetworkProject/http-cache/2023-05-29-1685366382-fb87e4.png)
 
 (2)、协商缓存失败，返回200和请求结果，如下：
+
 ![](https://gitee.com/szchason/pic_bed/raw/notes/images/NetworkProject/http-cache/2023-05-29-1685366386-445841.png)
 
 同样，协商缓存的标识也是在响应报文的HTTP头中和请求结果一起返回给浏览器的，控制协商缓存的字段分别有：**Last-Modified / If-Modified-Since和Etag / If-None-Match**，其中Etag / If-None-Match的优先级比Last-Modified / If-Modified-Since高。
@@ -133,12 +135,10 @@ Expires是HTTP/1.0的字段，但是现在浏览器的默认使用的是HTTP/1.1
 
 <span className="highlight">附注：</span>Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效。
 
-#### 2.3、总结：
+#### 2.2.3、总结：
 
 强制缓存优先于协商缓存进行，若强制缓存(Expires和Cache-Control)生效则直接使用缓存，若不生效则进行协商缓存(Last-Modified / If-Modified-Since和Etag / If-None-Match)，协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，重新获取请求结果，再存入浏览器缓存中；生效则返回304，继续使用缓存，主要过程如下：
 
 ![](https://gitee.com/szchason/pic_bed/raw/notes/images/NetworkProject/http-cache/2023-05-29-1685366409-013572.png)
 
 ## 三、Nginx配置强缓存和协商缓存实战
-
-> 后期补充
