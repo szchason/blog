@@ -1,10 +1,12 @@
 const navbar = require('./config/navbar.js');
 
+const baseUrl = process.env.NODE_ENV === 'production' ? '/blog/' : '/';
+
 const config = {
   title: 'Chason‘s Blogs and Notes',
   favicon: 'img/favicon.ico',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: process.env.NODE_ENV === 'production' ? '/blog/' : '/',
+  baseUrl: baseUrl,
   headTags: [
     /**
      * 处理图片加载失败
