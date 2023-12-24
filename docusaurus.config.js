@@ -4,7 +4,7 @@ const config = {
   title: 'Chason‘s Blogs and Notes',
   favicon: 'img/favicon.ico',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/blog/' : '/',
   headTags: [
     /**
      * 处理图片加载失败
