@@ -12,7 +12,7 @@ export default function NotFound() {
           <h3 style={{ fontSize: '28px' }}>Page Not Found</h3>
           <p>We could not find what you were looking for.</p>
           <p>
-            <Link to="/blogs/devops/autoblog">返回</Link>
+            <Link to="/blogs/devops/devopsblog">返回</Link>
           </p>
         </div>
       </main>

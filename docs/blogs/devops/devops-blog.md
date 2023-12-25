@@ -1,5 +1,5 @@
 ---
-id: autoblog
+id: devopsblog
 title: blog
 description: DevOps部署个人自动化博客
 sidebar_label: DevOps部署个人自动化博客
