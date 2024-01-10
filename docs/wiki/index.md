@@ -1,6 +1,6 @@
 ---
-title: Records
-description: Records
+title: Wiki
+description: Wiki
 sidebar_label: 随笔记录
 hide_title: true
 last_update:

@@ -6,7 +6,7 @@ module.exports = {
   },
   items: [
     {
-      label: '笔记',
+      label: '📘 Notes',
       type: 'dropdown',
       position: 'right',
       items: [
@@ -78,7 +78,7 @@ module.exports = {
       ],
     },
     {
-      label: '博客',
+      label: '✏ Blogs',
       type: 'docSidebar',
       sidebarId: 'blog',
       position: 'right',
@@ -86,13 +86,13 @@ module.exports = {
     {
       type: 'docSidebar',
       sidebarId: 'devops',
-      label: 'DevOps',
+      label: '⚡ DevOps',
       position: 'right',
     },
     {
       type: 'docSidebar',
-      sidebarId: 'record',
-      label: '随笔',
+      sidebarId: 'wiki',
+      label: '📝 Wiki',
       position: 'right',
     },
     {
