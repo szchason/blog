@@ -25,7 +25,7 @@ last_update:
 
 编译图解:
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/babel.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/babel.png)
 
 简单实现使用var定义变量改成let，具体代码实现过程：
 
@@ -59,7 +59,7 @@ console.log(targetCode.code);
 
 结果：
 
-![1677487532483](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677487532483.png)
+![1677487532483](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/1677487532483.png)
 
 ## 二、AST遍历流程
 
@@ -85,11 +85,11 @@ estraverse.traverse(ast, {
 
 输出结果如下:
 
-![1677489224740](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677489224740.png)
+![1677489224740](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/1677489224740.png)
 
 由此可以得到 AST 遍历的流程是深度优先，遍历过程如下：
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/ast-traverse.jpg)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/ast-traverse.jpg)
 
 ## 三、V8的AST与acorn实现的AST的异同点
 
@@ -99,7 +99,7 @@ V8是Google开源的JavaScript引擎，被广泛应用各种JavaScrpit执行环�
 
 只有搞清楚这个问题，你才能写出性能更好、更优雅的 JavaScript代码。同时，了解 JavaScript的执行原理，也能让你能更轻松理解 Babel 的词法分析和语法分析原理、ESLint 的语法检查机制、React.js 和 Vue 前端框架的底层实现，以后再面对新的技术和框架，也能以不变应万变。
 
-![1677488430721](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677488430721.png)
+![1677488430721](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/1677488430721.png)
 
 js编译原理分析过程：
 
@@ -108,13 +108,13 @@ js编译原理分析过程：
 3. ...
 4. 代码生成(Code Generation)
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/ast_parser.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/ast_parser.png)
 
 词法分析阶段
 
 > 其中词法分析阶段扫描输入的源代码字符串，生成一系列的词法单元 (tokens)，这些词法单元包括数字，标点符号，运算符等。词法单元之间都是独立的，也即在该阶段我们并不关心每一行代码是通过什么方式组合在一起的。
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/code-token.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/code-token.png)
 
 <span className="highlight">通俗解释：</span>词法分析阶段——仿佛最初学英语时，将一个句子拆分成很多独立的单词，我们首先记住每一个单词的类型和含义，但并不关心单词之间的具体联系。
 
@@ -122,7 +122,7 @@ js编译原理分析过程：
 
 > 语法分析阶段就会将上一阶段生成的 token 列表转换为如下图右侧所示的 AST，根据这个数据结构大致可以看出转换之前源代码的基本构造。
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/parsing.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/parsing.png)
 
 <span className="highlight">通俗解释：</span>语法分析阶段——老师教会我们每个单词在整个句子上下文中的具体角色和含义。
 
@@ -130,13 +130,13 @@ js编译原理分析过程：
 
 该阶段是一个非常自由的环节，可由多个步骤共同组成。在这个阶段我们可以遍历初始的 AST，对其结构进行改造，再将改造后的结构生成对应的代码字符串。
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/transtion.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/transtion.png)
 
 <span className="highlight">通俗解释：</span>我们已经弄清楚每一条句子的语法结构并知道如何写出语法正确的英文句子，通过这个基本结构我们可以把英文句子完美地转换成一个中文句子或是文言文（如果你会的话）。
 
 V8具体生成的AST抽象语法树
 
-![1677489661801](https://gitee.com/szchason/pic_bed/raw/blogs/images/ast/1677489661801.png)
+![1677489661801](https://gitee.com/szchason/pic_bed/raw/main/blogs/ast/1677489661801.png)
 
 ### 3.2、acorn生成的抽象语法树
 

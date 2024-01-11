@@ -172,7 +172,7 @@ console.log(p2);
 
 ### 3.3、原型链结构图
 
-![](https://gitee.com/szchason/pic_bed/raw/notes/images/javascript/extends/2023-05-29-1685365671-840b08.jpg)
+![](https://gitee.com/szchason/pic_bed/raw/main/notes/javascript/extends/2023-05-29-1685365671-840b08.jpg)
 
 ## 四、继承
 

@@ -303,4 +303,4 @@ console.log(add(1, 6));
 
 代码测试结果：
 
-![1678025456223](https://gitee.com/szchason/pic_bed/raw/blogs/images/requirejs/1678025456223.png)
+![1678025456223](https://gitee.com/szchason/pic_bed/raw/main/blogs/requirejs/1678025456223.png)

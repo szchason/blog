@@ -27,7 +27,7 @@ last_update:
 
 而在实际应用程序中，为了满足功能的需要，启动的进程会创建另外的新的进程来处理其他任务，这些创建出来的新的进程拥有全新的独立的内存空间，不能与原来的进程内向内存，如果这些进程之间需要通信，可以通过IPC机制（Inter Process Communication）来进行。
 
-![1681308736968](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681308736968.png)
+![1681308736968](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681308736968.png)
 
 很多应用程序都会采取这种多进程的方式来工作，因为进程和进程之间是互相独立的它们`互不影响`，也就是说，当其中一个进程挂掉了之后，不会影响到其他进程的执行，只需要重启挂掉的进程就可以恢复运行。
 
@@ -47,13 +47,13 @@ last_update:
 
 - **GPU进程 (GPU Process)** ：负责处理整个应用程序的GPU任务
 
-![1681309745618](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681309745618.png)
+![1681309745618](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681309745618.png)
 
 **进程关系**
 
 首先，当我们浏览一个网页，会在浏览器的地址栏里输入URL，这个时候`Browser Process`会向这个URL发送请求，获取这个URL的HTML内容，然后将HTML交给`Renderer Process`，`Renderer Process`解析HTML内容，解析遇到需要请求网络的资源又返回来交给`Browser Process`进行加载，同时通知`Browser Process`，需要`Plugin Process`加载插件资源，执行插件代码。解析完成后，`Renderer Process`计算得到图像帧，并将这些图像帧交给`GPU Process`，`GPU Process`将其转化为图像显示屏幕。
 
-![1681310019007](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681310019007.png)
+![1681310019007](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681310019007.png)
 
 ### 1.3、多进程架构的好处
 
@@ -61,7 +61,7 @@ Chrome为什么要使用多进程架构呢？
 
 第一，更高的容错性。当今WEB应用中，HTML，JavaScript和CSS日益复杂，这些跑在渲染引擎的代码，频繁的出现BUG，而有些BUG会直接导致渲染引擎崩溃，多进程架构使得每一个渲染引擎运行在各自的进程中，相互之间不受影响，也就是说，当其中一个页面崩溃挂掉之后，其他页面还可以正常的运行不收影响。
 
-![1681310141400](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681310141400.png)
+![1681310141400](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681310141400.png)
 
 第二，更高的安全性和沙盒性（sanboxing）。渲染引擎会经常性的在网络上遇到不可信、甚至是恶意的代码，它们会利用这些漏洞在你的电脑上安装恶意的软件，针对这一问题，浏览器对不同进程限制了不同的权限，并为其提供沙盒运行环境，使其更安全更可靠
 
@@ -115,19 +115,19 @@ Chrome为什么要使用多进程架构呢？
 - network thread：处理网络请求，从网上获取数据；
 - storage thread： 控制文件等的访问；
 
-![1681311555257](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681311555257.png)
+![1681311555257](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681311555257.png)
 
 #### 第一步：处理输入
 
 当我们在浏览器的地址栏输入内容按下回车时，`UI thread`会判断输入的内容是搜索关键词（search query）还是URL，如果是搜索关键词，跳转至默认搜索引擎对应都搜索URL，如果输入的内容是URL，则开始请求URL。
 
-![1681312258416](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681312258416.png)
+![1681312258416](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681312258416.png)
 
 #### 第二步：开始导航
 
 回车按下后，`UI thread`将关键词搜索对应的URL或输入的URL交给网络线程`Network thread`，此时UI线程使Tab前的图标展示为加载中状态，然后网络进程进行一系列诸如DNS寻址，建立TLS连接等操作进行资源请求，如果收到服务器的301重定向响应，它就会告知UI线程进行重定向然后它会再次发起一个新的网络请求。
 
-![1681312306579](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681312306579.png)
+![1681312306579](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681312306579.png)
 
 #### 第三步：读取响应
 
@@ -139,7 +139,7 @@ Chrome为什么要使用多进程架构呢？
 
 各种检查完毕以后，network thread 确信浏览器可以导航到请求网页，network thread 会通知 UI thread 数据已经准备好，UI thread 会查找到一个 renderer process 进行网页的渲染。
 
-![1681312607971](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681312607971.png)
+![1681312607971](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681312607971.png)
 
 浏览器为了对查找渲染进程这一步骤进行优化，考虑到网络请求获取响应需要时间，所以在第二步开始，浏览器已经预先查找和启动了一个渲染进程，如果中间步骤一切顺利，当 network thread 接收到数据时，渲染进程已经准备好了，但是如果遇到重定向，这个准备好的渲染进程也许就不可用了，这个时候会重新启动一个渲染进程。
 
@@ -147,7 +147,7 @@ Chrome为什么要使用多进程架构呢？
 
 到了这一步，数据和渲染进程都准备好了，`Browser Process` 会向 `Renderer Process` 发送IPC消息来确认导航，此时，浏览器进程将准备好的数据发送给渲染进程，渲染进程接收到数据之后，又发送IPC消息给浏览器进程，告诉浏览器进程导航已经提交了，页面开始加载。
 
-![1681312746443](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681312746443.png)
+![1681312746443](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681312746443.png)
 
 这个时候导航栏会更新，安全指示符更新（地址前面的小锁），访问历史列表（history tab）更新，即可以通过前进后退来切换该页面。
 
@@ -166,7 +166,7 @@ Chrome为什么要使用多进程架构呢？
 - 一个合成器线程（compositor thread）
 - 多个光栅化线程（raster thread）
 
-![1681313502668](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681313502668.png)
+![1681313502668](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681313502668.png)
 
 不同的线程，有着不同的工作职责。
 
@@ -180,7 +180,7 @@ DOM为WEB开发人员通过JavaScript与网页进行交互的数据结构及API�
 
 在构建DOM的过程中，会解析到图片、CSS、JavaScript脚本等资源，这些资源是需要从网络或者缓存中获取的，主线程在构建DOM过程中如果遇到了这些资源，逐一发起请求去获取，而为了提升效率，浏览器也会运行预加载扫描（preload scanner）程序，如果HTML中存在`img`、`link`等标签，预加载扫描程序会把这些请求传递给`Browser Process`的network thread进行资源下载。
 
-![1681314229931](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681314229931.png)
+![1681314229931](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681314229931.png)
 
 #### JavaScript的下载与执行
 
@@ -194,7 +194,7 @@ DOM树只是我们页面的结构，我们要知道页面长什么样子，我�
 
 计算样式是主线程根据CSS样式选择器（CSS selectors）计算出的每个DOM元素应该具备的具体样式，即使你的页面没有设置任何自定义的样式，浏览器也会提供其默认的样式。
 
-![1681314307588](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681314307588.png)
+![1681314307588](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681314307588.png)
 
 #### 布局 - Layout
 
@@ -202,13 +202,13 @@ DOM树和计算样式完成后，我们还需要知道每一个节点在页面�
 
 主线程会遍历DOM 及相关元素的计算样式，构建出包含每个元素的页面坐标信息及盒子模型大小的布局树（Render Tree），遍历过程中，会跳过隐藏的元素（display: none），另外，伪元素虽然在DOM上不可见，但是在布局树上是可见的。
 
-![1681314361739](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681314361739.png)
+![1681314361739](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681314361739.png)
 
 #### 绘制 - Paint
 
 布局 layout 之后，我们知道了不同元素的结构，样式，几何关系，我们要绘制出一个页面，我们要需要知道每个元素的绘制先后顺序，在绘制阶段，主线程会遍历布局树（layout tree），生成一系列的绘画记录（paint records）。绘画记录可以看做是记录各元素绘制先后顺序的笔记。
 
-![1681314598735](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681314598735.png)
+![1681314598735](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681314598735.png)
 
 #### 合成 - Compositing
 
@@ -226,13 +226,13 @@ Chrome第一个版本就是采用这种简单的绘制方式，这一方式唯�
 
 为了实现合成技术，我们需要对元素进行分层，确定哪些元素需要放置在哪一层，主线程需要遍历渲染树来创建一棵层次树（Layer Tree），对于添加了 `will-change` CSS 属性的元素，会被看做单独的一层，没有 `will-change` CSS属性的元素，浏览器会根据情况决定是否要把该元素放在单独的层。
 
-![1681316035232](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681316035232.png)
+![1681316035232](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681316035232.png)
 
 你可能会想要给页面上所有的元素一个单独的层，然而当页面的层超过一定的数量后，层的合成操作要比在每个帧中光栅化页面的一小部分还要慢，因此衡量你应用的渲染性能是十分重要的一件事情。
 
 一旦Layer Tree被创建，渲染顺序被确定，主线程会把这些信息通知给合成器线程，合成器线程开始对层次数的每一层进行光栅化。有的层的可以达到整个页面的大小，所以合成线程需要将它们切分为一块又一块的小图块（tiles），之后将这些小图块分别进行发送给一系列光栅线程（raster threads）进行光栅化，结束后光栅线程会将每个图块的光栅结果存在`GPU Process`的内存中。
 
-![1681316064695](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681316064695.png)
+![1681316064695](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681316064695.png)
 
 为了优化显示体验，合成线程可以给不同的光栅线程赋予不同的优先级，将那些在视口中的或者视口附近的层先被光栅化。
 
@@ -243,7 +243,7 @@ Chrome第一个版本就是采用这种简单的绘制方式，这一方式唯�
 
 以上所有步骤完成后，合成线程就会通过IPC向浏览器进程（browser process）提交（commit）一个渲染帧。这个时候可能有另外一个合成帧被浏览器进程的UI线程（UI thread）提交以改变浏览器的UI。这些合成帧都会被发送给GPU从而展示在屏幕上。如果合成线程收到页面滚动的事件，合成线程会构建另外一个合成帧发送给GPU来更新页面。
 
-![1681316110032](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681316110032.png)
+![1681316110032](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681316110032.png)
 
 [合成线程构建出合成帧，合成帧会被发送给浏览器进程然后再发送给GPU]
 
@@ -255,7 +255,7 @@ Chrome第一个版本就是采用这种简单的绘制方式，这一方式唯�
 
 以点击事件（click event）为例，让鼠标点击页面时候，首先接受到事件信息的是`Browser Process`，但是Browser Process只知道事件发生的类型和发生的位置，具体怎么对这个点击事件进行处理，还是由Tab内的`Renderer Process`进行的。Browser Process接受到事件后，随后便把事件的信息传递给了渲染进程，渲染进程会找到根据事件发生的坐标，找到目标对象（target），并且运行这个目标对象的点击事件绑定的监听函数（listener）。
 
-![1681315140023](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681315140023.png)
+![1681315140023](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681315140023.png)
 
 点击事件从浏览器进程路由到渲染进程
 
@@ -265,7 +265,7 @@ Chrome第一个版本就是采用这种简单的绘制方式，这一方式唯�
 
 由于执行 JS 是主线程的工作，当页面合成时，合成器线程会标记页面中绑定有事件处理器的区域为`非快速滚动区域`(non-fast scrollable region)，如果事件发生在这些存在标注的区域，合成器线程会把事件信息发送给主线程，等待主线程进行事件处理，如果事件不是发生在这些区域，合成器线程则会直接合成新的帧而不用等到主线程的响应。
 
-![1681315259413](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681315259413.png)
+![1681315259413](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681315259413.png)
 
 非快速滚动区域有用户事件发生
 
@@ -281,7 +281,7 @@ document.body.addEventListener('touchstart', (event) => {
 
 在开发者角度看，这一段代码没什么问题，但是从浏览器角度看，这一段代码给body元素绑定了事件监听器，也就意味着整个页面都被编辑为一个非快速滚动区域，这会使得即使你的页面的某些区域没有绑定任何事件，每次用户触发事件时，合成器线程也需要和主线程通信并等待反馈，流畅的合成器独立处理合成帧的模式就失效了。
 
-![1681315311567](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681315311567.png)
+![1681315311567](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681315311567.png)
 
 当整个页面都是非快速滚动区域时页面的事件处理示意图
 
@@ -303,7 +303,7 @@ document.body.addEventListener(
 
 当合成器线程接收到事件信息，判定到事件发生不在非快速滚动区域后，合成器线程会向主线程发送这个时间信息，主线程获取到事件信息的第一件事就是通过命中测试（hit test）去找到事件的目标对象。具体的命中测试流程是遍历在绘制阶段生成的绘画记录（paint records）来找到包含了事件发生坐标上的元素对象。
 
-![1681315390380](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681315390380.png)
+![1681315390380](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681315390380.png)
 
 当整个页面都是非快速滚动区域时页面的事件处理示意图
 
@@ -311,13 +311,13 @@ document.body.addEventListener(
 
 一般我们屏幕的帧率是每秒60帧，也就是60fps，但是某些事件触发的频率超过了这个数值，比如wheel，mousewheel，mousemove，pointermove，touchmove，这些连续性的事件一般每秒会触发60~120次，假如每一次触发事件都将事件发送到主线程处理，由于屏幕的刷新速率相对来说较低，这样使得主线程会触发过量的命中测试以及JS代码，使得性能有了没必要是损耗。
 
-![1681315442814](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681315442814.png)
+![1681315442814](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681315442814.png)
 
 事件淹没了屏幕刷新的时间轴，导致页面很卡顿
 
 出于优化的目的，浏览器会合并这些连续的事件，延迟到下一帧渲染是执行，也就是`requestAnimationFrame`之前。
 
-![1681315475537](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/1681315475537.png)
+![1681315475537](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/1681315475537.png)
 
 和之前相同的事件轴，可是这次事件被合并并延迟调度了
 

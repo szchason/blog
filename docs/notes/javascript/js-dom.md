@@ -31,7 +31,7 @@ Web API是浏览器提供的一套操作浏览器功能和页面元素的 API(BO
 
 ### 2.2、DOM树
 
-![](https://gitee.com/szchason/pic_bed/raw/notes/images/javascript/dom/2023-05-29-1685365608-5a81a2.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/notes/javascript/dom/2023-05-29-1685365608-5a81a2.png)
 
 ## 三、DOM操作
 
@@ -193,7 +193,7 @@ div.style.backgroundColor = 'pink';
     }
     ```
 
-  2.className修改样式属性
+    2.className修改样式属性
 
 - 我们可以通过修改元素的className更改元素的样式 适合于样式较多或者功能复杂的情况
 - className会直接更改元素的类名，会覆盖原先的类名
@@ -569,7 +569,7 @@ e = window.event || e; //兼容写法
 
 - 事件对象属性和方法
 
-![](https://gitee.com/szchason/pic_bed/raw/notes/images/javascript/dom/2023-05-29-1685365617-171074.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/notes/javascript/dom/2023-05-29-1685365617-171074.png)
 
 - 鼠标坐标，如果是键盘事件里面就包含的键盘事件的信息，比如判断用户按下了那个键
 
@@ -577,11 +577,11 @@ e = window.event || e; //兼容写法
 
 #### 4.4.1、事件流
 
-![](https://gitee.com/szchason/pic_bed/raw/notes/images/javascript/dom/2023-05-29-1685365623-2b0da3.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/notes/javascript/dom/2023-05-29-1685365623-2b0da3.png)
 
 👋切记注意：
 
-![](https://gitee.com/szchason/pic_bed/raw/notes/images/javascript/dom/2023-05-29-1685365627-66e66d.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/notes/javascript/dom/2023-05-29-1685365627-66e66d.png)
 
 #### 4.4.2、事件冒泡
 

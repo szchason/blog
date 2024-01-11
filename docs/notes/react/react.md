@@ -48,7 +48,7 @@ setNum的另一种方式
 
 执行结果：
 
-![1677306604779](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369100-d403ff.png)
+![1677306604779](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369100-d403ff.png)
 
 #### 1.2、存储复杂数据类型时
 
@@ -84,7 +84,7 @@ function App() {
 
 点击更新complexData数据时，发现name属性丢失了。在setComplexData函数传递是一个新的对象，不存在name属性
 
-![1677307193185](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369105-2084e1.png)
+![1677307193185](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369105-2084e1.png)
 
 如果需要保留name属性只更改score的属性，如下：
 
@@ -96,7 +96,7 @@ function App() {
 
 执行结果：
 
-![1677307511104](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369108-6fc3ad.png)
+![1677307511104](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369108-6fc3ad.png)
 
 或者
 
@@ -111,7 +111,7 @@ function App() {
 
 执行结果：
 
-![1677307674430](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369112-28f798.png)
+![1677307674430](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369112-28f798.png)
 
 ### 2、useEffect
 
@@ -144,7 +144,7 @@ function App() {
 
 执行结果：
 
-![1677308303526](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369116-3f39d8.png)
+![1677308303526](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369116-3f39d8.png)
 
 #### 2.2、当基本数据类型作为依赖时
 
@@ -174,7 +174,7 @@ function App() {
 
 执行结果：
 
-![1677312938792](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369120-5bcb3e.png)
+![1677312938792](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369120-5bcb3e.png)
 
 #### 2.3、当引用数据类型作为依赖时
 
@@ -218,7 +218,7 @@ function App() {
 
 执行结果：
 
-![1677314316219](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369124-38de9a.png)
+![1677314316219](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369124-38de9a.png)
 
 <u >注意：</u> 解构进行了浅拷贝，引用数据地址发生了变化
 
@@ -237,7 +237,7 @@ setComplexData((val)=>{
 
 执行结果：
 
-![1677314777117](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369128-fa355e.png)
+![1677314777117](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369128-fa355e.png)
 
 #### 2.4、useEffect的依赖浅比较
 
@@ -283,7 +283,7 @@ function About (props) {
 
 由于数组的地址未发生变化，不会触发子组件
 
-![1677324286375](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369132-02d9b4.png)
+![1677324286375](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369132-02d9b4.png)
 使用解构更新数组
 
 ```typescript jsx
@@ -294,7 +294,7 @@ function About (props) {
 
 执行结果：
 
-![1677324676957](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369135-38c30d.png)
+![1677324676957](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369135-38c30d.png)
 
 ### 3、useMemo
 
@@ -380,7 +380,7 @@ function App() {
 
 当依赖为空数组时，获取不到最新的状态值。先点击Handler，在点击几次num++，再点击Handler发现打印的num依旧是0。原因就是组件更新时，函数不会重新生成形成的一种`“闭包”`。
 
-![1677328517370](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369139-4c4d56.png)
+![1677328517370](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369139-4c4d56.png)
 
 #### 1.2、useCallback添加依赖获取最新的state状态值
 
@@ -411,7 +411,7 @@ function App() {
 
 重复上述的操作
 
-![1677328703987](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369143-0e4181.png)
+![1677328703987](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369143-0e4181.png)
 
 #### 1.3、useCallback缓存函数导致“击穿”组件属性
 
@@ -458,7 +458,7 @@ export default React.memo(About)
 
 当函数不做属性传递时
 
-![1678010866343](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369147-802075.png)
+![1678010866343](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369147-802075.png)
 
 当函数作为属性传递时
 
@@ -467,7 +467,7 @@ export default React.memo(About)
 <About fun={clickHandler} />
 ```
 
-![1678010946973](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369150-da80b3.png)
+![1678010946973](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369150-da80b3.png)
 
 当将传递的行数被useCallBack包裹时，函数不会被重新生成，地址不会改变，子组件就不会被重新渲染
 
@@ -477,7 +477,7 @@ const clickHandler = useCallback(function () {
 }, []);
 ```
 
-![1678011058182](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369153-f92011.png)
+![1678011058182](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369153-f92011.png)
 
 <u >注意：</u>如果使用useCallBack进行缓存时，无法获取state最新值，需要对获取state进行依赖。
 
@@ -509,7 +509,7 @@ function App() {
 ```
 
 打印结果：
-![1678011933987](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369158-0f972b.png)
+![1678011933987](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369158-0f972b.png)
 
 <u>结果：</u> 发现更新同一个数据，调用多次set只会更新一次
 
@@ -540,4 +540,4 @@ function App() {
 ```
 
 打印结果：
-![1678012955085](https://gitee.com/szchason/pic_bed/raw/notes/images/react/react17/2023-05-29-1685369162-882e92.png)
+![1678012955085](https://gitee.com/szchason/pic_bed/raw/main/notes/react/react17/2023-05-29-1685369162-882e92.png)

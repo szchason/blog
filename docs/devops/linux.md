@@ -24,7 +24,7 @@ last_update:
 
 图解：
 
-![](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362096-e1bf1d.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362096-e1bf1d.png)
 
 ### 3.3、主流的操作系统
 
@@ -49,13 +49,13 @@ last_update:
 
 - Linux 又划分了 Android 和 华为鸿蒙
 
-![](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362102-4f4f23.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362102-4f4f23.png)
 
 ## 二、认识Linux
 
 ### 2.1、Linux的发展历程
 
-![1655480627730](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362104-87ca33.png)
+![1655480627730](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362104-87ca33.png)
 
 ### 2.2、什么是Linux？
 
@@ -87,7 +87,7 @@ Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的�
 
 ### 2.4、Linux发行商和常见发行版
 
-![1655481254806](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362108-60a970.png)
+![1655481254806](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362108-60a970.png)
 
 ## 三、Linux文件类型和目录结构
 
@@ -95,7 +95,7 @@ Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的�
 
 Linux文件系统的结构层次鲜明，就像一颗倒立的树，最顶层是其根目录(root)
 
-![](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362111-af34e7.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362111-af34e7.png)
 
 👋注意： <u>根目录(root)与系统超级管理员root含义不一致，前者代表的是目录的根级，后者只是一个用户目录，管理员root文件夹在根目录(root) 下</u>
 
@@ -273,11 +273,11 @@ f：指定文件名
 ls -al  // 查看某个目录下的文件或目录权限
 ```
 
-![1677936006871](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362116-3235e5.png)
+![1677936006871](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362116-3235e5.png)
 
 第一列信息解释如下：
 
-![](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362119-a26453.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362119-a26453.png)
 
 **文件类型：**
 
@@ -507,7 +507,7 @@ yum -y install wget
 cd /etc/yum.repos.d/
 ```
 
-![1668441088058](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362128-d9443f.png)
+![1668441088058](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362128-d9443f.png)
 
 备份Cent-OS-Base.repo文件
 
@@ -515,7 +515,7 @@ cd /etc/yum.repos.d/
 mv CentOS-Base.repo CentOS-Base.repo.back
 ```
 
-![1668441205643](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362132-f0e9e3.png)
+![1668441205643](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362132-f0e9e3.png)
 
 利用wget下载阿里云的repo替换CentOS-Base.repo
 
@@ -525,7 +525,7 @@ wget -O CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
 
 下载完成
 
-![1668441639148](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362137-bec5bd.png)
+![1668441639148](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362137-bec5bd.png)
 
 查看CentOS-Base.repo
 
@@ -533,7 +533,7 @@ wget -O CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
 cat CentOS-Base.repo
 ```
 
-![1668441740171](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362140-eaf23f.png)
+![1668441740171](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362140-eaf23f.png)
 
 清除原先的缓存文件
 
@@ -569,7 +569,7 @@ yum makecache
 
 - rpm -ivh jdk.rpm安装jdk，并显示安装进度
 
-![img](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362146-651eef.jpg)
+![img](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362146-651eef.jpg)
 
 - rpm -e jdk：卸载已经安装的jdk
 
@@ -581,7 +581,7 @@ yum makecache
 
 首先，从镜像源地址下载rpm文件，将rpm文件上传到服务器中
 
-![1668434541783](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362151-02def2.png)
+![1668434541783](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362151-02def2.png)
 
 安装命令
 
@@ -589,7 +589,7 @@ yum makecache
 rpm -ivh nginx-1.20.1-1.el7.ngx.x86_64.rpm
 ```
 
-![1668434570991](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362155-279ec0.png)
+![1668434570991](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362155-279ec0.png)
 
 查看nginx版本
 
@@ -597,7 +597,7 @@ rpm -ivh nginx-1.20.1-1.el7.ngx.x86_64.rpm
 nginx -v
 ```
 
-![1668434624453](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362159-68c245.png)
+![1668434624453](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362159-68c245.png)
 
 开启nginx并且查看nginx运行状态
 
@@ -609,7 +609,7 @@ systemctl start nginx  // 开启nginx
  ps -df |grep nginx // 查看运行状态
 ```
 
-![1668434810696](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362162-751a97.png)
+![1668434810696](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362162-751a97.png)
 
 查找nginx的安装目录
 
@@ -617,11 +617,11 @@ systemctl start nginx  // 开启nginx
 find / -name nginx
 ```
 
-![1668434960926](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362165-9499f5.png)
+![1668434960926](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362165-9499f5.png)
 
 关闭防火墙访问nginx页面
 
-![](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362815-9f70d4.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362815-9f70d4.png)
 
 ### 7.2、yum指令安装
 
@@ -633,7 +633,7 @@ find / -name nginx
 yum install -y wget
 ```
 
-![1668440836148](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362170-69c561.png)
+![1668440836148](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362170-69c561.png)
 
 其它使用详情见七
 
@@ -646,7 +646,7 @@ yum install -y wget
 
 首先liunx并没有wget，需要使用yum进行下载
 
-![1668440803704](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362174-6f9caf.png)
+![1668440803704](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362174-6f9caf.png)
 
 使用yum安装wget
 
@@ -802,11 +802,11 @@ FTP 选项:
 #### 7.3.2、我们以安装gitlab服务为例
 
 在gitlab官网获取rpm信息：
-![1668605902703](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362178-7696a8.png)
+![1668605902703](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362178-7696a8.png)
 
 创建gitlab的目录/local/gitlab：
 
-![1668605974964](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362183-5b355f.png)
+![1668605974964](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362183-5b355f.png)
 
 用wget将gitlab下载到/local/gitlab下：
 
@@ -814,11 +814,11 @@ FTP 选项:
 wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-15.4.5-ce.0.el7.x86_64.rpm/download.rpm
 ```
 
-![1668606660383](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362187-8586e9.png)
+![1668606660383](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362187-8586e9.png)
 
 使用ls查看当前文件夹下多出gitlab的rpm文件：
 
-![1668606757250](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362190-5fe99a.png)
+![1668606757250](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362190-5fe99a.png)
 
 注释： <u>下载好的rpm文件之后就是上述rpm的形式进行安装了，当然也可以通过手动下载rpm文件上传到linux上</u>
 
@@ -830,11 +830,11 @@ rpm -ivh gitlab-ce-15.4.5-ce.0.el7.x86_64.rpm
 
 如发现安装失败：
 
-![1668607335341](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362194-65ff0b.png)
+![1668607335341](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362194-65ff0b.png)
 
 参考官网来进行安装，这里统一使用yum进行安装：
 
-![1668607465943](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362197-d27ea9.png)
+![1668607465943](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362197-d27ea9.png)
 
 依次执行命令：
 
@@ -849,11 +849,11 @@ firewall-cmd --permanent --add-service=https
 systemctl reload firewalld
 ```
 
-![1668607609051](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362202-fab51f.png)
+![1668607609051](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362202-fab51f.png)
 
 再次使用`rpm -ivh gitlab-ce-15.4.5-ce.0.el7.x86_64.rpm`进行安装：
 
-![1668607716882](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362206-075690.png)
+![1668607716882](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362206-075690.png)
 
 初始化Gitlab命令（保存配置或重新载入配置）：
 
@@ -863,7 +863,7 @@ gitlab-ctl reconfigure
 
 到这里就是保存配置完成：
 
-![1668608055429](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362210-d8af8c.png)
+![1668608055429](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362210-d8af8c.png)
 
 gitlab服务启停管理：
 
@@ -880,4 +880,4 @@ gitlab初始账户为`root`
 cat /etc/gitlab/initial_root_password
 ```
 
-![1668608671962](https://gitee.com/szchason/pic_bed/raw/devops/images/linux/2023-05-29-1685362216-e7f760.png)
+![1668608671962](https://gitee.com/szchason/pic_bed/raw/main/devops/linux/2023-05-29-1685362216-e7f760.png)

@@ -23,7 +23,7 @@ last_update:
 
 ④、绘制render树（重绘） ：根据渲染树和回流得到几何信息进行渲染
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/webkit-render-flow.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/webkit-render-flow.png)
 
 过程分析：
 
@@ -40,11 +40,11 @@ JS的解析是由浏览器中的JS解析引擎完成的，比如谷歌的是V8�
 
 JS的执行机制就可以看做是一个主线程加上一个任务队列(task queue)。同步任务就是放在主线程上执行的任务，异步任务是放在任务队列中的任务。所有的同步任务在主线程上执行，形成一个执行栈;异步任务有了运行结果就会在任务队列中放置一个事件；脚本运行时先依次运行执行栈，然后会从任务队列里提取事件，运行任务队列中的任务，这个过程是不断重复的，所以又叫做事件循环(Event loop)。
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/event_loop.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/event_loop.png)
 
 浏览器解析html文档过程分析图解：
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/html_render.png)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/html_render.png)
 
 - 浏览器在拿到html文件时，浏览器在内存条中开辟一块栈内存，用来给html的代码提供环境；同时分配一个主线程去一行行的解析和执行代码
 - 当浏览器遇到link/img/script等标签，请求后都会开辟全新的线程去加载资源
@@ -94,7 +94,7 @@ console.log(Date.now());
 
 运行结果：
 
-![](https://gitee.com/szchason/pic_bed/raw/blogs/images/browser/js_jam.gif)
+![](https://gitee.com/szchason/pic_bed/raw/main/blogs/browser/js_jam.gif)
 
 ### 2.2、`<link>` 标签对DOM解析和渲染的影响
 

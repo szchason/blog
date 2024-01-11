@@ -35,15 +35,15 @@ ng serve --open
 
 #### 1.2.1、主要项目文件架构分析
 
-![image-20230612203358179](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230612203358179.png)
+![image-20230612203358179](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230612203358179.png)
 
 #### 1.2.2、angular.json文件的主要配置分析
 
-![image-20230612204141442](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230612204141442.png)
+![image-20230612204141442](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230612204141442.png)
 
 #### 1.2.3、浏览器端项目挂载流程
 
-![image-20230625194614317](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625194614317.png)
+![image-20230625194614317](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230625194614317.png)
 
 在根模块中会通过`@angular/platform-browser`引入`BrowserModule`, 相关代码如下：
 
@@ -115,7 +115,7 @@ export class AppComponent implements OnInit {
 
 展示效果图：
 
-![image-20230613202901065](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230613202901065.png)
+![image-20230613202901065](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230613202901065.png)
 
 ### 2.2、绑定
 
@@ -336,7 +336,7 @@ getInpVal(text: any) {
 
 具体展示效果：
 
-![image-20230628220536961](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230628220536961.png)
+![image-20230628220536961](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230628220536961.png)
 
 ②、定义模板变量在组件类使用
 
@@ -361,7 +361,7 @@ export class AppComponent implements AfterViewInit {
 
 具体展示效果：
 
-![image-20230628221149706](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230628221149706.png)
+![image-20230628221149706](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230628221149706.png)
 
 ## 三、Angular表单
 
@@ -369,7 +369,7 @@ Angular中有两种表单API，分别是模板式表单和响应式表单。模�
 
 模板式表单存在于`FormModule`模块中，响应式表单存在于`ReactiveFormModule`模块中，在使用的时候一定要将对应的模块import到`app.module.ts`根模块中。
 
-![image-20230620202910897](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620202910897.png)
+![image-20230620202910897](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230620202910897.png)
 
 ### 3.1、响应式表单
 
@@ -462,7 +462,7 @@ html文件相应代码：
 
 具体效果展示：
 
-![image-20230620205529953](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620205529953.png)
+![image-20230620205529953](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230620205529953.png)
 
 #### 3.1.3、基于FormArray创建动态表单
 
@@ -535,7 +535,7 @@ export class AppComponent {
 
 具体的展示效果：
 
-![image-20230620211331005](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620211331005.png)
+![image-20230620211331005](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230620211331005.png)
 
 #### 3.1.4、FormBuilder创建表单
 
@@ -627,7 +627,7 @@ export class FbReactiveFormComponent {
 
 具体的展示效果：
 
-![image-20230620214526545](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620214526545.png)
+![image-20230620214526545](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230620214526545.png)
 
 ### 3.2、模板式表单
 
@@ -683,7 +683,7 @@ onSubmitMyForm(obj: Record<string, any>) {
 
 具体展示效果：
 
-![image-20230620225251412](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230620225251412.png)
+![image-20230620225251412](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230620225251412.png)
 
 👋注意： <u>可以看到虽然我们输入了内容，但是value属性中没有获取到数据，这是因为我们还没有为表单中的模型标签绑定属性。</u>
 
@@ -716,7 +716,7 @@ onSubmitMyForm(obj: Record<string, any>) {
 
 具体展示效果：
 
-![image-20230624135729447](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230624135729447.png)
+![image-20230624135729447](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230624135729447.png)
 
 ### 3.3、响应式表单校验器
 
@@ -810,7 +810,7 @@ formbuild = this.fb.group({
 
 具体展示效果：
 
-![image-20230624205614123](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230624205614123.png)
+![image-20230624205614123](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230624205614123.png)
 
 👋注意： <u>多个校验器时，返回的`errors`对象属性合并</u>
 
@@ -1319,7 +1319,7 @@ export class AppComponent
 ```
 
 具体的效果：
-![image-20230618184502519](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230618184502519.png)
+![image-20230618184502519](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230618184502519.png)
 
 同时也得出一些问题：
 问题1： ngOnChanges 和 ngOnDestroy 函数为什么没有被执行，ngOnDestroy 在组件销毁时被执行，而 ngOnChanges 则是在 input 值有变化时执行。
@@ -1380,7 +1380,7 @@ export class ChildComponent implements OnDestroy {
 
 具体效果展示：
 
-![image-20230618192005068](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230618192005068.png)
+![image-20230618192005068](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230618192005068.png)
 
 2. ngOnChanges触发时期
 
@@ -1437,7 +1437,7 @@ export class ChildComponent implements OnDestroy {
 
 效果展示如下：
 
-![image-20230618211936321](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230618211936321.png)
+![image-20230618211936321](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230618211936321.png)
 
 当改变父组件的引用类型时，如果引用类型的地址发生改变时，`ngOnChanges函数`就会触发，当引用类型地址不发生变化时，`ngOnChanges函数`就不会被触发
 
@@ -1453,7 +1453,7 @@ this.arr.push(`${new Date()}`);
 
 ### 4.5、父子组件生命周期执行顺序
 
-![image-20230709170444798](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230709170444798.png)
+![image-20230709170444798](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230709170444798.png)
 
 angular父子组件生命周期钩子过程分析：
 
@@ -1568,7 +1568,7 @@ ng g directive <directive-name> --skip-import
 
 - 一个对应的ts文件
 
-![image-20230619215611160](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230619215611160.png)
+![image-20230619215611160](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230619215611160.png)
 
 #### 5.2.2、自定义属性型指令
 
@@ -1620,7 +1620,7 @@ export class DirectiveModule {}
 
 具体效果展示：
 
-![image-20230619220509856](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230619220509856.png)
+![image-20230619220509856](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230619220509856.png)
 
 如何接收参数，只有当指令名与@Input定义的变量一致可以接受变量，如下所示：
 
@@ -1665,7 +1665,7 @@ export class HighlightDirective {
 
 具体的效果：
 
-![image-20230619221640699](https://gitee.com/szchason/pic_bed/raw/notes/https://gitee.com/szchason/pic_bed/raw/notes/images/angular/angular/image-20230619221640699.png)
+![image-20230619221640699](https://gitee.com/szchason/pic_bed/raw/notes/https://gitee.com/szchason/pic_bed/raw/main/notes/angular/angular/image-20230619221640699.png)
 
 #### 5.2.3、自定义结构指令
 
@@ -1788,7 +1788,7 @@ export class AppComponent {
 
 具体展示效果：
 
-![image-20230702180743113](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230702180743113.png)
+![image-20230702180743113](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230702180743113.png)
 
 ## 七、Angular模块概念
 
@@ -2318,7 +2318,7 @@ export const PermissionGuard: CanActivateFn = (route, state) => {
 
 嵌套路由时canActivate守卫执行顺序：`父路由执行守卫、在匹配到子路由时执行子路由守卫，先父后子`, 具体展示效果如下：
 
-![image-20230625182956610](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625182956610.png)
+![image-20230625182956610](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230625182956610.png)
 
 2. canActivateChild
 
@@ -2374,7 +2374,7 @@ export const PermissionGuard: CanActivateFn = (route, state) => {
 
 具体展示效果：
 
-![image-20230625190330590](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625190330590.png)
+![image-20230625190330590](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230625190330590.png)
 
 ### 8.6、路由传参
 
@@ -2550,7 +2550,7 @@ export class ResolveParamsComponent implements OnInit {
 
 展示具体效果：
 
-![image-20230702171721547](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230702171721547.png)
+![image-20230702171721547](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230702171721547.png)
 
 ## 九、Angular的请求与拦截
 
@@ -2664,7 +2664,7 @@ export const environment = {
 
 angular即在 production 模式下把 `environment.ts` 替换成 `environment.prod.t`
 
-![image-20230709162308260](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230709162308260.png)
+![image-20230709162308260](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230709162308260.png)
 
 ### 9.3、配置代理
 
@@ -2784,7 +2784,7 @@ export class AppComponent implements OnInit {
 
 在这里请求的是本地`http://localhost:4200/api`地址，会通过`proxy.conf.json`代理转到`http://127.0.0.1:8080，具体效果展示：
 
-![image-20230709163941887](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230709163941887.png)
+![image-20230709163941887](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230709163941887.png)
 
 ## 十、配置Angular服务端渲染
 
@@ -2800,7 +2800,7 @@ ng add @nguniversal/express-engine
 
 当命令执行完毕之后，会增加某些文件和修改某一些文件
 
-![image-20230625210044296](https://gitee.com/szchason/pic_bed/raw/notes/images/angular/image-20230625210044296.png)
+![image-20230625210044296](https://gitee.com/szchason/pic_bed/raw/main/notes/angular/image-20230625210044296.png)
 
 ### 10.2、服务文件创建的文件作用讲解
 

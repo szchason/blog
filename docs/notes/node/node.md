@@ -14,7 +14,7 @@ last_update:
 
 Node的架构最主要分三层Natives modules、Node C/C++ Bindings、CPU/RAM/DISK OS
 
-![1666881967961](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367720-ce78c4.png)
+![1666881967961](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367720-ce78c4.png)
 
 首先，Natives modules层
 
@@ -26,7 +26,7 @@ Node的架构最主要分三层Natives modules、Node C/C++ Bindings、CPU/RAM/D
 
 之后，底层和功能模块
 
-![1666882377612](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367730-aafe49.png)
+![1666882377612](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367730-aafe49.png)
 
 - V8：执行js代码，提供桥梁接口
 - Libuv：事件循环、事件队列、异步IO
@@ -34,11 +34,11 @@ Node的架构最主要分三层Natives modules、Node C/C++ Bindings、CPU/RAM/D
 
 最后，Node的核心组成：
 
-![1666882607536](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367733-188bcf.png)
+![1666882607536](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367733-188bcf.png)
 
 ### 1.2、Nodejs异步IO
 
-![1666882696843](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367737-c41b6c.png)
+![1666882696843](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367737-c41b6c.png)
 
 ### 1.3、事件驱动架构
 
@@ -61,13 +61,13 @@ myEvent.emit('事件1');
 
 演练结果：
 
-![1666883054038](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367743-701ee2.png)
+![1666883054038](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367743-701ee2.png)
 
 ### 1.4、Nodejs应用场景
 
 1. IO密集型高并发请求
 
-![1666883166059](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367747-e768cf.png)
+![1666883166059](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367747-e768cf.png)
 
 2. 操作数据库提供api服务
 
@@ -104,7 +104,7 @@ app.listen(8080, () => {
 
 执行结果：
 
-![1666883645078](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367753-d3b63b.png)
+![1666883645078](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367753-d3b63b.png)
 
 ## 二、Nodejs全局对象
 
@@ -112,7 +112,7 @@ app.listen(8080, () => {
 >
 > *global*对象也有一个*global*属性引用自身。
 
-![1663164187891](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367757-0a08e8.png)
+![1663164187891](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367757-0a08e8.png)
 
 ### 2.1、在交互模式下
 
@@ -120,13 +120,13 @@ app.listen(8080, () => {
 >
 > 使用var定义的变量和创建的函数会挂载到global对象上
 
-![1663164041403](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367764-86cc8e.png)
+![1663164041403](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367764-86cc8e.png)
 
 ### 2.2、在脚本模式下
 
 > 声明的变量和创建的函数都不是global下的
 
-![1663164587538](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367768-8bbfeb.png)
+![1663164587538](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367768-8bbfeb.png)
 
 <span className="highlight">node中的this指向</span>：node执行js文件时this指向问题
 
@@ -136,7 +136,7 @@ app.listen(8080, () => {
 >
 > exports
 
-![1663164776985](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367800-a4a27c.png)
+![1663164776985](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367800-a4a27c.png)
 
 js文件中的this具体指向：
 
@@ -149,7 +149,7 @@ console.log(exports === module.exports);
 
 执行结果：
 
-![1663165491429](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367812-0cc093.png)
+![1663165491429](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367812-0cc093.png)
 
 如果要让其中的this指向global：
 
@@ -163,11 +163,11 @@ console.log(exports === module.exports);
 
 在交互下执行结果：
 
-![1663167693922](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367816-6c95e8.png)
+![1663167693922](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367816-6c95e8.png)
 
 在脚本代码执行结果：
 
-![1663165022292](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367821-c065ed.png)
+![1663165022292](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367821-c065ed.png)
 
 ## 三、全局变量process
 
@@ -216,7 +216,7 @@ console.log(process.platform === 'win32' ? process.env.USERPROFILE : process.env
 
 执行结果：
 
-![1665229123729](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367827-f737be.png)
+![1665229123729](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367827-f737be.png)
 
 获取运行状态信息
 
@@ -235,7 +235,7 @@ setTimeout(() => {
 
 执行结果：
 
-![1665229488066](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367831-733164.png)
+![1665229488066](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367831-733164.png)
 
 ### 3.2、获取执行进程操作信息
 
@@ -260,11 +260,11 @@ console.log('代码执行完了');
 
 代码执行结果：
 
-![1665230033535](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367835-19b627.png)
+![1665230033535](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367835-19b627.png)
 
 👋注意：<u>process.on监听的回调事件不能执行`异步代码`</u>
 
-![1665230191795](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367839-9a340a.png)
+![1665230191795](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367839-9a340a.png)
 
 #### 3.2.2、标准的输入、输出、
 
@@ -294,7 +294,7 @@ process.stdin.on('readable', () => {
 
 代码执行结果：
 
-![1665231370113](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367846-54a635.png)
+![1665231370113](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367846-54a635.png)
 
 ## 四、全局变量Buffer
 
@@ -318,7 +318,7 @@ Buffer的作用就是让JavaScript可以直接操作二进制数据，关于Buff
 
 前面说过Buffer是全局作用域上的一个模块，可以理解为它是全局上的一个属性，这个属性引用着Bufeer模块对象，从这个角度来说它是一个JavaScript模块。但是JavaScript自身不具备直接操作二进制文件的能力，所以实质上Buffer在nodejs底层上还有一个C++模块。这是因为IO操作是非常消耗性能的，所以nodejs在Buffer模块构建设计上，将性能部分用C++实现，将非性能部分用JavaScript实现。如图所示：
 
-![buffer](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367850-71ba5f.png)
+![buffer](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367850-71ba5f.png)
 
 #### 4.2.2、Buffer对象结构
 
@@ -488,7 +488,7 @@ console.log(path.basename('/a/b/c/')); // 输出：c
 
 执行结果：
 
-![1665232397358](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367860-e36e9c.png)
+![1665232397358](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367860-e36e9c.png)
 
 #### 5.2.2、获取目录名
 
@@ -504,7 +504,7 @@ console.log(path.dirname('/a/b/c/')); // 输出：/a/b
 
 执行结果：
 
-![1665232574541](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367865-f77215.png)
+![1665232574541](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367865-f77215.png)
 
 #### 5.2.3、获取路径的扩展名
 
@@ -522,7 +522,7 @@ console.log(path.extname('/a/b/index.html.')); // 输出："."
 
 执行结果：
 
-![1665232756309](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367870-c0d3fa.png)
+![1665232756309](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367870-c0d3fa.png)
 
 #### 5.2.4、解析路径
 
@@ -541,7 +541,7 @@ console.log(obj, currentPath.name, '<___obj');
 
 执行结果：
 
-![1665235855199](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367873-f4e5c3.png)
+![1665235855199](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367873-f4e5c3.png)
 
 #### 5.2.5、序列化–重新生成路径
 
@@ -552,7 +552,7 @@ console.log(path.format(obj));
 
 执行结果：
 
-![1665236100272](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367878-0b8da2.png)
+![1665236100272](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367878-0b8da2.png)
 
 #### 5.2.6、判断当前路径是否为绝对
 
@@ -568,7 +568,7 @@ console.log(path.isAbsolute('../foo')); // 输出：false
 
 执行结果：
 
-![1665236375610](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367885-73754f.png)
+![1665236375610](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367885-73754f.png)
 
 #### 5.2.7、拼接路径
 
@@ -583,7 +583,7 @@ console.log(path.join('/a/b', 'c', '', 'index.html')); // 输出：\a\b\c\index.
 
 执行结果：
 
-![1665236575012](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367891-648283.png)
+![1665236575012](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367891-648283.png)
 
 #### 5.2.8、规范化路径
 
@@ -598,7 +598,7 @@ console.log(path.normalize('a//\b/c../d')); // 输出：a\c..\d
 
 执行结果：
 
-![1665236989356](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367896-bbdbd0.png)
+![1665236989356](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367896-bbdbd0.png)
 
 #### 5.2.9、绝对路径
 
@@ -617,7 +617,7 @@ console.log(path.resolve('/a', 'b')); //  输出：D:\a\b
 
 执行结果：
 
-![1665237528886](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367901-f7e380.png)
+![1665237528886](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367901-f7e380.png)
 
 ## 六、核心模块fs
 
@@ -625,7 +625,7 @@ console.log(path.resolve('/a', 'b')); //  输出：D:\a\b
 
 1. 权限位：用户对于文件所具备的操作的权限
 
-![1665238934560](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367906-a6aac9.png)
+![1665238934560](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367906-a6aac9.png)
 
 2. Nodejs中flag表示对文件操作方式
 
@@ -741,7 +741,7 @@ fs.open(path.resolve(__dirname, 'data.txt'), 'r', (err, fd) => {
 
 图解：
 
-![1665318023782](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367912-be9962.png)
+![1665318023782](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367912-be9962.png)
 
 代码实操：
 
@@ -1046,7 +1046,7 @@ ev.emit('click');
 
 打印结果：
 
-![1678018115722](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685368256-7d27ef.png)
+![1678018115722](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685368256-7d27ef.png)
 
 #### 8.1.2、once
 
@@ -1068,7 +1068,7 @@ ev.emit('click');
 
 打印结果：
 
-![1678018287168](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685368262-9d086c.png)
+![1678018287168](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685368262-9d086c.png)
 
 #### 8.1.3、off
 
@@ -1318,7 +1318,7 @@ console.log(url.resolve('https://www.baidu.com', 'a/b?name=zhangsan'));
 
 执行结果：
 
-![1665324445612](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367923-4b3f87.png)
+![1665324445612](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367923-4b3f87.png)
 
 ## 十一、querystring模块
 
@@ -1447,11 +1447,11 @@ req.end('{"name":"cgh"}');
 
 运行js文件：
 
-![1667748931201](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367932-03763d.png)
+![1667748931201](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367932-03763d.png)
 
 agent-server.js打印信息
 
-![1667748946645](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367935-af96c8.png)
+![1667748946645](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367935-af96c8.png)
 
 ### 13.3、https请求接口（代理客户端跨域）
 
@@ -1509,7 +1509,7 @@ function httpPost(cb) {
 
 效果：
 
-![1667750722822](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367941-79db8e.png)
+![1667750722822](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367941-79db8e.png)
 
 ## 十四、Node的模块化支持
 
@@ -1519,7 +1519,7 @@ function httpPost(cb) {
 
 在 Ndoe.js 12.17.0 版本之后 ， nodejs按以下流程判断模块系统是用ESM还是CJS：
 
-![1667655489844](https://gitee.com/szchason/pic_bed/raw/notes/images/node/2023-05-29-1685367946-79a80d.png)
+![1667655489844](https://gitee.com/szchason/pic_bed/raw/main/notes/node/2023-05-29-1685367946-79a80d.png)
 
 <span className="highlight">使用：</span>
 
